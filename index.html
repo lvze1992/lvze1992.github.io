@@ -381,7 +381,7 @@
           
             <p style="background-color:#00FFFF;padding:15px">在本文中，将收录Markdown的一些基本语法，便于以后查阅。<br>In this paper,  some basic syntax of Markdown would be included, for easily accessible.<br></p>
 
-<h2 id="Markdown-语法说明"><a href="#Markdown-语法说明" class="headerlink" title="Markdown 语法说明"></a>Markdown 语法说明</h2><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><strong>#</strong> 认识与入门 Markdown：<br>    <a href="http://sspai.com/25137l" target="_blank" rel="external">http://sspai.com/25137</a><br><strong>#</strong> Markdown 语法说明 (简体中文版)：<br>    <a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="external">http://wowubuntu.com/markdown/#list</a></p>
+<h2 id="Markdown-语法说明"><a href="#Markdown-语法说明" class="headerlink" title="Markdown 语法说明"></a>Markdown 语法说明</h2><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><strong>#</strong> 认识与入门 Markdown：<br>&emsp;<a href="http://sspai.com/25137l" target="_blank" rel="external">http://sspai.com/25137</a><br><strong>#</strong> Markdown 语法说明 (简体中文版)：<br>&emsp;<a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="external">http://wowubuntu.com/markdown/#list</a></p>
 <h3 id="Markdown基本标签"><a href="#Markdown基本标签" class="headerlink" title="Markdown基本标签"></a>Markdown基本标签</h3><h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是 H1</span></span><br><span class="line"><span class="comment">## 这是 H2</span></span><br><span class="line"><span class="comment">###### 这是 H6</span></span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -417,11 +417,9 @@
 </blockquote>
 <hr>
 <h4 id="混合引用"><a href="#混合引用" class="headerlink" title="混合引用"></a>混合引用</h4><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*   This is a list item with two paragraphs.</span><br><span class="line"></span><br><span class="line">*   This is the second paragraph <span class="keyword">in</span> the list item. You<span class="string">'re</span><br><span class="line">only required to indent the first line. Lorem ipsum dolor</span><br><span class="line">sit amet, consectetuer adipiscing elit.</span><br><span class="line"></span><br><span class="line">*   Another item in the same list.</span><br><span class="line">	&gt; This is a blockquote</span><br><span class="line">	&gt; &gt; inside a list item.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*   This is a list item with two paragraphs.</span><br><span class="line"></span><br><span class="line">*   Another item <span class="keyword">in</span> the same list.</span><br><span class="line">	&gt; This is a blockquote</span><br><span class="line">	&gt; &gt; inside a list item.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>This is a list item with two paragraphs.</p>
-</li>
-<li><p>This is the second paragraph in the list item. You’re<br>only required to indent the first line. Lorem ipsum dolor<br>sit amet, consectetuer adipiscing elit.</p>
 </li>
 <li><p>Another item in the same list.</p>
 <blockquote>
@@ -478,6 +476,11 @@
 </tr>
 </tbody>
 </table>
+</blockquote>
+<hr>
+<h4 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h4><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">This is the second paragraph <span class="keyword">in</span> the list item. </span><br><span class="line">&amp;emsp;This is the second paragraph <span class="keyword">in</span> the list item. </span><br><span class="line">&amp;ensp;This is the second paragraph <span class="keyword">in</span> the list item. </span><br><span class="line">&amp;nbsp;This is the second paragraph <span class="keyword">in</span> the list item.</span><br></pre></td></tr></table></figure>
+<p>This is the second paragraph in the list item.<br>&emsp;This is the second paragraph in the list item.<br>&ensp;This is the second paragraph in the list item.<br>&nbsp;This is the second paragraph in the list item. </p>
 </blockquote>
 
           
