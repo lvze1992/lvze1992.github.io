@@ -413,8 +413,13 @@
 </blockquote>
 <hr>
 <h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><blockquote>
-<p>两个 ` 把中间的代码包裹起来<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`code`</span><br></pre></td></tr></table></figure></p>
+<p>``` bash<br>把中间的代码包裹起来<br>```<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有行号的代码块。</span><br><span class="line">这是第二行</span><br></pre></td></tr></table></figure></p>
 </blockquote>
+<hr>
+<h4 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h4><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">四个空格或一个tab符</span><br></pre></td></tr></table></figure>
+<pre><code>四个空格或一个tab符,无序号的代码段
+</code></pre></blockquote>
 <hr>
 <h4 id="混合引用"><a href="#混合引用" class="headerlink" title="混合引用"></a>混合引用</h4><blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*   This is a list item with two paragraphs.</span><br><span class="line"></span><br><span class="line">*   Another item <span class="keyword">in</span> the same list.</span><br><span class="line">	&gt; This is a blockquote</span><br><span class="line">	&gt; &gt; inside a list item.</span><br></pre></td></tr></table></figure>
@@ -482,6 +487,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">This is the second paragraph <span class="keyword">in</span> the list item. </span><br><span class="line">&amp;emsp;This is the second paragraph <span class="keyword">in</span> the list item. </span><br><span class="line">&amp;ensp;This is the second paragraph <span class="keyword">in</span> the list item. </span><br><span class="line">&amp;nbsp;This is the second paragraph <span class="keyword">in</span> the list item.</span><br></pre></td></tr></table></figure>
 <p>This is the second paragraph in the list item.<br>&emsp;This is the second paragraph in the list item.<br>&ensp;This is the second paragraph in the list item.<br>&nbsp;This is the second paragraph in the list item. </p>
 </blockquote>
+<hr>
+<h4 id="文本居中引用"><a href="#文本居中引用" class="headerlink" title="文本居中引用"></a>文本居中引用</h4><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span><br><span class="line">&lt;!-- 其中 class=<span class="string">"blockquote-center"</span> 是必须的 --&gt;</span><br><span class="line">  &lt;blockquote class=<span class="string">"blockquote-center"</span>&gt;blah blah blah&lt;/blockquote&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span><br><span class="line">&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125;</span><br><span class="line">  &lt;!-- 标签别名 --&gt;</span><br><span class="line">&#123;% cq %&#125; blah blah blah &#123;% endcq %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote class="blockquote-center"><p>blah blah blah </p>
+</blockquote>
+</blockquote>
+<hr>
+<h4 id="突破容器宽度限制的图片"><a href="#突破容器宽度限制的图片" class="headerlink" title="突破容器宽度限制的图片"></a>突破容器宽度限制的图片</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span><br><span class="line">&lt;!-- 其中 class=<span class="string">"full-image"</span> 是必须的 --&gt;</span><br><span class="line">&lt;img src=<span class="string">"/image-url"</span> class=<span class="string">"full-image"</span> /&gt;</span><br><span class="line">&lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span><br><span class="line">&#123;% fullimage /image-url, alt, title %&#125;</span><br><span class="line">&lt;!-- 别名 --&gt;</span><br><span class="line">&#123;% <span class="keyword">fi</span> /image-url, alt, title %&#125;</span><br></pre></td></tr></table></figure>
+<img src="/full-image.JPG" class="full-image" alt="alt" title="突破容器宽度限制的图片">
+<h3 id="Markdown编辑工具"><a href="#Markdown编辑工具" class="headerlink" title="Markdown编辑工具"></a>Markdown编辑工具</h3><p><strong>#</strong> MarkdownPad<br>&emsp;<a href="http://www.markdownpad.com/" target="_blank" rel="external">http://www.markdownpad.com/</a></p>
 
           
         
