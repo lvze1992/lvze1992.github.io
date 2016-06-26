@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ns2.35," />
+  <meta name="keywords" content="ns2.35,无线传感器网络," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="ns2.35无线网络中的节点配置writing。。。writing。。。">
+<meta name="description" content="ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络节点的配置。ns2.35 is used for network simulation. In this paper, the configuration of wireless sensor network node would be discussed.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ns2.35无线节点设置">
+<meta property="og:title" content="ns2.35无线节点配置及相关">
 <meta property="og:url" content="http://lvze1992.github.io/2016/06/26/ns2-35/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
-<meta property="og:description" content="ns2.35无线网络中的节点配置writing。。。writing。。。">
-<meta property="og:updated_time" content="2016-06-26T03:38:40.670Z">
+<meta property="og:description" content="ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络节点的配置。ns2.35 is used for network simulation. In this paper, the configuration of wireless sensor network node would be discussed.">
+<meta property="og:updated_time" content="2016-06-26T09:45:32.252Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ns2.35无线节点设置">
-<meta name="twitter:description" content="ns2.35无线网络中的节点配置writing。。。writing。。。">
+<meta name="twitter:title" content="ns2.35无线节点配置及相关">
+<meta name="twitter:description" content="ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络节点的配置。ns2.35 is used for network simulation. In this paper, the configuration of wireless sensor network node would be discussed.">
 
 
 
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://lvze1992.github.io/2016/06/26/ns2-35/"/>
 
-  <title> ns2.35无线节点设置 | ZAK's Blog </title>
+  <title> ns2.35无线节点配置及相关 | ZAK's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +286,7 @@
             
             
               
-                ns2.35无线节点设置
+                ns2.35无线节点配置及相关
               
             
           </h1>
@@ -339,7 +339,7 @@
 
           
           
-             <span id="/2016/06/26/ns2-35/" class="leancloud_visitors" data-flag-title="ns2.35无线节点设置">
+             <span id="/2016/06/26/ns2-35/" class="leancloud_visitors" data-flag-title="ns2.35无线节点配置及相关">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -361,8 +361,35 @@
       
 
       
-        <h2 id="ns2-35无线网络中的节点配置"><a href="#ns2-35无线网络中的节点配置" class="headerlink" title="ns2.35无线网络中的节点配置"></a>ns2.35无线网络中的节点配置</h2><h3 id="writing。。。"><a href="#writing。。。" class="headerlink" title="writing。。。"></a>writing。。。</h3><p>writing。。。<br><a id="more"></a></p>
-
+        <p></p><p style="background-color:#f2f4b0;padding:15px">ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络节点的配置。<br>ns2.35 is used for network simulation. In this paper, the configuration of wireless sensor network node would be discussed.<br></p><br><a id="more"></a><p></p>
+<h2 id="ns2-35无线网络中的节点配置"><a href="#ns2-35无线网络中的节点配置" class="headerlink" title="ns2.35无线网络中的节点配置"></a>ns2.35无线网络中的节点配置</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li><p>如果你是刚接触ns2.35，直接阅读本文可能会有比较多的疑惑。所以，为你推荐几个不错的介绍ns2的网站:</p>
+<blockquote>
+<p><em>&emsp;NS by Example：<a href="http://nile.wpi.edu/NS/" target="_blank" rel="external">http://nile.wpi.edu/NS/</a></em><br>&emsp;（ps：这个算是把ns2介绍的比较浅显详细的教程了，推荐耐心看完）<br><em>&emsp;Tutorial for the Network Simulator ns：<a href="http://www.isi.edu/nsnam/ns/tutorial/" target="_blank" rel="external">http://www.isi.edu/nsnam/ns/tutorial/</a></em><br>&emsp;（ps：推荐耐心看完）<br><em>&emsp;网络仿真利器NS-2无师自通七天速成系列：<a href="http://wenku.baidu.com/link?url=b0c49_sUomOXKM-VjVRroHGoiGjk7A3jnJLT2qR4cGAiEyHxRirglIMMZncb0ex8rqKZwHsFycrLwGeR8nElzpJLTknPVvJsbcw4na01pIS" target="_blank" rel="external">百度文库链接</a></em><br>&emsp;（ps：这个是中文的，个人感觉略显啰嗦，我也是只是大概浏览了，建议粗看）</p>
+</blockquote>
+</li>
+<li><p>如果你还停留在安装阶段，建议你立刻完成安装，以便后续的学习。如何在win7下安装NS2：</p>
+<blockquote>
+<p><em>&emsp;Win7+Cygwin+Ns2.35 完全安装指南：<a href="http://wenku.baidu.com/link?url=Seo_T4KY5Ii_H-Xf2L5C1whucI2hB77_pXI_suswFY8FYl3EUNCjlOPgvH344kLG9Pdo_YqveKhrnRgDN-wwOTqPeVh8RFP9MRYtWhj_KEm" target="_blank" rel="external">百度文库链接</a> </em><br>&emsp;（ps：图文教程，把过程说得很详细，一步一步来即可）</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="如何修改节点的颜色"><a href="#如何修改节点的颜色" class="headerlink" title="如何修改节点的颜色"></a>如何修改节点的颜色</h3><h4 id="TCL中"><a href="#TCL中" class="headerlink" title="TCL中"></a>TCL中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &#123;<span class="built_in">set</span> i 0&#125; &#123;<span class="variable">$i</span> &lt; <span class="variable">$val</span>(nn)&#125; &#123;incr i&#125; &#123;</span><br><span class="line">	<span class="variable">$n</span>(<span class="variable">$i</span>) color black</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$ns</span> at 0.01 <span class="string">"<span class="variable">$n</span>(4) color #00ff00"</span></span><br></pre></td></tr></table></figure>
+<p>必须先给待设置节点激活颜色属性，才可以设置该节点颜色。2者缺一不可，若有错误，请指正。</p>
+<h4 id="C-中"><a href="#C-中" class="headerlink" title="C++中"></a>C++中</h4><p>这里以AODV.cc为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define CURRENT_TIME Scheduler::instance().clock() //获取当前时间</span></span><br><span class="line">...</span><br><span class="line">double atTime;</span><br><span class="line"><span class="keyword">if</span>(atTime &gt; 0)</span><br><span class="line">	atTime += 0.000000001;</span><br><span class="line">TCL::instance().evalf(<span class="string">"<span class="variable">$ns</span> at %.9f \"<span class="variable">$n</span>(5) color red\""</span>,atTime);</span><br></pre></td></tr></table></figure></p>
+<p>利用该方法，可以实现：收到特定数据包后，节点变成相应颜色。更加自由。</p>
+<hr>
+<h3 id="添加节点标签和节点标记"><a href="#添加节点标签和节点标记" class="headerlink" title="添加节点标签和节点标记"></a>添加节点标签和节点标记</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#为节点添加标签</span></span><br><span class="line"><span class="variable">$ns</span> at 0.0 <span class="string">"<span class="variable">$n</span>(7) label source_1"</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">#为节点添加标记（红色的圆圈）</span></span><br><span class="line"><span class="variable">$n</span>(6) delete-mark <span class="variable">$n</span>(6)</span><br><span class="line"><span class="variable">$n</span>(6) add-mark <span class="variable">$n</span>(6) red circle</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="修改节点大小"><a href="#修改节点大小" class="headerlink" title="修改节点大小"></a>修改节点大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &#123;<span class="built_in">set</span> i 0&#125; &#123;<span class="variable">$i</span>&lt;<span class="variable">$val</span>(nn)&#125; &#123;incr i&#125; &#123;</span><br><span class="line">	<span class="variable">$ns</span> initial_node_pos <span class="variable">$n</span>(<span class="variable">$i</span>) 20;<span class="comment">#20控制这节点的大小，设为10则节点变小</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="设置节点随机布局"><a href="#设置节点随机布局" class="headerlink" title="设置节点随机布局"></a>设置节点随机布局</h3><hr>
+<h3 id="设置节点随机移动"><a href="#设置节点随机移动" class="headerlink" title="设置节点随机移动"></a>设置节点随机移动</h3><hr>
+<h3 id="设置节点网格布局"><a href="#设置节点网格布局" class="headerlink" title="设置节点网格布局"></a>设置节点网格布局</h3><hr>
+<h3 id="为节点添加自定义属性并在TCL中设置"><a href="#为节点添加自定义属性并在TCL中设置" class="headerlink" title="为节点添加自定义属性并在TCL中设置"></a>为节点添加自定义属性并在TCL中设置</h3><hr>
+<h3 id="修改TCP数据包的颜色"><a href="#修改TCP数据包的颜色" class="headerlink" title="修改TCP数据包的颜色"></a>修改TCP数据包的颜色</h3><hr>
+<h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3>
       
     </div>
 
@@ -385,6 +412,8 @@
           
             <a href="/tags/ns2-35/" rel="tag">#ns2.35</a>
           
+            <a href="/tags/无线传感器网络/" rel="tag">#无线传感器网络</a>
+          
         </div>
       
 
@@ -399,6 +428,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/26/ns2-35-protocol/" rel="prev" title="ns2.35中协议实现的研究">
+                ns2.35中协议实现的研究 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -448,7 +481,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/06/26/ns2-35/"
-           data-title="ns2.35无线节点设置" data-url="http://lvze1992.github.io/2016/06/26/ns2-35/">
+           data-title="ns2.35无线节点配置及相关" data-url="http://lvze1992.github.io/2016/06/26/ns2-35/">
       </div>
     
   </div>
@@ -493,7 +526,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -510,7 +543,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -550,7 +583,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ns2-35无线网络中的节点配置"><span class="nav-number">1.</span> <span class="nav-text">ns2.35无线网络中的节点配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#writing。。。"><span class="nav-number">1.1.</span> <span class="nav-text">writing。。。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ns2-35无线网络中的节点配置"><span class="nav-number">1.</span> <span class="nav-text">ns2.35无线网络中的节点配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何修改节点的颜色"><span class="nav-number">1.2.</span> <span class="nav-text">如何修改节点的颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCL中"><span class="nav-number">1.2.1.</span> <span class="nav-text">TCL中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-中"><span class="nav-number">1.2.2.</span> <span class="nav-text">C++中</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加节点标签和节点标记"><span class="nav-number">1.3.</span> <span class="nav-text">添加节点标签和节点标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改节点大小"><span class="nav-number">1.4.</span> <span class="nav-text">修改节点大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置节点随机布局"><span class="nav-number">1.5.</span> <span class="nav-text">设置节点随机布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置节点随机移动"><span class="nav-number">1.6.</span> <span class="nav-text">设置节点随机移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置节点网格布局"><span class="nav-number">1.7.</span> <span class="nav-text">设置节点网格布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为节点添加自定义属性并在TCL中设置"><span class="nav-number">1.8.</span> <span class="nav-text">为节点添加自定义属性并在TCL中设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改TCP数据包的颜色"><span class="nav-number">1.9.</span> <span class="nav-text">修改TCP数据包的颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举个栗子"><span class="nav-number">1.10.</span> <span class="nav-text">举个栗子</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
