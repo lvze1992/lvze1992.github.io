@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://115.28.217.112/github/wechat/16.jpg">
 <meta property="og:image" content="http://115.28.217.112/github/wechat/17.jpg">
 <meta property="og:image" content="http://115.28.217.112/github/wechat/18.jpg">
-<meta property="og:updated_time" content="2016-07-01T12:43:02.065Z">
+<meta property="og:updated_time" content="2016-07-01T12:48:32.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信公众平台的二次开发&ensp;—&ensp;快速上手">
 <meta name="twitter:description" content="本文为“微信公众平台二次开发”的入门教程，完成教程你就可以实现微信公众号最基本的功能“自动回复”。">
@@ -377,7 +377,7 @@
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <blockquote>
-<p>参考链接:<br><br><a href="http://jingyan.baidu.com/article/1e5468f92b2d09484961b7c4.html" target="_blank" rel="external">http://jingyan.baidu.com/article/1…</a></p>
+<p>参考链接:<br><a href="http://jingyan.baidu.com/article/1e5468f92b2d09484961b7c4.html" target="_blank" rel="external">http://jingyan.baidu.com/article/11e5468…</a></p>
 </blockquote>
 <h2 id="申请服务器资源"><a href="#申请服务器资源" class="headerlink" title="申请服务器资源"></a>申请服务器资源</h2><h3 id="创建新浪云计算应用"><a href="#创建新浪云计算应用" class="headerlink" title="创建新浪云计算应用"></a>创建新浪云计算应用</h3><ol>
 <li><strong>申请账号</strong><br>我们使用SAE新浪云计算平台作为服务器资源，并且申请PHP环境+MySQL数据库作为程序运行环境。<br>申请地址为：<br><a href="http://t.cn/R5R2Owg" target="_blank" rel="external">http://www.sinacloud.com/</a><br>直接点击上述网址，可以看到右上角微博登录的链接。<br><img src="http://115.28.217.112/github/wechat/1.jpg" alt=""><br>点击进入之后，使用新浪微博账号登录<br><img src="http://115.28.217.112/github/wechat/2.jpg" alt=""><br>登录之后，按照提示注册个人信息即可。</li>
@@ -385,7 +385,10 @@
 <li><strong>创建版本</strong><br>点击刚才创建的应用名称，进入应用主页。<br>点击左侧的<strong>应用管理</strong>下面的<strong>代码管理</strong><br>在代码管理中，选择使用<span style="color:#ffffff; background-color:#3366ff">SVN</span>托管的方式。<br><img src="http://115.28.217.112/github/wechat/8.jpg" alt=""><br>跳转到代码管理<br><img src="http://115.28.217.112/github/wechat/9.jpg" alt=""><br>点击右侧的<span style="color:#ffffff; background-color:#3366ff">+创建版本</span><br><img src="http://115.28.217.112/github/wechat/10.jpg" alt=""><br>版本号默认为1，点击创建，有时会弹出安全登录，需要输入安全密码，如果不知道或者忘记了，就点里面的找回密码，重新设置一下。<br><img src="http://115.28.217.112/github/wechat/11.jpg" alt=""><br>验证通过之后，如下所示<br><img src="http://115.28.217.112/github/wechat/12.jpg" alt=""><br>到这里，就成功创建了一个域名URL为 <a href="http://test12test.applinzi.com" target="_blank" rel="external">http://test12test.applinzi.com</a> 的应用了，记住你的这个URL（不是<a href="http://1.test12test.applinzi.com），后面将会用到。" target="_blank" rel="external">http://1.test12test.applinzi.com），后面将会用到。</a></li>
 <li><strong>上传代码</strong><br>下述代码是一个微信接口文件，点击直接下载。看不懂没有关系，我们会在本文后续的章节解释。<br><strong><a href="http://115.28.217.112/github/wechat/index.zip" target="_blank" rel="external"><span style="color:red;">&gt;&gt;&gt;下载代码包</span></a></strong><br>回到SAE的代码管理界面中。<br>再选择“上传代码包”，点击上传文件，选择刚才的index.zip文件，点击上传，上传成功后中间是一个绿色的横条，如下所示<br><img src="http://115.28.217.112/github/wechat/13.jpg" alt=""><br>上传成功后，点击“编辑代码”按钮（在“上传代码包”左边）。<br>有时候需要输入自己的安全密码，如果不记得了就点击“找回密码”。<br>安全验证成功后继续之前的操作。<br>我们可以看到index.php已经上传成功，双击可以查看编辑里面的代码<br><img src="http://115.28.217.112/github/wechat/14.jpg" alt=""><br>新浪云应用的创建就成功了。</li>
 </ol>
-<h2 id="申请微信公众号测试账号"><a href="#申请微信公众号测试账号" class="headerlink" title="申请微信公众号测试账号"></a>申请微信公众号测试账号</h2><p>请准备带微信帐号的手机</p>
+<h2 id="申请微信公众号测试账号"><a href="#申请微信公众号测试账号" class="headerlink" title="申请微信公众号测试账号"></a>申请微信公众号测试账号</h2><p>请准备带微信帐号的手机。</p>
+<blockquote>
+<p>这里提一下，为什么要注册测试公众号而不是正常的公众号呢，主要的原因是个人公众号的接口有较大限制，不能满足后续开发的要求。</p>
+</blockquote>
 <ol>
 <li>点击以下链接<br><a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</a><br>跳转到“微信公众平台接口测试帐号申请”界面：<br><img src="http://115.28.217.112/github/wechat/15.jpg" alt=""></li>
 <li>点击登录后。用手机登录你的微信，使用微信中的“扫一扫”功能，扫描上面网页中的二维码。在手机上会出现以下界面：<br><img src="http://115.28.217.112/github/wechat/16.jpg" alt=""></li>
