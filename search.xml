@@ -16,7 +16,7 @@
     <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;消息类型]]></title>
       <url>http://lvze1992.github.io/2016/07/01/wechat-msg/</url>
-      <content type="html"><![CDATA[<p style="background-color:#f4dab0;padding:15px">本文为“微信公众平台二次开发”的高级教程，之所以放在前面，是因为它感觉上比较高端，可以培养学生的兴趣。<br></p>
+      <content type="html"><![CDATA[<p style="background-color:#f4dab0;padding:15px">在本文中，读者可以了解微信消息的多种格式，并实现接收和回复各种消息。可备用供以后学习或开发。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <blockquote>
