@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;自定义菜单]]></title>
+      <url>http://lvze1992.github.io/2016/07/03/wechat-menu/</url>
+      <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">有了自定义菜单，公众号看起来才像公众号嘛。而且可以给订阅者提供更好的交互体验。<br></p>
+
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<h2 id="你可能需要的链接"><a href="#你可能需要的链接" class="headerlink" title="你可能需要的链接"></a>你可能需要的链接</h2><blockquote>
+<p><a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">微信公众平台测试号登录页面</a><br><a href="http://t.cn/R5R2Owg" target="_blank" rel="external">新浪云应用http://www.sinacloud.com/</a></p>
+</blockquote>
+<h2 id="实现结果截图"><a href="#实现结果截图" class="headerlink" title="实现结果截图"></a>实现结果截图</h2><p><img src="http://115.28.217.112/github/wechat/wechat_menu/1.jpg" alt=""></p>
+<h2 id="自定义菜单实现"><a href="#自定义菜单实现" class="headerlink" title="自定义菜单实现"></a>自定义菜单实现</h2><p>首先，微信公众号的菜单有多种方式可以设定。本教程提供的只是其中一种，有兴趣的读者可以在网上查找其余方法。</p>
+<h3 id="新浪云部署"><a href="#新浪云部署" class="headerlink" title="新浪云部署"></a>新浪云部署</h3><ol>
+<li>打开新浪云，进入<span style="color:#ffffff; background-color:#3366ff">控制台-云应用SAE</span>，点击<span style="color:#ffffff; background-color:#3366ff">进入控制台</span>。页面跳转后，选择先前你创建的应用(如果没有，新建一个应用即可，或阅读先前的教程-“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">微信公众平台开发</a>”)。再依次点击<span style="color:#ffffff; background-color:#3366ff">应用（左侧）-代码管理</span>，进入代码管理页面。如下：<br><img src="http://115.28.217.112/github/wechat/wechat_menu/2.jpg" alt=""></li>
+<li><p>点击“下载代码包”，下载本次教程的代码包。</p>
+<blockquote>
+<p><strong><a href="http://115.28.217.112/github/wechat/wechat_menu/index4.zip" target="_blank" rel="external"><span style="color:red;">&gt;&gt;&gt;下载代码包</span></a></strong><br>此代码包内已整合了先前教程的所有内容。</p>
+</blockquote>
+</li>
+<li><p>回到新浪云“代码管理”界面，点击<span style="color:#ffffff; background-color:#3366ff">+创建版本</span>，填入版本号为4（可根据自己的情况选择版本号）。创建完毕后，点击相应版本（此处为版本4）的<span style="color:#ffffff; background-color:#3366ff">上传代码包</span>。</p>
+</li>
+</ol>
+<h3 id="获取微信access-token"><a href="#获取微信access-token" class="headerlink" title="获取微信access_token"></a>获取微信access_token</h3><ol>
+<li><p>继续上一节的步骤，点击版本4的<span style="color:#ffffff; background-color:#3366ff">编辑代码</span>,进入如下界面。<br><img src="http://115.28.217.112/github/wechat/wechat_menu/3.jpg" alt=""><br>左侧应该有5个文件，双击menu.php。可以看到下列代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$appid</span> = <span class="string">"你的微信公众号appID"</span>;</span><br><span class="line"><span class="variable">$appsecret</span> = <span class="string">"你的微信公众号appsecret"</span>;</span><br><span class="line">...</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开<span style="color:#ffffff; background-color:#3366ff">微信平台测试号</span>页面并登录，如下。在此页面中列出了你微信公众号的appID和appsecret。<br><img src="http://115.28.217.112/github/wechat/wechat_menu/4.jpg" alt=""></p>
+</li>
+<li><p>复制微信公众号的appID和appsecret，并在<span style="color:#ffffff; background-color:#3366ff">menu.php</span>中替换。保存！</p>
+<blockquote>
+<p>appID和appsecret用于获得微信的access_token，access_token字符串每隔1小时就会更改。</p>
+</blockquote>
+</li>
+<li><p>在新浪云应用的“<span style="color:#ffffff; background-color:#3366ff">编辑代码</span>”页面，<span style="color:#ffffff; background-color:#3366ff">右击menu.php</span>弹出菜单，选择<span style="color:#ffffff; background-color:#3366ff">通过URL访问</span>。<br>若网页出现<br><code>string(27) &quot;{&quot;errcode&quot;:0,&quot;errmsg&quot;:&quot;ok&quot;}&quot;</code><br>则表明菜单已经设置完毕了。<strong>（菜单生效的有点慢，可能需要几分钟，请耐心等待）</strong><br>若网页出现其它信息，如<br><code>string(71) &quot;{&quot;errcode&quot;:40016,&quot;errmsg&quot;:&quot;invalid button size hint: [ngqUqa0109vr22]&quot;}&quot;</code><br>则表明菜单设置失败。本教程的代码是测试无错的，请检查appID和appsecret，或是否修改了代码造成了一些语法错误。</p>
+</li>
+</ol>
+<h3 id="自定义菜单"><a href="#自定义菜单" class="headerlink" title="自定义菜单"></a>自定义菜单</h3><p><strong>writing</strong></p>
+<h3 id="响应菜单点击事件"><a href="#响应菜单点击事件" class="headerlink" title="响应菜单点击事件"></a>响应菜单点击事件</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;人脸识别]]></title>
       <url>http://lvze1992.github.io/2016/07/01/wechat-face/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">本文为“微信公众平台二次开发”的高级教程，之所以放在前面，是因为它感觉上比较高端，可以培养学生的兴趣。<br></p>
