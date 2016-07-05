@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="微信公众平台,微信,开发,微信开发基础知识," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="愿有保护所爱之人的力量">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZAK's Blog">
-<meta property="og:url" content="http://lvze1992.github.io/tags/微信自定义菜单/index.html">
+<meta name="description" content="此教程将会为大家讲解微信公众号开发的基础知识 —— 微信消息的封装：XML或JSON。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信消息的封装：XML或JSON">
+<meta property="og:url" content="http://lvze1992.github.io/2016/07/05/wechat-msg-encapsulation/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
-<meta property="og:description" content="愿有保护所爱之人的力量">
+<meta property="og:description" content="此教程将会为大家讲解微信公众号开发的基础知识 —— 微信消息的封装：XML或JSON。">
+<meta property="og:updated_time" content="2016-07-05T07:27:48.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZAK's Blog">
-<meta name="twitter:description" content="愿有保护所爱之人的力量">
+<meta name="twitter:title" content="微信消息的封装：XML或JSON">
+<meta name="twitter:description" content="此教程将会为大家讲解微信公众号开发的基础知识 —— 微信消息的封装：XML或JSON。">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://lvze1992.github.io/tags/微信自定义菜单/"/>
+  <link rel="canonical" href="http://lvze1992.github.io/2016/07/05/wechat-msg-encapsulation/"/>
 
-  <title> 标签: 微信自定义菜单 | ZAK's Blog </title>
+  <title> 微信消息的封装：XML或JSON | ZAK's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,7 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,46 +258,234 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        微信自定义菜单
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                微信消息的封装：XML或JSON
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-05T15:04:44+08:00" content="2016-07-05">
+              2016-07-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/微信开发基础理论/" itemprop="url" rel="index">
+                    <span itemprop="name">微信开发基础理论</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/05/wechat-msg-encapsulation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/05/wechat-msg-encapsulation/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/05/wechat-msg-encapsulation/" class="leancloud_visitors" data-flag-title="微信消息的封装：XML或JSON">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p style="background-color:#f4dab0;padding:15px">此教程将会为大家讲解微信公众号开发的基础知识 —— 微信消息的封装：XML或JSON。<br></p>
 
-      <h1 class="post-title">
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<blockquote>
+<p>此系列教程独立于“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">微信公众平台的二次开发</a>”系列的教程。主要给大家讲解微信公众号开发过程中可能会接触到的一些<span style="color:#ffffff; background-color:#3366ff">基础理论知识</span>。</p>
+</blockquote>
+<h2 id="微信用XML封装消息"><a href="#微信用XML封装消息" class="headerlink" title="微信用XML封装消息"></a>微信用XML封装消息</h2><h3 id="XML语法简介"><a href="#XML语法简介" class="headerlink" title="XML语法简介"></a>XML语法简介</h3><ol>
+<li><p><strong>XML元素命名规则</strong></p>
+<blockquote>
+<ul>
+<li>可以含有字母、数字及其它字符</li>
+<li>不能以数字或标点符号开始</li>
+<li>不能以“xml”开始</li>
+<li>不能包含空格</li>
+<li>可以使用任何名称，没有保留的字词</li>
+</ul>
+</blockquote>
+<p> 注：标签对大小写敏感。XML文档必须有根元素。<br>完整的XML文档，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;employee&gt;</span><br><span class="line">	&lt;name&gt;</span><br><span class="line">		&lt;firstname&gt;Bob&lt;/firstname&gt;</span><br><span class="line">		&lt;lastname&gt;Chen&lt;/lastname&gt;</span><br><span class="line">	&lt;/name&gt;</span><br><span class="line">	&lt;sex&gt;man&lt;/sex&gt;</span><br><span class="line">&lt;/employee&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>XML的转义序列自符</strong></p>
+<blockquote>
+<ul>
+<li>&lt;表示“&lt;”</li>
+<li>&gt;表示“&gt;”</li>
+<li>&amp;表示“&amp;”</li>
+<li>&apos;表示“’”</li>
+<li>&quot;表示“””<br>注：大小写敏感。转义序列以分号“;”结束。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>CDATA字段</strong><br>第2点中提到，对于一些特殊的字符，由于在XML中具有特殊的意义，因此需要转义。但是，对于某些文本（例如JavaScript代码），其中包含大量的“&lt;”或“&amp;”字符，逐个进行转义比较麻烦，易出错。故可以将该脚本代码段定义为CDATA区段。<br>CDATA区段中的所有内容都会被XML解析器忽略。<br>CDATA区段<span style="color:#ffffff; background-color:#3366ff">由“&lt;![CDATA[”开始，由“]]&gt;”结束</span>。举例如下(<strong>文本消息的XML数据包结构</strong>)：</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml&gt;</span><br><span class="line">	&lt;ToUserName&gt;&lt;![CDATA[toUser]&gt;&lt;/ToUserName&gt;</span><br><span class="line">	&lt;FromUserName&gt;&lt;![CDATA[fromUser]]&gt;&lt;/FromUserName&gt;</span><br><span class="line">	&lt;CreateTime&gt;&lt;![CDATA[123455]]&gt;&lt;/CreateTime&gt;</span><br><span class="line">	&lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;</span><br><span class="line">	&lt;Content&gt;&lt;![CDATA[this is a <span class="built_in">test</span>]]&gt;&lt;/Content&gt;</span><br><span class="line">	&lt;MsgId&gt;123546546&lt;/MsgId&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> 在该XML数据包中，根元素为<code>&lt;xml&gt;</code>,根元素下包含6个子元素，其含义分别如下：</p>
+<ul>
+<li>ToUserName 开发者微信号</li>
+<li>FromUserName 发送方帐号 （一个OpenID）</li>
+<li>CreateTime 消息创建时间（整型）</li>
+<li>MsgType text</li>
+<li>Content 文本消息内容</li>
+<li>MsgId 消息id，64为整数</li>
+</ul>
+</li>
+</ol>
+<h2 id="微信封装的另一种格式：JSON"><a href="#微信封装的另一种格式：JSON" class="headerlink" title="微信封装的另一种格式：JSON"></a>微信封装的另一种格式：JSON</h2><p>与XML相比，JSON比XML更小、更快，更易解析。</p>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>对象在JS中表示用“{}”括起来的内容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">	<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">	<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="JSON数组"><a href="#JSON数组" class="headerlink" title="JSON数组"></a>JSON数组</h3><p>数组在JS中是用中括号“[]”括起来的内容。<br>例如：<br><code>[&quot;php&quot;,&quot;javascript&quot;,&quot;vb&quot;]</code><br>对象和数组可以相互嵌套。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小小"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"女"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"167575675"</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>你将会在<span style="color:#ffffff; background-color:#3366ff">自定义菜单</span>中运用到JSON数据格式的知识。可以前往实践一下<a href="http://lvze1992.github.io/2016/07/03/wechat-menu/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发 — 自定义菜单</span></a>。</p>
+
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/07/03/wechat-menu/" itemprop="url">
-              
-                <span itemprop="name">微信公众平台的二次开发&ensp;—&ensp;自定义菜单</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-03T21:32:15+08:00"
-              content="2016-07-03" >
-          07-03
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信公众平台/" rel="tag">#微信公众平台</a>
+          
+            <a href="/tags/微信/" rel="tag">#微信</a>
+          
+            <a href="/tags/开发/" rel="tag">#开发</a>
+          
+            <a href="/tags/微信开发基础知识/" rel="tag">#微信开发基础知识</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/03/wechat-menu/" rel="next" title="微信公众平台的二次开发&ensp;—&ensp;自定义菜单">
+                <i class="fa fa-chevron-left"></i> 微信公众平台的二次开发&ensp;—&ensp;自定义菜单
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -304,6 +493,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/05/wechat-msg-encapsulation/"
+           data-title="微信消息的封装：XML或JSON" data-url="http://lvze1992.github.io/2016/07/05/wechat-msg-encapsulation/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -385,6 +591,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#微信用XML封装消息"><span class="nav-number">1.</span> <span class="nav-text">微信用XML封装消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XML语法简介"><span class="nav-number">1.1.</span> <span class="nav-text">XML语法简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信封装的另一种格式：JSON"><span class="nav-number">2.</span> <span class="nav-text">微信封装的另一种格式：JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON对象"><span class="nav-number">2.1.</span> <span class="nav-text">JSON对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON数组"><span class="nav-number">2.2.</span> <span class="nav-text">JSON数组</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -488,6 +705,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

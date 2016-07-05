@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title><![CDATA[微信消息的封装：XML或JSON]]></title>
+      <url>http://lvze1992.github.io/2016/07/05/wechat-msg-encapsulation/</url>
+      <content type="html"><![CDATA[<p style="background-color:#f4dab0;padding:15px">此教程将会为大家讲解微信公众号开发的基础知识 —— 微信消息的封装：XML或JSON。<br></p>
+
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<blockquote>
+<p>此系列教程独立于“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">微信公众平台的二次开发</a>”系列的教程。主要给大家讲解微信公众号开发过程中可能会接触到的一些<span style="color:#ffffff; background-color:#3366ff">基础理论知识</span>。</p>
+</blockquote>
+<h2 id="微信用XML封装消息"><a href="#微信用XML封装消息" class="headerlink" title="微信用XML封装消息"></a>微信用XML封装消息</h2><h3 id="XML语法简介"><a href="#XML语法简介" class="headerlink" title="XML语法简介"></a>XML语法简介</h3><ol>
+<li><p><strong>XML元素命名规则</strong></p>
+<blockquote>
+<ul>
+<li>可以含有字母、数字及其它字符</li>
+<li>不能以数字或标点符号开始</li>
+<li>不能以“xml”开始</li>
+<li>不能包含空格</li>
+<li>可以使用任何名称，没有保留的字词</li>
+</ul>
+</blockquote>
+<p> 注：标签对大小写敏感。XML文档必须有根元素。<br>完整的XML文档，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;employee&gt;</span><br><span class="line">	&lt;name&gt;</span><br><span class="line">		&lt;firstname&gt;Bob&lt;/firstname&gt;</span><br><span class="line">		&lt;lastname&gt;Chen&lt;/lastname&gt;</span><br><span class="line">	&lt;/name&gt;</span><br><span class="line">	&lt;sex&gt;man&lt;/sex&gt;</span><br><span class="line">&lt;/employee&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>XML的转义序列自符</strong></p>
+<blockquote>
+<ul>
+<li>&lt;表示“&lt;”</li>
+<li>&gt;表示“&gt;”</li>
+<li>&amp;表示“&amp;”</li>
+<li>&apos;表示“’”</li>
+<li>&quot;表示“””<br>注：大小写敏感。转义序列以分号“;”结束。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>CDATA字段</strong><br>第2点中提到，对于一些特殊的字符，由于在XML中具有特殊的意义，因此需要转义。但是，对于某些文本（例如JavaScript代码），其中包含大量的“&lt;”或“&amp;”字符，逐个进行转义比较麻烦，易出错。故可以将该脚本代码段定义为CDATA区段。<br>CDATA区段中的所有内容都会被XML解析器忽略。<br>CDATA区段<span style="color:#ffffff; background-color:#3366ff">由“&lt;![CDATA[”开始，由“]]&gt;”结束</span>。举例如下(<strong>文本消息的XML数据包结构</strong>)：</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml&gt;</span><br><span class="line">	&lt;ToUserName&gt;&lt;![CDATA[toUser]&gt;&lt;/ToUserName&gt;</span><br><span class="line">	&lt;FromUserName&gt;&lt;![CDATA[fromUser]]&gt;&lt;/FromUserName&gt;</span><br><span class="line">	&lt;CreateTime&gt;&lt;![CDATA[123455]]&gt;&lt;/CreateTime&gt;</span><br><span class="line">	&lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;</span><br><span class="line">	&lt;Content&gt;&lt;![CDATA[this is a <span class="built_in">test</span>]]&gt;&lt;/Content&gt;</span><br><span class="line">	&lt;MsgId&gt;123546546&lt;/MsgId&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> 在该XML数据包中，根元素为<code>&lt;xml&gt;</code>,根元素下包含6个子元素，其含义分别如下：</p>
+<ul>
+<li>ToUserName 开发者微信号</li>
+<li>FromUserName 发送方帐号 （一个OpenID）</li>
+<li>CreateTime 消息创建时间（整型）</li>
+<li>MsgType text</li>
+<li>Content 文本消息内容</li>
+<li>MsgId 消息id，64为整数</li>
+</ul>
+</li>
+</ol>
+<h2 id="微信封装的另一种格式：JSON"><a href="#微信封装的另一种格式：JSON" class="headerlink" title="微信封装的另一种格式：JSON"></a>微信封装的另一种格式：JSON</h2><p>与XML相比，JSON比XML更小、更快，更易解析。</p>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>对象在JS中表示用“{}”括起来的内容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">	<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">	<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="JSON数组"><a href="#JSON数组" class="headerlink" title="JSON数组"></a>JSON数组</h3><p>数组在JS中是用中括号“[]”括起来的内容。<br>例如：<br><code>[&quot;php&quot;,&quot;javascript&quot;,&quot;vb&quot;]</code><br>对象和数组可以相互嵌套。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小小"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"女"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"167575675"</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>你将会在<span style="color:#ffffff; background-color:#3366ff">自定义菜单</span>中运用到JSON数据格式的知识。可以前往实践一下<a href="http://lvze1992.github.io/2016/07/03/wechat-menu/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发 — 自定义菜单</span></a>。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;自定义菜单]]></title>
       <url>http://lvze1992.github.io/2016/07/03/wechat-menu/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">有了自定义菜单，公众号看起来才像公众号嘛。而且可以给订阅者提供更好的交互体验。<br></p>
