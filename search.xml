@@ -55,7 +55,7 @@
 <h2 id="微信封装的另一种格式：JSON"><a href="#微信封装的另一种格式：JSON" class="headerlink" title="微信封装的另一种格式：JSON"></a>微信封装的另一种格式：JSON</h2><p>与XML相比，JSON比XML更小、更快，更易解析。</p>
 <h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>对象在JS中表示用“{}”括起来的内容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">	<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">	<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="JSON数组"><a href="#JSON数组" class="headerlink" title="JSON数组"></a>JSON数组</h3><p>数组在JS中是用中括号“[]”括起来的内容。<br>例如：<br><code>[&quot;php&quot;,&quot;javascript&quot;,&quot;vb&quot;]</code><br>对象和数组可以相互嵌套。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小小"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"女"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"167575675"</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>你将会在<span style="color:#ffffff; background-color:#3366ff">自定义菜单</span>中运用到JSON数据格式的知识。可以前往实践一下,点击以下链接跳转：<br><a href="http://lvze1992.github.io/2016/07/03/wechat-menu/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发 — 自定义菜单</span></a>。</p>
+<p>你将会在<span style="color:#ffffff; background-color:#3366ff">自定义菜单</span>中运用到JSON数据格式的知识。可以前往实践一下，点击以下链接跳转：<br><a href="http://lvze1992.github.io/2016/07/03/wechat-menu/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发 — 自定义菜单</span></a>。</p>
 ]]></content>
     </entry>
     
@@ -252,8 +252,26 @@
     <entry>
       <title><![CDATA[ns2.35中协议实现的研究]]></title>
       <url>http://lvze1992.github.io/2016/06/26/ns2-35-protocol/</url>
-      <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/sxsj333/article/details/45582419" target="_blank" rel="external">http://blog.csdn.net/sxsj333/article/details/45582419</a></p>
-<a id="more"></a>]]></content>
+      <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络中协议的实现。<br>ns2.35 is used for network simulation. In this paper. In this paper, the realization of wireless sensor network protocol will be discussed.<br></p>
+
+<a id="more"></a>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>如若不完整，请补充。</p>
+<blockquote>
+<p><a href="http://baike.baidu.com/link?url=DcC1lLzS4E927UzKPu9O9S2tWIjX_GOv-3kSKUO_VQ2569BhxU5oASEYFPOB4E03tNDjvyIgAfl-6QICD7R4R_" target="_blank" rel="external">AODV百度词条</a></p>
+</blockquote>
+<h3 id="AODV协议介绍"><a href="#AODV协议介绍" class="headerlink" title="AODV协议介绍"></a>AODV协议介绍</h3><p>AODV(Ad hoc On-demand Distance Vector Routing)是一种按需路由协议。当一个节点需要给网络中的其他节点传送信息时，如果没有到达目标节点的路由，则必须先以多播的形式发出RREQ(路由请求)报文。RREQ报文中记录着发起节点和目标节点的网络层地址，邻近节点收到RREQ，首先判断目标节点是否为自己。如果是，则向发起节点发送RREP(路由回应)；如果不是，则首先在路由表中查找是否有到达目标节点的路由，如果有，则向源节<strong>点单播RREP，否则继续转发RREQ进行查找。</strong><br>如下图所示，为AODV路由的建立过程。<br><br><img src="http://115.28.217.112/github/ns/1.jpg" alt=""></p>
+<h3 id="AODV协议修改"><a href="#AODV协议修改" class="headerlink" title="AODV协议修改"></a>AODV协议修改</h3><blockquote>
+<p>修改已有的基础协议，是快速上手ns2的一种方法。故在此教程中，我们将修改AODV协议，即添加节点类型和节点层数，来实现一个新的协议（<strong>暂不讨论协议的效率</strong>）。</p>
+</blockquote>
+<h4 id="为节点添加自定义属性"><a href="#为节点添加自定义属性" class="headerlink" title="为节点添加自定义属性"></a>为节点添加自定义属性</h4><p>如何为节点添加属性，在我的文章，<a href="http://lvze1992.github.io/2016/06/26/ns2-35/">ns2.35无线节点配置及相关</a>，中有详细的介绍。你不必跳回去阅读，因为我将重新讲解以避免混乱。<br><strong>请注意：我们讨论的是无线网络下的节点情况，故如果你正在寻找有线网络的相关ns2知识，本文可能不是很适合您。</strong></p>
+<ol>
+<li><p>修改mobilenode文件<br>打开mobilenode.h，添加节点属性并添加相应函数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">protected:</span><br><span class="line">	int nodetype;</span><br><span class="line">	int nodelevel;</span><br><span class="line">	int setnodetype(int typenum);</span><br><span class="line">	int setnodetype2(int <span class="built_in">type</span>);</span><br><span class="line">	int setnodelevel(int level);</span><br></pre></td></tr></table></figure>
+<p> 打开mobilenode.cc，修改command函数，新增如下代码。command需要重点理解，注意本次添加的代码在<code>else if(argc == 3)</code>判断内。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">int</span><br><span class="line">MobileNode::<span class="built_in">command</span>(int argc, const char*const* argv)</span><br><span class="line">...</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(argc == 3) &#123;//notice this !</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(strcmp(argv[1],<span class="string">"setnodetype"</span>) == 0)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"setnodetype call\n"</span>);</span><br><span class="line">			setnodetype(atoi(argv[2]));</span><br><span class="line">			<span class="built_in">return</span> TCL_OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(strcmp(argv[1],<span class="string">"setnodetype2"</span>) == 0)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"setnodetype2 call\n"</span>);</span><br><span class="line">			setnodetype2(atoi(argv[2]));</span><br><span class="line">			<span class="built_in">return</span> TCL_OK;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(strcmp(argv[1],<span class="string">"setnodelevel"</span>) == 0)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"setnodelevel call\n"</span>);</span><br><span class="line">			setnodelevel(atoi(argv[2]));</span><br><span class="line">			<span class="built_in">return</span> TCL_OK;</span><br><span class="line">		&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (argc == 4) &#123;//notice this !</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
     </entry>
     
     <entry>
@@ -444,6 +462,39 @@
 <h4 id="突破容器宽度限制的图片"><a href="#突破容器宽度限制的图片" class="headerlink" title="突破容器宽度限制的图片"></a>突破容器宽度限制的图片</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span><br><span class="line">&lt;!-- 其中 class=<span class="string">"full-image"</span> 是必须的 --&gt;</span><br><span class="line">&lt;img src=<span class="string">"/image-url"</span> class=<span class="string">"full-image"</span> /&gt;</span><br><span class="line">&lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span><br><span class="line">&#123;% fullimage /image-url, alt, title %&#125;</span><br><span class="line">&lt;!-- 别名 --&gt;</span><br><span class="line">&#123;% <span class="keyword">fi</span> /image-url, alt, title %&#125;</span><br></pre></td></tr></table></figure>
 <img src="/full-image.JPG" class="full-image" alt="alt" title="突破容器宽度限制的图片">
 <h3 id="Markdown编辑工具"><a href="#Markdown编辑工具" class="headerlink" title="Markdown编辑工具"></a>Markdown编辑工具</h3><p><strong>#</strong> MarkdownPad<br>&emsp;<a href="http://www.markdownpad.com/" target="_blank" rel="external">http://www.markdownpad.com/</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[pokemon]]></title>
+      <url>http://lvze1992.github.io/2015/07/09/pokemon/</url>
+      <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">Pokemon Go 国服怎么玩？<br></p>
+
+<a id="more"></a>
+<h2 id="Pokemon-Go-国服如何玩"><a href="#Pokemon-Go-国服如何玩" class="headerlink" title="Pokemon Go 国服如何玩"></a>Pokemon Go 国服如何玩</h2><p>如果不想消磨朋友的耐心，还是建议等等再说。或者先找一个同学试试能不能玩。<br>首先讲在前面，由于服务器进行了“锁区”，导致国内很多地方无法进行定位，也刷不出补给站、道馆和精灵，打开之后要么是一片茫茫大草原，要么就只有地图，地图上啥也没有。“锁区”的范围如下：<br><img src="http://i.imgur.com/HbBBEla.jpg" alt=""><br>不过貌似听说东三省没有被这个框起来，有可以玩的，那里的孩子可以试试看。</p>
+<h3 id="安装Pokemon-Go"><a href="#安装Pokemon-Go" class="headerlink" title="安装Pokemon Go"></a>安装Pokemon Go</h3><p>我并没有苹果手机，所以没法试苹果的。不过基本都一样，关键的就一个翻墙软件而已。<br>给大家提供的软件都是安卓的。</p>
+<ol>
+<li><p><span style="color:#ffffff; background-color:#3366ff">安装翻墙软件</span></p>
+<blockquote>
+<p><a href="http://115.28.217.112/github/scalewall/5.apk" target="_blank" rel="external">点击下载 Lantern 翻墙软件</a></p>
+</blockquote>
+<p> 下载安装完后。使用非常简单，打开软件，点一下变成下图，你就可以翻墙了。<br> <img src="http://i.imgur.com/OgIacfh.png" width="200"><br> 如果过一段时间变得不好使了，很有可能你没有更新，安装最新版的就好了。<br> <span style="color:#ffffff; background-color:#3366ff">到这里，教程其实就可以结束了。你现在已经可以用你的手机浏览器进行“谷歌搜索”了！</span></p>
+</li>
+<li><p><span style="color:#ffffff; background-color:#3366ff">谷歌安装</span></p>
+<blockquote>
+<p><a href="http://115.28.217.112/github/scalewall/g1.apk" target="_blank" rel="external">点击下载 谷歌Play服务框架</a><br><a href="http://115.28.217.112/github/scalewall/g2.apk" target="_blank" rel="external">点击下载 谷歌Play应用商店</a></p>
+</blockquote>
+<p> 把上面两个都下载，安装了。<span style="color:#ffffff; background-color:#3366ff">确定下Lantern 翻墙软件处于开启状态，或重新开启一下</span>。<br> 打开谷歌应用商店，创建一个Google账户。<br> <img src="http://i.imgur.com/BaU0LTT.png" width="200"><br> 有账户后，应该就可以打开谷歌商店了。打不开闪退，请再确定下本步骤的2个链接都下载并安装了。<br> 打开后如下图，搜索”pokemon”然后下载安装。<br> <img src="http://i.imgur.com/jMue0R4.jpg" width="200"></p>
+</li>
+<li><p>Pokemon</p>
+<blockquote>
+<p><strong>注意啊，游戏第一次可能需要翻墙，以后就不需要了。不用每次都开启翻墙。但是要进入谷歌商店，每次都需要翻墙</strong></p>
+</blockquote>
+<p> 安装完“Pokemon”后，做完新手教程，你可能发现你在一个大草原或星空里，反正就是鸟不拉屎的地方，因为GPS被服务器限制了。如下图：<br> <img src="http://i.imgur.com/A8SPGlk.jpg" width="200"><br> <span style="color:#ffffff; background-color:#3366ff">当然，如果，你所在的地方没有被锁GPS，后面的就不用看了。</span></p>
+</li>
+<li><p>虚拟定位的软件<br><strong>可能需要手机root，算了，写写都觉得太麻烦。后面的就别看了啊，如果你所在的地方没有被锁GPS，现在就可以玩了</strong><br>上面说到，GPS被锁了。额，那就改GPS呗。<br>下面是个虚拟定位的软件，点击安装即可。<br>打开谷歌应用商店，这个要翻墙啊！<br>搜索“fake gps”。<br><img src="http://i.imgur.com/wPDjTxs.jpg" width="200"><br>或者看看下面这个链接，我就不试了。<br><a href="http://www.anqu.com/kdyggo/gonglue/224956.shtml" target="_blank" rel="external">Pokemon Go锁区怎么解决 安卓版锁区解决方法</a></p>
+</li>
+</ol>
 ]]></content>
     </entry>
     
