@@ -10,16 +10,39 @@
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <h2 id="套接字、IPv4和简单的客户端-服务端编程"><a href="#套接字、IPv4和简单的客户端-服务端编程" class="headerlink" title="套接字、IPv4和简单的客户端/服务端编程"></a>套接字、IPv4和简单的客户端/服务端编程</h2><ol>
-<li><strong>获取主机IP地址</strong></li>
-<li><strong>获取远程主机IP地址</strong></li>
-<li><strong>IPv4地址格式转换</strong></li>
-<li><strong>通过指定端口和协议找到服务名</strong></li>
-<li><strong>主机字节序和网络字节序之间相互转换</strong></li>
-<li><strong>设定并获取默认套接字超时时间</strong></li>
-<li><strong>优雅地处理套接字错误</strong></li>
-<li><strong>重用套接字地址</strong></li>
-<li><strong>从网络时间服务器获取并打印当前时间</strong></li>
+<li><p><strong>获取主机IP地址</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入核心网络库</span></span><br><span class="line"><span class="comment"># 调用两个工具函数gethostname()和gethostbyname(host_name)</span></span><br><span class="line">import socket</span><br><span class="line">def <span class="built_in">print</span>_machine_info():</span><br><span class="line">	host_name = socket.gethostname()</span><br><span class="line">	ip_address = socket.gethostbyname(host_name)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Host name: %s"</span> %host_name</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"IP address:%s"</span> %ip_address</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="built_in">print</span>_machine_info()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>获取远程主机IP地址</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">def <span class="built_in">print</span>_remote_machine_info():</span><br><span class="line">	remote_host = <span class="string">'www.pytgo1231231231.org'</span></span><br><span class="line">	try:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"IP address:%s"</span> %socket.gethostbyname(remote_host)</span><br><span class="line">	except socket.error, err_msg:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"%s: %s"</span> %(remote_host,err_msg)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="built_in">print</span>_remote_machine_info()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>IPv4地址格式转换</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 利用\换行不断句。</span></span><br><span class="line"><span class="comment"># 调用了binascii模块中的hexlify函数，以十六进制形式表示二进制数据</span></span><br><span class="line">import socket</span><br><span class="line">from binascii import hexlify</span><br><span class="line">def convert_ip4_address():</span><br><span class="line">	<span class="keyword">for</span> ip_addr <span class="keyword">in</span> [<span class="string">'127.0.0.1'</span>,<span class="string">'192.168.0.1'</span>]:</span><br><span class="line">		packet_ip_addr = socket.inet_aton(ip_addr)</span><br><span class="line">		unpacket_ip_addr = socket.inet_ntoa(packet_ip_addr)</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"IP Adsress: %s=&gt; Packet: %s, Unpacket: %s"</span>\</span><br><span class="line">			%(ip_addr, hexlify(packet_ip_addr),unpacket_ip_addr)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	convert_ip4_address()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>通过指定端口和协议找到服务名</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">def find_service_name():</span><br><span class="line">	protocolname = <span class="string">'tcp'</span></span><br><span class="line">	<span class="keyword">for</span> port <span class="keyword">in</span> [80, 25]:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"Port: %s =&gt; service name: %s"</span> %(port, socket.getservbyport(port,protocolname))</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Port: %s =&gt; service name: %s"</span> %(53, socket.getservbyport(53,protocolname))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	find_service_name()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>主机字节序和网络字节序之间相互转换</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ntohl函数名中，n表示网络；h表示主机；l表示长整型；s表示短整型，即16位</span></span><br><span class="line">import socket</span><br><span class="line">def convert_<span class="built_in">integer</span>():</span><br><span class="line">	data = 1234</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Original: %s =&gt; host byte order: %s, Network byte order: %s"</span>\</span><br><span class="line">		%(data,socket.ntohl(data),socket.htonl(data))</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Original: %s =&gt; host byte order: %s, Network byte order: %s"</span>\</span><br><span class="line">		%(data,socket.ntohs(data),socket.htons(data))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	convert_<span class="built_in">integer</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>设定并获取默认套接字超时时间</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先创建了一个套接字。</span></span><br><span class="line"><span class="comment">#套接字构造方法的第一个参数是地址族，第二个参数是套接字类型。</span></span><br><span class="line"><span class="comment">#调用gettimeout()方法获取套接字超时时间</span></span><br><span class="line"><span class="comment">#调用settimeout()方法修改套接字超时时间 秒数或None（禁用套接字操作的超时检测）</span></span><br><span class="line">import socket</span><br><span class="line">def <span class="built_in">test</span>_socket_timeout():</span><br><span class="line">	s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Default socket timeout: %s"</span> %s.gettimeout()</span><br><span class="line">	s.settimeout(100)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Current socket timeout: %s"</span> %s.gettimeout()</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="built_in">test</span>_socket_timeout()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重用套接字地址</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">def reuse_socket_addr():</span><br><span class="line">	sock = socket.socket( socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	old_state = sock.getsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Old sock state: %s"</span> %old_state</span><br><span class="line">	</span><br><span class="line">	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)</span><br><span class="line">	new_state = sock.getsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"New sock state: %s"</span> %new_state</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">local</span>_port = 8282</span><br><span class="line">	</span><br><span class="line">	srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">	srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)</span><br><span class="line">	srv.bind((<span class="string">''</span>,<span class="built_in">local</span>_port))</span><br><span class="line">	srv.listen(1)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Listening on port: %s"</span> %<span class="built_in">local</span>_port</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> True:</span><br><span class="line">		try:</span><br><span class="line">			connection, addr = srv.accept()</span><br><span class="line">			<span class="built_in">print</span> <span class="string">"Connented by %s:%s"</span> %(addr[0],addr[1])</span><br><span class="line">		except KeyboardInterrupt:</span><br><span class="line">			<span class="built_in">break</span></span><br><span class="line">		except socket.error, msg:</span><br><span class="line">			<span class="built_in">print</span> <span class="string">"%s"</span> %(msg,)</span><br><span class="line">			</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	reuse_socket_addr()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>回显客户端/服务器应用</strong></p>
+<blockquote>
+<p>服务器端</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">import argparse</span><br><span class="line"></span><br><span class="line">host = <span class="string">'localhost'</span></span><br><span class="line">data_payload = 2048</span><br><span class="line">backlog = 5</span><br><span class="line"> </span><br><span class="line">def <span class="built_in">echo</span>_server(port):</span><br><span class="line">	sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)</span><br><span class="line">	server_address = (host,port)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Starting up echo server on %s port %s"</span> % server_address </span><br><span class="line">	sock.bind(server_address)</span><br><span class="line">	sock.listen(backlog)</span><br><span class="line">	<span class="keyword">while</span> True:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"Waiting to receive message from client"</span></span><br><span class="line">		client,address = sock.accept()</span><br><span class="line">		data = client.recv(data_payload)</span><br><span class="line">		<span class="keyword">if</span> data:</span><br><span class="line">			<span class="built_in">print</span> <span class="string">"Data: %s"</span> %data</span><br><span class="line">			client.send(data)</span><br><span class="line">			<span class="built_in">print</span> <span class="string">"sent %s bytes back to %s"</span> % (data,address)</span><br><span class="line">		client.close()</span><br><span class="line">			</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	parser = argparse.ArgumentParser(description = <span class="string">'Socket Server Example'</span>)</span><br><span class="line">	parser.add_argument(<span class="string">'--port'</span>,action=<span class="string">"store"</span>,dest=<span class="string">"port"</span>,<span class="built_in">type</span>=int,required=True)</span><br><span class="line">	given_args=parser.parse_args()</span><br><span class="line">	port = given_args.port</span><br><span class="line">	<span class="built_in">echo</span>_server(port)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>客户端</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">import argparse</span><br><span class="line"></span><br><span class="line">host = <span class="string">'localhost'</span></span><br><span class="line"> </span><br><span class="line">def <span class="built_in">echo</span>_client(port):</span><br><span class="line">	sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">	server_address = (host,port)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"Connecting to %s port %s"</span> % server_address </span><br><span class="line">	sock.connect(server_address)</span><br><span class="line">	try:</span><br><span class="line">		message = <span class="string">"Test message. This will be echoed"</span></span><br><span class="line">		<span class="built_in">print</span> <span class="string">"Sending %s"</span> % message</span><br><span class="line">		sock.sendall(message)</span><br><span class="line">		amount_received = 0</span><br><span class="line">		amount_expected = len(message)</span><br><span class="line">		<span class="keyword">while</span> amount_received &lt; amount_expected:</span><br><span class="line">			data = sock.recv(16)</span><br><span class="line">			amount_received +=len(data)</span><br><span class="line">			<span class="built_in">print</span> <span class="string">"Receive: %s"</span> % data</span><br><span class="line">	except socket.errno, e:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"socket.errno: %s"</span> %str(e)</span><br><span class="line">	except Exception, e:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"Other exception: %s"</span> %str(e)</span><br><span class="line">	finally:</span><br><span class="line">		<span class="built_in">print</span> <span class="string">"Closing connection to the server"</span></span><br><span class="line">		sock.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	parser = argparse.ArgumentParser(description = <span class="string">'Socket Server Example'</span>)</span><br><span class="line">	parser.add_argument(<span class="string">'--port'</span>,action=<span class="string">"store"</span>,dest=<span class="string">"port"</span>,<span class="built_in">type</span>=int,required=True)</span><br><span class="line">	given_args=parser.parse_args()</span><br><span class="line">	port = given_args.port</span><br><span class="line">	<span class="built_in">echo</span>_client(port)</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<h2 id="使用多路复用套接字I-O提升性能"><a href="#使用多路复用套接字I-O提升性能" class="headerlink" title="使用多路复用套接字I/O提升性能"></a>使用多路复用套接字I/O提升性能</h2><p>1. </p>
 ]]></content>
     </entry>
     
@@ -103,6 +126,8 @@
 <li><p><strong>去掉数组中的重复项 </strong><code>array_unique(array)</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* 输出：</span><br><span class="line"> * Array ( [a] =&gt; red [b] =&gt; green )</span><br><span class="line"> */</span></span><br><span class="line">$a=<span class="keyword">array</span>(<span class="string">"a"</span>=&gt;<span class="string">"red"</span>,<span class="string">"b"</span>=&gt;<span class="string">"green"</span>,<span class="string">"c"</span>=&gt;<span class="string">"red"</span>);</span><br><span class="line">print_r(array_unique($a));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p><strong>字符串匹配替换 去掉数字中的逗号</strong><code>str_replace(&quot;,&quot;, &quot;&quot;, $money)</code><br><span style="color:#ffffff; background-color:#3366ff">str_replace()比preg_replace()更快。</span></p>
+</li>
 <li><p><strong>正则匹配替换 </strong><code>preg_replace($patterns, $replacements, $string [, int $limit = -1 [, int &amp;$count ]] )</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* 输出：</span><br><span class="line"> * April1,2003</span><br><span class="line"> */</span></span><br><span class="line">$string = <span class="string">'April 15, 2003'</span>;</span><br><span class="line">$pattern = <span class="string">'/(\w+) (\d+), (\d+)/i'</span>;</span><br><span class="line">$replacement = <span class="string">'$&#123;1&#125;1,$3'</span>;</span><br><span class="line"><span class="keyword">echo</span> preg_replace($pattern, $replacement, $string);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* 输出：</span><br><span class="line"> * The bear black slow jumped over the lazy dog.</span><br><span class="line"> */</span></span><br><span class="line">$string = <span class="string">'The quick brown fox jumped over the lazy dog.'</span>;</span><br><span class="line">$patterns = <span class="keyword">array</span>();</span><br><span class="line">$patterns[<span class="number">0</span>] = <span class="string">'/quick/'</span>;</span><br><span class="line">$patterns[<span class="number">1</span>] = <span class="string">'/brown/'</span>;</span><br><span class="line">$patterns[<span class="number">2</span>] = <span class="string">'/fox/'</span>;</span><br><span class="line">$replacements = <span class="keyword">array</span>();</span><br><span class="line">$replacements[<span class="number">2</span>] = <span class="string">'bear'</span>;</span><br><span class="line">$replacements[<span class="number">1</span>] = <span class="string">'black'</span>;</span><br><span class="line">$replacements[<span class="number">0</span>] = <span class="string">'slow'</span>;</span><br><span class="line"><span class="keyword">echo</span> preg_replace($patterns, $replacements, $string);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -114,7 +139,172 @@
 floor() //4.3-&gt;4 9.9-&gt;9 舍去取整
 round(3.6,0) //3.6-&gt;4 0为精度 四舍五入
 intval() //4.3-&gt;4 9.9-&gt;9 取整
-</code></pre><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2>]]></content>
+</code></pre><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p></p><p style="background-color:#f2f4b0;padding:15px">正则表达式可以免去很多判断操作，使程序更简洁准确。掌握了解它很重要。<br></p><p></p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ol>
+<li><p><strong>正则表达式匹配 </strong><code>preg_match (pattern , subject, matches)</code><br>成功返回 1 ，否则返回 0 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 模式定界符后面的 "i" 表示不区分大小写字母的搜索</span></span><br><span class="line"><span class="comment">// 输出： A match was found.</span></span><br><span class="line"><span class="keyword">if</span> (preg_match (<span class="string">"/hi/i"</span>, <span class="string">"Welcome to hi-docs.com."</span>)) &#123; </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"A match was found."</span>; </span><br><span class="line"> &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"A match was not found."</span>; </span><br><span class="line"> &#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span><br><span class="line"> * 输出：Array ( </span><br><span class="line"> * [0] =&gt; &lt;a target="_blank" href="/php/preg_match.html"&gt;&lt;span class="hl"&gt;preg&lt;/span&gt;_match()&lt;/a&gt; </span><br><span class="line"> * [1] =&gt; /php/preg_match.html </span><br><span class="line"> * )</span><br><span class="line"> * </span><br><span class="line"> */</span></span><br><span class="line">$urls = <span class="string">'&lt;h3&gt;&lt;a target="_blank" href="/php/preg_match.html"&gt;&lt;span class="hl"&gt;preg&lt;/span&gt;_match()&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;[&lt;a href="/Php.html"&gt;PHP&lt;/a&gt;] 进行正则表达式匹配&lt;br/&gt;&lt;em&gt;适用版本：5&lt;/em&gt;&lt;/p&gt;&lt;/dd&gt;&lt;dd&gt;&lt;h3&gt;&lt;a target="_blank" href="/php/preg_match_all.html"&gt;&lt;span class="hl"&gt;preg&lt;/span&gt;_match_all()&lt;/a&gt;&lt;/h3&gt;'</span>;</span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">"/&lt;a[^&gt;]*?href=\"([^&gt;]+?)\"[^&gt;]*?&gt;.+?&lt;\/a&gt;/i"</span>, $urls ,$match)) &#123; </span><br><span class="line">  print_r($match); </span><br><span class="line"> &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"不匹配."</span>; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">'preg_match正则匹配中文123'</span>;</span><br><span class="line"><span class="comment">// 正则表达式匹配中文(UTF8编码)</span></span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">'/[\x&#123;4e00&#125;-\x&#123;9fa5&#125;]+/u'</span>,$str))&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'匹配'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'没有匹配'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 正则表达式匹配中文(GB2312,GBK编码)</span></span><br><span class="line">preg_match(<span class="string">"/^["</span>.chr(<span class="number">0xa1</span>).<span class="string">"-"</span>.chr(<span class="number">0xff</span>).<span class="string">"A-Za-z0-9_]+$/"</span>,$str);</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>正则匹配提取 </strong> <code>preg_match_all()</code><br>成功返回整个模式匹配的次数（可能为零）<br><span style="color:#ffffff; background-color:#3366ff">preg_match()只会返回一个结果，而preg_match_all()会将所有匹配的结果返回。</span><br><a href="http://localhost:4000/2016/07/18/php-review/#字符串提取" target="_blank" rel="external">preg_match_all()</a></p>
+</li>
+<li><strong>正则匹配替换  </strong> <code>preg_replace()</code><br><a href="http://localhost:4000/2016/07/18/php-review/#字符串修改" target="_blank" rel="external">preg_replace()</a></li>
+</ol>
+<h3 id="正则表达式简要"><a href="#正则表达式简要" class="headerlink" title="正则表达式简要"></a>正则表达式简要</h3><h4 id="正则匹配对照表"><a href="#正则匹配对照表" class="headerlink" title="正则匹配对照表"></a>正则匹配对照表</h4><blockquote>
+<p><a href="http://www.chinaz.com/program/2008/1020/41452.shtml" target="_blank" rel="external">参考链接</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>匹配字符串</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/fo+/</td>
+<td>“fool”, “fo”, 或 “football”</td>
+<td>“+”元字符，f后面连续出现一个或多个字母o的字符串</td>
+</tr>
+<tr>
+<td>/eg*/</td>
+<td>“easy”, “ego”, 或 “egg”</td>
+<td>“*”元字符，e后面连续出现零个或多个字母g的字符串</td>
+</tr>
+<tr>
+<td>/wil?/</td>
+<td>“Win”, 或 “Wilson”</td>
+<td>“？”元字符，i后面连续出现零个或一个字母l的字符串</td>
+</tr>
+<tr>
+<td>/jim{2,6}/</td>
+<td>jimmy或jimmmmmy等字符串</td>
+<td>m可以在匹配对象中连续出现2-6次</td>
+</tr>
+<tr>
+<td>\s：匹配单个空格符(tab键和换行符)；<br>\S：匹配除单个空格符外的所有字符；<br>\d：匹配从0到9的数字；<br>\w：匹配字母，数字或下划线字符；<br>\W：匹配所有与\w不匹配的字符；<br>. ：匹配除换行符之外的所有字符。</td>
+<td></td>
+<td>\s和\S以及\w和\W互为逆运算</td>
+</tr>
+<tr>
+<td>/^hell/</td>
+<td>“hell”, “hello”或 “hellhound”</td>
+<td>“^”定位符，目标字符串的开头</td>
+</tr>
+<tr>
+<td>/ar$/</td>
+<td>“car”, “bar”或 “ar”</td>
+<td>“$”定位符，目标对象的结尾</td>
+</tr>
+<tr>
+<td>/\bbom/</td>
+<td>“bomb”, 或 “bom”</td>
+<td>\b定位符，目标字符串的开头或结尾的两个边界之一</td>
+</tr>
+<tr>
+<td>/man\b/</td>
+<td>“human”, “woman”或 “man”</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>目标字符串的开头和结尾两个边界之内</td>
+<td></td>
+</tr>
+<tr>
+<td>/[A-Z]/</td>
+<td>与A到Z范围内任何一个大写字母相匹配</td>
+<td></td>
+</tr>
+<tr>
+<td>/([a-z][A-Z][0-9])+/</td>
+<td>“aB0”</td>
+<td>“()”符号包含的内容必须同时出现在目标对象中。</td>
+</tr>
+<tr>
+<td>/[ab]/</td>
+<td>匹配单个的 a 或者 b</td>
+<td>和 “/a│b/” 一样</td>
+</tr>
+<tr>
+<td>/to&#166;too&#166;2/</td>
+<td>“to”, “too”, 或 “2”</td>
+<td></td>
+</tr>
+<tr>
+<td>/[^A-C]/</td>
+<td>除A，B，和C之外的任何字符相匹配</td>
+<td>当“^”出现在 “[]”内时，被视做否定运算符；而当“^”位于“[]”之外，或没有“[]”时，被视做定位符</td>
+</tr>
+<tr>
+<td>/Th*/</td>
+<td>“Th*”而非“The”匹配</td>
+<td>转义符“\”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="正则【实例】对照表"><a href="#正则【实例】对照表" class="headerlink" title="正则【实例】对照表"></a>正则【实例】对照表</h4><table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>匹配字符串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/a(bc)*/</td>
+<td>匹配 a 后面跟0个或者一个“bc”</td>
+</tr>
+<tr>
+<td>/(b&#166;cd)ef/</td>
+<td>匹配含有 “bef” 或者 “cdef”的字符串</td>
+</tr>
+<tr>
+<td>/(a&#166;b)*c/</td>
+<td>匹配含有这样多个（包括0个）a或b，后面跟一个c的字符串</td>
+</tr>
+<tr>
+<td>/[\n.]/</td>
+<td>匹配包括”\n”在内的所有单个字符</td>
+</tr>
+<tr>
+<td>/^.{3}$/</td>
+<td>三个任意字符</td>
+</tr>
+<tr>
+<td>/^[a-zA-Z]/</td>
+<td>匹配以大小写字母开头的字符串</td>
+</tr>
+<tr>
+<td>/^[0-9]+(.[0-9]{1,2})?$/</td>
+<td>匹配数字”10”和”10.2”等，不匹配”10.”</td>
+</tr>
+<tr>
+<td><span style="color:#ffffff; background-color:#3366ff"><strong>&nbsp;货币格式&nbsp;</strong></span>&nbsp;/^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$/</td>
+<td>匹配”10,121.20”</td>
+</tr>
+<tr>
+<td><span style="color:#ffffff; background-color:#3366ff"><strong>&nbsp;邮箱&nbsp;</strong></span>&nbsp;/^[_a-z0-9-]+(.[_a-z0-9-]+)<em>@[a-z0-9-]+(.[a-z0-9-]+)</em>$/</td>
+<td>匹配邮箱，如787878@qq.com</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><blockquote>
+<p>不同版本的PHP，数据库的操作也不同（此教程中的是PHP 5.2.5）。<br>故只列出几个常用的命令，请读者根据版本，自行查找以备用。</p>
+</blockquote>
+<ol>
+<li><p>数据库连接</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$db_host=<span class="string">"localhost"</span>;     <span class="comment">//服务器名</span></span><br><span class="line">$db_user=<span class="string">"root"</span>;         <span class="comment">//用户名</span></span><br><span class="line">$db_pass=<span class="string">""</span>;        <span class="comment">//密码</span></span><br><span class="line">$db_name=<span class="string">"XXX"</span>;        <span class="comment">//数据库名</span></span><br><span class="line">$link=mysql_connect($db_host,$db_user,$db_pass)<span class="keyword">or</span> <span class="keyword">die</span>(mysql_error());</span><br><span class="line">mysql_select_db($db_name,$link);</span><br><span class="line">mysql_query(<span class="string">"SET NAMES UTF8"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库操作实例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$sql=<span class="string">"select from_table from mission_type where mission_type='$type'"</span>;</span><br><span class="line"><span class="comment">//数据库语句</span></span><br><span class="line">$r=mysql_query($sql);<span class="comment">//执行</span></span><br><span class="line">$row=mysql_fetch_array($r);<span class="comment">//获得结果</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务，所有数据库语句成功执行后，才会在数据库中生效</span></span><br><span class="line">mysql_query(<span class="string">"START TRANSACTION"</span>);</span><br><span class="line">$sql=<span class="string">"insert into resource(mission_id,mission_type,resource_type,resource_url) values($id,'$type','img','$file_dir')"</span>;</span><br><span class="line"><span class="keyword">if</span>(mysql_query($sql))&#123;</span><br><span class="line">	$sql=<span class="string">"update $table set resource_amount=resource_amount+1 where mission_type='$type' and mission_id=$id limit 1"</span>;</span><br><span class="line">	<span class="keyword">if</span>(mysql_query($sql))&#123;</span><br><span class="line">		mysql_query(<span class="string">"COMMIT"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环输出结果</span></span><br><span class="line">$sql=<span class="string">"select * from mission_type"</span>;</span><br><span class="line"><span class="comment">//数据库语句</span></span><br><span class="line">$r=mysql_query($sql);<span class="comment">//执行</span></span><br><span class="line"><span class="keyword">while</span>($row=mysql_fetch_array($result))&#123;</span><br><span class="line">	<span class="keyword">echo</span> $row[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断查询结果的条目数</span></span><br><span class="line">$sql=<span class="string">"select * from admin"</span>;</span><br><span class="line">$result=mysql_query($sql);<span class="comment">//执行</span></span><br><span class="line">   <span class="keyword">if</span>(@mysql_num_rows($result)!=<span class="number">0</span>)&#123;<span class="comment">//判断条目数</span></span><br><span class="line">       $row=mysql_fetch_array($result);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回最新的自增ID，这个有时候非常有用</span></span><br><span class="line">$id=mysql_insert_id();</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
     </entry>
     
     <entry>

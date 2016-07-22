@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="5分钟回顾系列,PHP," />
+  <meta name="keywords" content="PHP,正则表达式," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://lvze1992.github.io/2016/07/18/php-review/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="写本文的目的主要是为了自己可以“有章可循”，避免陷入不断遗忘而复习的怪圈。在本文中，我将网站开发中经常用到的 PHP基本语法知识 做记录，算是回顾性质的。我也建议读者在学习开发语言时做阶段性记录，共勉。">
-<meta property="og:updated_time" content="2016-07-20T17:04:34.814Z">
+<meta property="og:updated_time" content="2016-07-22T13:07:24.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP回顾">
 <meta name="twitter:description" content="写本文的目的主要是为了自己可以“有章可循”，避免陷入不断遗忘而复习的怪圈。在本文中，我将网站开发中经常用到的 PHP基本语法知识 做记录，算是回顾性质的。我也建议读者在学习开发语言时做阶段性记录，共勉。">
@@ -443,6 +443,8 @@
 <li><p><strong>去掉数组中的重复项 </strong><code>array_unique(array)</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* 输出：</span><br><span class="line"> * Array ( [a] =&gt; red [b] =&gt; green )</span><br><span class="line"> */</span></span><br><span class="line">$a=<span class="keyword">array</span>(<span class="string">"a"</span>=&gt;<span class="string">"red"</span>,<span class="string">"b"</span>=&gt;<span class="string">"green"</span>,<span class="string">"c"</span>=&gt;<span class="string">"red"</span>);</span><br><span class="line">print_r(array_unique($a));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p><strong>字符串匹配替换 去掉数字中的逗号</strong><code>str_replace(&quot;,&quot;, &quot;&quot;, $money)</code><br><span style="color:#ffffff; background-color:#3366ff">str_replace()比preg_replace()更快。</span></p>
+</li>
 <li><p><strong>正则匹配替换 </strong><code>preg_replace($patterns, $replacements, $string [, int $limit = -1 [, int &amp;$count ]] )</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* 输出：</span><br><span class="line"> * April1,2003</span><br><span class="line"> */</span></span><br><span class="line">$string = <span class="string">'April 15, 2003'</span>;</span><br><span class="line">$pattern = <span class="string">'/(\w+) (\d+), (\d+)/i'</span>;</span><br><span class="line">$replacement = <span class="string">'$&#123;1&#125;1,$3'</span>;</span><br><span class="line"><span class="keyword">echo</span> preg_replace($pattern, $replacement, $string);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* 输出：</span><br><span class="line"> * The bear black slow jumped over the lazy dog.</span><br><span class="line"> */</span></span><br><span class="line">$string = <span class="string">'The quick brown fox jumped over the lazy dog.'</span>;</span><br><span class="line">$patterns = <span class="keyword">array</span>();</span><br><span class="line">$patterns[<span class="number">0</span>] = <span class="string">'/quick/'</span>;</span><br><span class="line">$patterns[<span class="number">1</span>] = <span class="string">'/brown/'</span>;</span><br><span class="line">$patterns[<span class="number">2</span>] = <span class="string">'/fox/'</span>;</span><br><span class="line">$replacements = <span class="keyword">array</span>();</span><br><span class="line">$replacements[<span class="number">2</span>] = <span class="string">'bear'</span>;</span><br><span class="line">$replacements[<span class="number">1</span>] = <span class="string">'black'</span>;</span><br><span class="line">$replacements[<span class="number">0</span>] = <span class="string">'slow'</span>;</span><br><span class="line"><span class="keyword">echo</span> preg_replace($patterns, $replacements, $string);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -454,7 +456,172 @@
 floor() //4.3-&gt;4 9.9-&gt;9 舍去取整
 round(3.6,0) //3.6-&gt;4 0为精度 四舍五入
 intval() //4.3-&gt;4 9.9-&gt;9 取整
-</code></pre><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2>
+</code></pre><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p></p><p style="background-color:#f2f4b0;padding:15px">正则表达式可以免去很多判断操作，使程序更简洁准确。掌握了解它很重要。<br></p><p></p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ol>
+<li><p><strong>正则表达式匹配 </strong><code>preg_match (pattern , subject, matches)</code><br>成功返回 1 ，否则返回 0 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 模式定界符后面的 "i" 表示不区分大小写字母的搜索</span></span><br><span class="line"><span class="comment">// 输出： A match was found.</span></span><br><span class="line"><span class="keyword">if</span> (preg_match (<span class="string">"/hi/i"</span>, <span class="string">"Welcome to hi-docs.com."</span>)) &#123; </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"A match was found."</span>; </span><br><span class="line"> &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"A match was not found."</span>; </span><br><span class="line"> &#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span><br><span class="line"> * 输出：Array ( </span><br><span class="line"> * [0] =&gt; &lt;a target="_blank" href="/php/preg_match.html"&gt;&lt;span class="hl"&gt;preg&lt;/span&gt;_match()&lt;/a&gt; </span><br><span class="line"> * [1] =&gt; /php/preg_match.html </span><br><span class="line"> * )</span><br><span class="line"> * </span><br><span class="line"> */</span></span><br><span class="line">$urls = <span class="string">'&lt;h3&gt;&lt;a target="_blank" href="/php/preg_match.html"&gt;&lt;span class="hl"&gt;preg&lt;/span&gt;_match()&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;[&lt;a href="/Php.html"&gt;PHP&lt;/a&gt;] 进行正则表达式匹配&lt;br/&gt;&lt;em&gt;适用版本：5&lt;/em&gt;&lt;/p&gt;&lt;/dd&gt;&lt;dd&gt;&lt;h3&gt;&lt;a target="_blank" href="/php/preg_match_all.html"&gt;&lt;span class="hl"&gt;preg&lt;/span&gt;_match_all()&lt;/a&gt;&lt;/h3&gt;'</span>;</span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">"/&lt;a[^&gt;]*?href=\"([^&gt;]+?)\"[^&gt;]*?&gt;.+?&lt;\/a&gt;/i"</span>, $urls ,$match)) &#123; </span><br><span class="line">  print_r($match); </span><br><span class="line"> &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"不匹配."</span>; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">'preg_match正则匹配中文123'</span>;</span><br><span class="line"><span class="comment">// 正则表达式匹配中文(UTF8编码)</span></span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">'/[\x&#123;4e00&#125;-\x&#123;9fa5&#125;]+/u'</span>,$str))&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'匹配'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'没有匹配'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 正则表达式匹配中文(GB2312,GBK编码)</span></span><br><span class="line">preg_match(<span class="string">"/^["</span>.chr(<span class="number">0xa1</span>).<span class="string">"-"</span>.chr(<span class="number">0xff</span>).<span class="string">"A-Za-z0-9_]+$/"</span>,$str);</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>正则匹配提取 </strong> <code>preg_match_all()</code><br>成功返回整个模式匹配的次数（可能为零）<br><span style="color:#ffffff; background-color:#3366ff">preg_match()只会返回一个结果，而preg_match_all()会将所有匹配的结果返回。</span><br><a href="http://localhost:4000/2016/07/18/php-review/#字符串提取" target="_blank" rel="external">preg_match_all()</a></p>
+</li>
+<li><strong>正则匹配替换  </strong> <code>preg_replace()</code><br><a href="http://localhost:4000/2016/07/18/php-review/#字符串修改" target="_blank" rel="external">preg_replace()</a></li>
+</ol>
+<h3 id="正则表达式简要"><a href="#正则表达式简要" class="headerlink" title="正则表达式简要"></a>正则表达式简要</h3><h4 id="正则匹配对照表"><a href="#正则匹配对照表" class="headerlink" title="正则匹配对照表"></a>正则匹配对照表</h4><blockquote>
+<p><a href="http://www.chinaz.com/program/2008/1020/41452.shtml" target="_blank" rel="external">参考链接</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>匹配字符串</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/fo+/</td>
+<td>“fool”, “fo”, 或 “football”</td>
+<td>“+”元字符，f后面连续出现一个或多个字母o的字符串</td>
+</tr>
+<tr>
+<td>/eg*/</td>
+<td>“easy”, “ego”, 或 “egg”</td>
+<td>“*”元字符，e后面连续出现零个或多个字母g的字符串</td>
+</tr>
+<tr>
+<td>/wil?/</td>
+<td>“Win”, 或 “Wilson”</td>
+<td>“？”元字符，i后面连续出现零个或一个字母l的字符串</td>
+</tr>
+<tr>
+<td>/jim{2,6}/</td>
+<td>jimmy或jimmmmmy等字符串</td>
+<td>m可以在匹配对象中连续出现2-6次</td>
+</tr>
+<tr>
+<td>\s：匹配单个空格符(tab键和换行符)；<br>\S：匹配除单个空格符外的所有字符；<br>\d：匹配从0到9的数字；<br>\w：匹配字母，数字或下划线字符；<br>\W：匹配所有与\w不匹配的字符；<br>. ：匹配除换行符之外的所有字符。</td>
+<td></td>
+<td>\s和\S以及\w和\W互为逆运算</td>
+</tr>
+<tr>
+<td>/^hell/</td>
+<td>“hell”, “hello”或 “hellhound”</td>
+<td>“^”定位符，目标字符串的开头</td>
+</tr>
+<tr>
+<td>/ar$/</td>
+<td>“car”, “bar”或 “ar”</td>
+<td>“$”定位符，目标对象的结尾</td>
+</tr>
+<tr>
+<td>/\bbom/</td>
+<td>“bomb”, 或 “bom”</td>
+<td>\b定位符，目标字符串的开头或结尾的两个边界之一</td>
+</tr>
+<tr>
+<td>/man\b/</td>
+<td>“human”, “woman”或 “man”</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>目标字符串的开头和结尾两个边界之内</td>
+<td></td>
+</tr>
+<tr>
+<td>/[A-Z]/</td>
+<td>与A到Z范围内任何一个大写字母相匹配</td>
+<td></td>
+</tr>
+<tr>
+<td>/([a-z][A-Z][0-9])+/</td>
+<td>“aB0”</td>
+<td>“()”符号包含的内容必须同时出现在目标对象中。</td>
+</tr>
+<tr>
+<td>/[ab]/</td>
+<td>匹配单个的 a 或者 b</td>
+<td>和 “/a│b/” 一样</td>
+</tr>
+<tr>
+<td>/to&#166;too&#166;2/</td>
+<td>“to”, “too”, 或 “2”</td>
+<td></td>
+</tr>
+<tr>
+<td>/[^A-C]/</td>
+<td>除A，B，和C之外的任何字符相匹配</td>
+<td>当“^”出现在 “[]”内时，被视做否定运算符；而当“^”位于“[]”之外，或没有“[]”时，被视做定位符</td>
+</tr>
+<tr>
+<td>/Th*/</td>
+<td>“Th*”而非“The”匹配</td>
+<td>转义符“\”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="正则【实例】对照表"><a href="#正则【实例】对照表" class="headerlink" title="正则【实例】对照表"></a>正则【实例】对照表</h4><table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>匹配字符串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/a(bc)*/</td>
+<td>匹配 a 后面跟0个或者一个“bc”</td>
+</tr>
+<tr>
+<td>/(b&#166;cd)ef/</td>
+<td>匹配含有 “bef” 或者 “cdef”的字符串</td>
+</tr>
+<tr>
+<td>/(a&#166;b)*c/</td>
+<td>匹配含有这样多个（包括0个）a或b，后面跟一个c的字符串</td>
+</tr>
+<tr>
+<td>/[\n.]/</td>
+<td>匹配包括”\n”在内的所有单个字符</td>
+</tr>
+<tr>
+<td>/^.{3}$/</td>
+<td>三个任意字符</td>
+</tr>
+<tr>
+<td>/^[a-zA-Z]/</td>
+<td>匹配以大小写字母开头的字符串</td>
+</tr>
+<tr>
+<td>/^[0-9]+(.[0-9]{1,2})?$/</td>
+<td>匹配数字”10”和”10.2”等，不匹配”10.”</td>
+</tr>
+<tr>
+<td><span style="color:#ffffff; background-color:#3366ff"><strong>&nbsp;货币格式&nbsp;</strong></span>&nbsp;/^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$/</td>
+<td>匹配”10,121.20”</td>
+</tr>
+<tr>
+<td><span style="color:#ffffff; background-color:#3366ff"><strong>&nbsp;邮箱&nbsp;</strong></span>&nbsp;/^[_a-z0-9-]+(.[_a-z0-9-]+)<em>@[a-z0-9-]+(.[a-z0-9-]+)</em>$/</td>
+<td>匹配邮箱，如787878@qq.com</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><blockquote>
+<p>不同版本的PHP，数据库的操作也不同（此教程中的是PHP 5.2.5）。<br>故只列出几个常用的命令，请读者根据版本，自行查找以备用。</p>
+</blockquote>
+<ol>
+<li><p>数据库连接</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$db_host=<span class="string">"localhost"</span>;     <span class="comment">//服务器名</span></span><br><span class="line">$db_user=<span class="string">"root"</span>;         <span class="comment">//用户名</span></span><br><span class="line">$db_pass=<span class="string">""</span>;        <span class="comment">//密码</span></span><br><span class="line">$db_name=<span class="string">"XXX"</span>;        <span class="comment">//数据库名</span></span><br><span class="line">$link=mysql_connect($db_host,$db_user,$db_pass)<span class="keyword">or</span> <span class="keyword">die</span>(mysql_error());</span><br><span class="line">mysql_select_db($db_name,$link);</span><br><span class="line">mysql_query(<span class="string">"SET NAMES UTF8"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库操作实例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$sql=<span class="string">"select from_table from mission_type where mission_type='$type'"</span>;</span><br><span class="line"><span class="comment">//数据库语句</span></span><br><span class="line">$r=mysql_query($sql);<span class="comment">//执行</span></span><br><span class="line">$row=mysql_fetch_array($r);<span class="comment">//获得结果</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务，所有数据库语句成功执行后，才会在数据库中生效</span></span><br><span class="line">mysql_query(<span class="string">"START TRANSACTION"</span>);</span><br><span class="line">$sql=<span class="string">"insert into resource(mission_id,mission_type,resource_type,resource_url) values($id,'$type','img','$file_dir')"</span>;</span><br><span class="line"><span class="keyword">if</span>(mysql_query($sql))&#123;</span><br><span class="line">	$sql=<span class="string">"update $table set resource_amount=resource_amount+1 where mission_type='$type' and mission_id=$id limit 1"</span>;</span><br><span class="line">	<span class="keyword">if</span>(mysql_query($sql))&#123;</span><br><span class="line">		mysql_query(<span class="string">"COMMIT"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环输出结果</span></span><br><span class="line">$sql=<span class="string">"select * from mission_type"</span>;</span><br><span class="line"><span class="comment">//数据库语句</span></span><br><span class="line">$r=mysql_query($sql);<span class="comment">//执行</span></span><br><span class="line"><span class="keyword">while</span>($row=mysql_fetch_array($result))&#123;</span><br><span class="line">	<span class="keyword">echo</span> $row[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断查询结果的条目数</span></span><br><span class="line">$sql=<span class="string">"select * from admin"</span>;</span><br><span class="line">$result=mysql_query($sql);<span class="comment">//执行</span></span><br><span class="line">   <span class="keyword">if</span>(@mysql_num_rows($result)!=<span class="number">0</span>)&#123;<span class="comment">//判断条目数</span></span><br><span class="line">       $row=mysql_fetch_array($result);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回最新的自增ID，这个有时候非常有用</span></span><br><span class="line">$id=mysql_insert_id();</span><br></pre></td></tr></table></figure></li>
+</ol>
+
       
     </div>
 
@@ -475,9 +642,9 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
       
         <div class="post-tags">
           
-            <a href="/tags/5分钟回顾系列/" rel="tag">#5分钟回顾系列</a>
-          
             <a href="/tags/PHP/" rel="tag">#PHP</a>
+          
+            <a href="/tags/正则表达式/" rel="tag">#正则表达式</a>
           
         </div>
       
@@ -648,7 +815,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网页传值"><span class="nav-number">1.</span> <span class="nav-text">网页传值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单POST传值"><span class="nav-number">1.1.</span> <span class="nav-text">表单POST传值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接GET传值"><span class="nav-number">1.2.</span> <span class="nav-text">超链接GET传值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录注销-Cookie和Session"><span class="nav-number">2.</span> <span class="nav-text">登录注销 Cookie和Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Session"><span class="nav-number">2.1.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">2.2.</span> <span class="nav-text">Cookie</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串操作"><span class="nav-number">3.</span> <span class="nav-text">字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串分割"><span class="nav-number">3.1.</span> <span class="nav-text">字符串分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串联结"><span class="nav-number">3.2.</span> <span class="nav-text">字符串联结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串创建"><span class="nav-number">3.3.</span> <span class="nav-text">字符串创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串提取"><span class="nav-number">3.4.</span> <span class="nav-text">字符串提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串修改"><span class="nav-number">3.5.</span> <span class="nav-text">字符串修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字操作"><span class="nav-number">4.</span> <span class="nav-text">数字操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#货币格式"><span class="nav-number">4.1.</span> <span class="nav-text">货币格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字取整"><span class="nav-number">4.2.</span> <span class="nav-text">数字取整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">5.</span> <span class="nav-text">正则表达式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网页传值"><span class="nav-number">1.</span> <span class="nav-text">网页传值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单POST传值"><span class="nav-number">1.1.</span> <span class="nav-text">表单POST传值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接GET传值"><span class="nav-number">1.2.</span> <span class="nav-text">超链接GET传值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录注销-Cookie和Session"><span class="nav-number">2.</span> <span class="nav-text">登录注销 Cookie和Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Session"><span class="nav-number">2.1.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">2.2.</span> <span class="nav-text">Cookie</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串操作"><span class="nav-number">3.</span> <span class="nav-text">字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串分割"><span class="nav-number">3.1.</span> <span class="nav-text">字符串分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串联结"><span class="nav-number">3.2.</span> <span class="nav-text">字符串联结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串创建"><span class="nav-number">3.3.</span> <span class="nav-text">字符串创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串提取"><span class="nav-number">3.4.</span> <span class="nav-text">字符串提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串修改"><span class="nav-number">3.5.</span> <span class="nav-text">字符串修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字操作"><span class="nav-number">4.</span> <span class="nav-text">数字操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#货币格式"><span class="nav-number">4.1.</span> <span class="nav-text">货币格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字取整"><span class="nav-number">4.2.</span> <span class="nav-text">数字取整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">5.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用函数"><span class="nav-number">5.1.</span> <span class="nav-text">常用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式简要"><span class="nav-number">5.2.</span> <span class="nav-text">正则表达式简要</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则匹配对照表"><span class="nav-number">5.2.1.</span> <span class="nav-text">正则匹配对照表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则【实例】对照表"><span class="nav-number">5.2.2.</span> <span class="nav-text">正则【实例】对照表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作"><span class="nav-number">6.</span> <span class="nav-text">数据库操作</span></a></li></ol></div>
             
           </div>
         </section>
