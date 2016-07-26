@@ -1,0 +1,1020 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP,面向对象," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php高效编程 — 面向对象">
+<meta property="og:url" content="http://lvze1992.github.io/2016/07/23/php-master/index.html">
+<meta property="og:site_name" content="ZAK's Blog">
+<meta property="og:description" content="本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。">
+<meta property="og:updated_time" content="2016-07-26T05:35:08.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php高效编程 — 面向对象">
+<meta name="twitter:description" content="本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://lvze1992.github.io/2016/07/23/php-master/"/>
+
+  <title> php高效编程 — 面向对象 | ZAK's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5a20009100823c304f758cd8bf164d50";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZAK's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                php高效编程 — 面向对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T16:25:41+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/网站开发/" itemprop="url" rel="index">
+                    <span itemprop="name">网站开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/网站开发/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/23/php-master/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/php-master/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/23/php-master/" class="leancloud_visitors" data-flag-title="php高效编程 — 面向对象">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p style="background-color:#b0f4f3;padding:15px">本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。<br></p>
+
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<h2 id="PHP面向对象编程（OOP）"><a href="#PHP面向对象编程（OOP）" class="headerlink" title="PHP面向对象编程（OOP）"></a>PHP面向对象编程（OOP）</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># courier.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> $name;</span><br><span class="line">	<span class="keyword">public</span> $home_country;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;name =$name;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ship</span><span class="params">($parcel)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getCourierByCountry</span><span class="params">($country)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $courier_list;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//自动加载方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__autoload</span><span class="params">($classname)</span></span>&#123;</span><br><span class="line">	<span class="keyword">include</span> strtolower($classname).<span class="string">'.php'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//require 'courier.php';</span></span><br><span class="line">$mono = <span class="keyword">new</span> Courier(<span class="string">'ty ze'</span>);</span><br><span class="line">var_dump($mono);</span><br><span class="line"><span class="comment">//调用静态方法</span></span><br><span class="line">$spanish_courier = Courier::getCourierByCountry(<span class="string">'Spain'</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="PHP命名空间"><a href="#PHP命名空间" class="headerlink" title="PHP命名空间"></a>PHP命名空间</h2><p><strong>命名空间一个最明确的目的就是解决重名问题。</strong><br>PHP的命名空间(namespace)是PHP 5.3中加入最重要的一个新特性，故想测试学习，请先将PHP升级到5.3以上版本。<br>参考链接：</p>
+<blockquote>
+<p><a href="http://www.jb51.net/article/36389.htm" target="_blank" rel="external">PHP命名空间(Namespace)的使用详解</a><br><a href="http://www.jb51.net/article/53853.htm" target="_blank" rel="external">PHP命名空间(namespace)的使用基础及示例</a></p>
+</blockquote>
+<h3 id="空间名称术语"><a href="#空间名称术语" class="headerlink" title="空间名称术语"></a>空间名称术语</h3><ol>
+<li><p><strong>非限定名称</strong>，或不包含前缀的类名称，例如 $comment = new Comment();。如果当前命名空间是Blog\Article，Comment将被解析为Blog\Article\Comment。如果使用Comment的代码不包含在任何命名空间中的代码（全局空间中），则Comment会被解析为Comment。</p>
+</li>
+<li><p><strong>限定名称</strong>，或包含前缀的名称，例如 $comment = new Article\Comment();。如果当前的命名空间是Blog，则Comment会被解析为Blog\Article\Comment。如果使用Comment的代码不包含在任何命名空间中的代码（全局空间中），则Comment会被解析为Comment。</p>
+</li>
+<li><p><strong>完全限定名称</strong>，或包含了全局前缀操作符的名称，例如 $comment = new \Article\Comment();。在这种情况下，Comment总是被解析为代码中的文字名(literal name)Article\Comment。</p>
+</li>
+</ol>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>代码集成了几个命名空间的常见用法，阅读若有困难，请读者根据<a href="sds">参考链接</a>中的教程学习。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Article&#123; //要么使用&#123;&#125;要么使用;不能混合使用。</span><br><span class="line">const PATH = '/article';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 100;</span><br><span class="line">&#125;</span><br><span class="line">class Comment &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace MessageBoard\share&#123;</span><br><span class="line">const PATH = 'MessageBoard\share';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 200;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace MessageBoard&#123;</span><br><span class="line">const PATH = '/message_board';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 300;</span><br><span class="line">&#125;</span><br><span class="line">class Comment &#123; &#125;</span><br><span class="line">//调用当前空间的常量、函数和类</span><br><span class="line">echo PATH.'&lt;br/&gt;'; ///message_board</span><br><span class="line">echo getCommentTotal().'&lt;br/&gt;'; //300</span><br><span class="line">$comment = new Comment();//调用\MessageBoard空间的类</span><br><span class="line"></span><br><span class="line">//调用Article空间的常量、函数和类</span><br><span class="line">echo \Article\PATH.'&lt;br/&gt;'; ///article</span><br><span class="line">echo \Article\getCommentTotal().'&lt;br/&gt;'; //100</span><br><span class="line">$article_comment = new \Article\Comment();//调用\Article空间的类</span><br><span class="line">var_dump($article_comment);</span><br><span class="line"></span><br><span class="line">echo share\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">&#125;</span><br><span class="line">//导入一个命名空间</span><br><span class="line">namespace BBS&#123;</span><br><span class="line">use MessageBoard\share;//导入命名空间后可使用限定名称调用元素</span><br><span class="line">echo share\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">use MessageBoard\share as Sha;//使用别名代替空间名</span><br><span class="line">echo Sha\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">use MessageBoard\Comment;//导入类后可使用非限定名称调用元素,类也可以使用别名</span><br><span class="line">$article_comment = new Comment();</span><br><span class="line">var_dump($article_comment);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="魔法常量NAMESPACE"><a href="#魔法常量NAMESPACE" class="headerlink" title="魔法常量NAMESPACE"></a>魔法常量<strong>NAMESPACE</strong></h3><blockquote>
+<p>PHP提供了namespace关键字和<strong>NAMESPACE</strong>魔法常量动态的访问元素</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Blog</span>\<span class="title">Article</span>;</span><br><span class="line"><span class="keyword">const</span> PATH = <span class="string">'/Blog/article'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comment</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//namespace关键字表示当前空间</span></span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">namespace</span>\<span class="title">PATH</span>; <span class="comment">///Blog/article</span></span><br><span class="line">$comment = <span class="keyword">new</span> <span class="keyword">namespace</span>\<span class="title">Comment</span>();</span><br><span class="line"><span class="comment">//魔法常量__NAMESPACE__的值是当前空间名称</span></span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">__NAMESPACE__</span>; <span class="comment">//Blog\Article</span></span><br><span class="line"><span class="comment">//可以组合成字符串并调用</span></span><br><span class="line">$comment_class_name = <span class="keyword">__NAMESPACE__</span> . <span class="string">'\Comment'</span>;</span><br><span class="line">$comment = <span class="keyword">new</span> $comment_class_name();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="空间字符串形式调用"><a href="#空间字符串形式调用" class="headerlink" title="空间字符串形式调用"></a>空间字符串形式调用</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Blog</span>;</span><br><span class="line"><span class="comment">//导入Common类</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">Blog</span>\<span class="title">Article</span>\<span class="title">Common</span>;</span><br><span class="line">$common_class_name = <span class="string">'Blog\Article\Common'</span>;</span><br><span class="line">$common = <span class="keyword">new</span> $common_class_name();<span class="comment">//正确</span></span><br><span class="line">var_dump($common);</span><br><span class="line"><span class="comment">//我想使用非限定名称调用Blog\Article\Common</span></span><br><span class="line">$common_class_name = <span class="string">'Common'</span>;</span><br><span class="line"><span class="comment">//实际会被当作非限定名称，也就表示当前空间的Common类，但我当前类没有创建Common类</span></span><br><span class="line">$common = <span class="keyword">new</span> $common_class_name(); <span class="comment">//发生致命错误：Common类不存在</span></span><br><span class="line"><span class="comment">//我想使用限定名称调用Blog\Article\Common</span></span><br><span class="line">$common_class_name = <span class="string">'Article\Common'</span>;</span><br><span class="line"><span class="comment">//实际会被当作完全限定名称，也就表示Article空间下的Common类，但我下面只定义了Blog\Article空间而不是Article空间</span></span><br><span class="line">$common = <span class="keyword">new</span> $common_class_name(); <span class="comment">//发生致命错误：Article\Common类不存在</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Blog</span>\<span class="title">Article</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Common</span> </span>&#123; &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象的继承"><a href="#对象的继承" class="headerlink" title="对象的继承"></a>对象的继承</h2><p>extends关键词。略。</p>
+<h2 id="对象和函数"><a href="#对象和函数" class="headerlink" title="对象和函数"></a>对象和函数</h2><blockquote>
+<p>例子：为&nbsp;<span style="color:#ffffff; background-color:#3366ff">&nbsp;Courier&nbsp;</span>&nbsp;创建子类，分别为&nbsp;<span style="color:#ffffff; background-color:#3366ff">&nbsp;MonotypeDelivery&nbsp;</span>&nbsp;和&nbsp;<span style="color:#ffffff; background-color:#3366ff">&nbsp;PigeonPost&nbsp;</span>&nbsp;</p>
+</blockquote>
+<h3 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h3><p>我们可以将父类对象作为子类、孙子类的类型提示。这种同时识别多个对象的能力称为多态性（polymorphism）。<br><strong>instanceOf操作符检查对象的类型。</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">* 输出结果： </span><br><span class="line">* Local Avian Delivery Ltd is a Courier</span><br><span class="line">* Local Avian Delivery Ltd is a PigeonPost</span><br><span class="line">*/</span></span><br><span class="line">$courier = <span class="keyword">new</span> PigeonPost(<span class="string">'Local Avian Delivery Ltd'</span>);</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> Courier)&#123;</span><br><span class="line">	<span class="keyword">echo</span> $courier-&gt;name.<span class="string">"is a Courier"</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> PigeonPost)&#123;</span><br><span class="line">	<span class="keyword">echo</span> $courier-&gt;name.<span class="string">"is a PigeonPost"</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> MonotypeDelivery)&#123;</span><br><span class="line">	<span class="keyword">echo</span> $courier-&gt;name.<span class="string">"is a MonotypeDelivery"</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象和引用"><a href="#对象和引用" class="headerlink" title="对象和引用"></a>对象和引用</h3><p>对象和简单变量的表现大相径庭。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出：Parcels needs to ship to Brazil and Brazil</span></span><br><span class="line">$box1 = <span class="keyword">new</span> Parcel();</span><br><span class="line">$box1-&gt;destinationCountry = <span class="string">'Denmark'</span>;</span><br><span class="line"></span><br><span class="line">$box2 = <span class="keyword">new</span> Parcel();</span><br><span class="line">$box1-&gt;desyinationCountry = <span class="string">'Brazil'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'Parcels needs to ship to:'</span></span><br><span class="line">	.$box1-&gt;destinationCountry.<span class="string">' and '</span></span><br><span class="line">	.$box2-&gt;destinationCountry;</span><br></pre></td></tr></table></figure></p>
+<p>由上，当$box1赋值给$box2时，并没有复制$box1的内容。相反，PHP将$box2指向了同一个对象。可称之为<strong>引用（reference）</strong>。<br><code>==</code>操作符,判断是否具有相同的类和属性。<br><code>if($box1 == $box2) echo &#39;equivalent&#39;;</code><br><code>===</code>操作符,进一步区分是否引用同一个原始对象。<br><code>if($box1 === $box2) echo &#39;exact same object&#39;;</code><br>这对我们判断某个对象是否链接到另一个对象有很大的帮助。</p>
+<h3 id="作为函数参数传递的对象"><a href="#作为函数参数传递的对象" class="headerlink" title="作为函数参数传递的对象"></a>作为函数参数传递的对象</h3><p>对象总是通过<strong>引用传递</strong>。对象会提供一个指向自己的引用，而不是复制自己一个副本。这意味着如果一个函数对传入的对象进行操作时，没有必要从函数返回。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$courier = <span class="keyword">new</span> PigeonPost(<span class="string">'Avian Delivery Ltd'</span>);</span><br><span class="line"></span><br><span class="line">$other_courier = $courier;</span><br><span class="line">$other_courier-&gt;name = <span class="string">'Pigeon Post'</span>;</span><br><span class="line"><span class="keyword">echo</span> $courier-&gt;name; <span class="comment">//输出：Pigeon Post</span></span><br></pre></td></tr></table></figure></p>
+<p>如果需要为一个已存在的对象复制一个单独的副本，可以使用clone关键词。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$courier = <span class="keyword">new</span> PigeonPost(<span class="string">'Avian Delivery Ltd'</span>);</span><br><span class="line"></span><br><span class="line">$other_courier = <span class="keyword">clone</span> $courier;</span><br><span class="line">$other_courier-&gt;name = <span class="string">'Pigeon Post'</span>;</span><br><span class="line"><span class="keyword">echo</span> $courier-&gt;name; <span class="comment">//输出：Avian Delivery Ltd</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="流畅的接口"><a href="#流畅的接口" class="headerlink" title="流畅的接口"></a>流畅的接口</h3><p>如果从一个方法中返回$this，可以在应用程序内建立一个<strong>流畅的接口（fluent interface）</strong>，可让你将方法链接在一起。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parcel</span></span>&#123;</span><br><span class="line">	<span class="keyword">protected</span> $weight;</span><br><span class="line">	<span class="keyword">protected</span> $destinationCountry;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setWeight</span><span class="params">($weight)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;weight = $weight;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">$this</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setCountry</span><span class="params">($country)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;destinationCountry = $country;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">$this</span>;			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$myparcel =<span class="keyword">new</span> Parcel;</span><br><span class="line">$myparcel-&gt;setWeight(<span class="number">50</span>)-&gt;setCountry(<span class="string">'peru'</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="public-private和protected"><a href="#public-private和protected" class="headerlink" title="public,private和protected"></a>public,private和protected</h2><p>public和private略。</p>
+<h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3><p>例如：在Courier类中有一个私有的方法<code>getShippingRateCountry()</code>,由<code>calcullateShipping()</code>方法调用。在Courier类中这个方法工作正常，事实上，在Courier的子类中它也同样正常工作。<br>然而，如果子类需要以自己的方式重新实现<code>calculateShipping()</code>方法时，将无法使用<code>getShippingRateCountry()</code>方法。<br>使用<code>protected</code>意味着在该类的外部不能调用这种方法，但它的子类被看作“内部”。</p>
+<h3 id="getter和setter控制可见性"><a href="#getter和setter控制可见性" class="headerlink" title="getter和setter控制可见性"></a>getter和setter控制可见性</h3><p>另一种管理可见性的方法，将所有属性都标记为<code>protected</code>,并且只允许getter和setter方法来访问它们。如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span></span>&#123;</span><br><span class="line">	<span class="keyword">protected</span> $name;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">setName</span><span class="params">($value)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;name = $value;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以连接这些方法到日志以查看更新了哪些信息，或添加一些访问逻辑。</p>
+<h3 id="使用神奇的-95-95-get和-95-95-set方法"><a href="#使用神奇的-95-95-get和-95-95-set方法" class="headerlink" title="使用神奇的&#95;&#95;get和&#95;&#95;set方法"></a>使用神奇的&#95;&#95;get和&#95;&#95;set方法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span></span>&#123;</span><br><span class="line">	<span class="keyword">protected</span> $data = <span class="keyword">array</span>();</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($property)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;data[$property];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__set</span><span class="params">($property,$value)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;data[$property] = $value;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">$courier = <span class="keyword">new</span> Courier();</span><br><span class="line">$courier-&gt;name = <span class="string">'Avian Carrier'</span>;</span><br><span class="line"><span class="keyword">echo</span> $courier-&gt;name;</span><br></pre></td></tr></table></figure>
+<p><strong>利用神奇的&#95;&#95;get和&#95;&#95;set方法，来访问一个不存在的属性。</strong><br>从这个角度来说，我们无法看出$name属性不存在，但对象表现出它仿佛存在。神奇的<strong>get()和</strong>set()方法允许我们改变幕后发生的事情。在这里可以添加任何需要的逻辑，让不同名称的属性有不同的表现、检查值或者你想要的任何东西。</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p><strong>接口</strong>是描述对象能力的一种方式。接口指定方法的名称以及参数。但不包含任何功能代码（不包含具体的实现）。使用接口展示了一个合约，表明实现这个接口的类能够做什么。</p>
+<h3 id="SPL-Countable-接口示例"><a href="#SPL-Countable-接口示例" class="headerlink" title="SPL Countable 接口示例"></a>SPL Countable 接口示例</h3><p>例如：Countable实现单一的功能：count()方法。若要在代码中使用这个接口，代码如下。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span> <span class="keyword">implements</span> <span class="title">Countable</span></span>&#123;</span><br><span class="line">	<span class="keyword">protected</span> $count = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ship</span><span class="params">(Parcel $parcel)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;count++;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">count</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;count;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">$courier = <span class="keyword">new</span> Courier();</span><br><span class="line">$courier-&gt;ship(<span class="keyword">new</span> Parcel());</span><br><span class="line">$courier-&gt;ship(<span class="keyword">new</span> Parcel());</span><br><span class="line">$courier-&gt;ship(<span class="keyword">new</span> Parcel());</span><br><span class="line"><span class="keyword">echo</span> count($courier);<span class="comment">//输出：3</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="声明和使用接口"><a href="#声明和使用接口" class="headerlink" title="声明和使用接口"></a>声明和使用接口</h3><p>要声明一个接口，只需要使用<code>interface</code>关键字为借口命名。如果要在类中使用这个接口，只需要用<code>implements</code>关键字。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Trackable</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getTrackInfo</span><span class="params">($parcelID)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MonotypeDelivery</span> <span class="keyword">extends</span> <span class="title">Courier</span> <span class="keyword">implements</span> <span class="title">Trackable</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ship</span><span class="params">($parcel)</span></span>&#123;</span><br><span class="line">		$parcelID=<span class="number">42</span>;</span><br><span class="line">		<span class="keyword">return</span> $paecelID;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getTackInfo</span><span class="params">($parcelID)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span>(<span class="keyword">array</span>(<span class="string">"status"</span>=&gt;<span class="string">"in transit"</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="识别对象和接口"><a href="#识别对象和接口" class="headerlink" title="识别对象和接口"></a>识别对象和接口</h3><p><code>instanceOf</code>运算符识别对象和接口。<br>例子：<code>MonotypeDelivery</code>类从<code>Courier</code>类继承并实现<code>Trackable</code>接口。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">* 输出结果： </span><br><span class="line">* I'm a Courier</span><br><span class="line">* I'm a MonotypeDelivery</span><br><span class="line">* I'm a Trackable</span><br><span class="line">*/</span></span><br><span class="line">$courier = <span class="keyword">new</span> MonotypeDelivery();</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> Courier)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"I'm a Courier"</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> PigeonPost)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"I'm a PigeonPost"</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> MonotypeDelivery)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"I'm a MonotypeDelivery"</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($courier <span class="keyword">instanceOf</span> Trackable)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"I'm a Trackable"</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><strong>异常（exception）</strong>是一个处理错误的面向对象方法。异常也是对象，而且<code>Exception</code>是PHP的一个内置类。<br><span style="color:#ffffff; background-color:#3366ff">&nbsp;如果抛出了异常，就必须捕获它。&nbsp;</span></p>
+<h3 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	$db = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=nonsense'</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"connected to database"</span>;</span><br><span class="line">&#125;<span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"Oops!"</span>.$e-&gt;getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其它语言有<code>try/catch/finally</code>结构；PHP没有附加的<code>finally</code>子句。</p>
+</blockquote>
+<h3 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h3><p>上节提到了由PHP内置函数抛出的异常，我们自己也可抛出异常。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//something has gone wrong</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> Exeption(<span class="string">'Meaningful error message string'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="捕捉特定类型的异常"><a href="#捕捉特定类型的异常" class="headerlink" title="捕捉特定类型的异常"></a>捕捉特定类型的异常</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeavyParcelException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ship</span><span class="params">(Parcel $parcel)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">empty</span>($parcel-&gt;address))&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'Address not Specified'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>($parcel-&gt;weight &gt; <span class="number">5</span>)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'courier limit'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">$myCourier = <span class="keyword">new</span> Courier();</span><br><span class="line">$parcel = <span class="keyword">new</span> Parcel();</span><br><span class="line">$parcel-&gt;weight = rand(<span class="number">1</span>,<span class="number">7</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	$myCourier-&gt;ship($parcel);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"parcel shipped"</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span> (HeavyParcelException $e)&#123;</span><br><span class="line">	<span class="keyword">echo</span> $e-&gt;getMessage();</span><br><span class="line">&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">	<span class="keyword">echo</span> $e-&gt;getMessage();</span><br><span class="line">	<span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="重新抛出异常"><a href="#重新抛出异常" class="headerlink" title="重新抛出异常"></a>重新抛出异常</h3><p>可以在一个 “<code>catch</code>“ 代码块中再次抛出异常。即，为了让用户更容易使用，您可以再次抛出带有对用户比较友好的消息的异常：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">customException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span><br><span class="line"> </span>&#123;</span><br><span class="line"> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">errorMessage</span><span class="params">()</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">  <span class="comment">//error message</span></span><br><span class="line">  $errorMsg = <span class="keyword">$this</span>-&gt;getMessage().<span class="string">' is not a valid E-Mail address.'</span>;</span><br><span class="line">  <span class="keyword">return</span> $errorMsg;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">$email = <span class="string">"someone@example.com"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="comment">//check for "example" in mail address</span></span><br><span class="line">  <span class="keyword">if</span>(strpos($email, <span class="string">"example"</span>) !== <span class="keyword">FALSE</span>)</span><br><span class="line">   &#123;</span><br><span class="line">   <span class="comment">//throw exception if email is not valid</span></span><br><span class="line">   <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>($email);</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)</span><br><span class="line">  &#123;</span><br><span class="line">  <span class="comment">//re-throw exception</span></span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> customException($email);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">catch</span> (customException $e)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">//display custom message</span></span><br><span class="line"> <span class="keyword">echo</span> $e-&gt;errorMessage();</span><br><span class="line"> &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="顶级异常处理程序"><a href="#顶级异常处理程序" class="headerlink" title="顶级异常处理程序"></a>顶级异常处理程序</h3><p>顶级异常处理程序（Top Level Exception Handler）。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">set_exception_handler(<span class="string">"My_expection"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">My_expection</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"这里是顶级异常处理器"</span>;</span><br><span class="line">	error_log(<span class="string">'Unhandled Exception: '</span>.$e-&gt;getMessage().<span class="string">' in file '</span>.$e-&gt;getfile.<span class="string">' on line '</span>.$e-&gt;getLine());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">nohello(<span class="string">"hello"</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line"><span class="keyword">throw</span> $e;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nohello</span><span class="params">($nohello)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span>($nohello == <span class="string">"hello"</span>)&#123;</span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"不能输入hello"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"输入成功"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>例子中，显示了一个异常处理函数<code>My_expection()</code>，然后它调用<code>set_exception_handler()</code>方法注册这个函数来处理未捕获的异常。<br>只有当程序中没有函数来处理异常才有顶级异常处理器来处理异常，如果没有定义顶级异常处理器，则由系统默认的异常处理器来处理异常。</p>
+<h2 id="更多神奇方法"><a href="#更多神奇方法" class="headerlink" title="更多神奇方法"></a>更多神奇方法</h2><h3 id="95-95-call-方法"><a href="#95-95-call-方法" class="headerlink" title="&#95;&#95;call()方法"></a>&#95;&#95;call()方法</h3><p>使用<code>__get()</code>和<code>__set()</code>方法方法处理不是真实存在的属性，<code>__call()</code>方法可以调用一个没有在类中声明的方法。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> $name;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;name=$name;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ship</span><span class="params">($parcel)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($name,$params)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>($name==<span class="string">'sendParcel'</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;send($params[<span class="number">0</span>]);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			error_log(<span class="string">'Failed call to '</span>.$name.<span class="string">' in Courier class '</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>当使用<code>__call()</code>方法代替声明一个方法时，会让IDE自动生成方法名的功能失效。当检查一个类中是否存在一个函数时，该方法将无法显示，在调试时很难追踪错误所在。但就类中的“<strong>伪装</strong>”方法而论，你会有很多收获。</p>
+</blockquote>
+<h3 id="使用-95-95-toString-方法输出对象"><a href="#使用-95-95-toString-方法输出对象" class="headerlink" title="使用&#95;&#95;toString()方法输出对象"></a>使用&#95;&#95;toString()方法输出对象</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Courier</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> $name;</span><br><span class="line">	<span class="keyword">public</span> $home_country;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name,$home_country)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;home_country = $home_country;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;name.<span class="string">'('</span>.<span class="keyword">$this</span>-&gt;home_country.<span class="string">')'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$mycourier = <span class="keyword">new</span> Courier(<span class="string">'A ser'</span>,<span class="string">'China'</span>);</span><br><span class="line"><span class="keyword">echo</span> $mycourier;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当一个对象经常以同一种格式输出时，这是一个非常方便的技巧。</p>
+</blockquote>
+<h3 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h3><blockquote>
+<p>在PHP中，<strong>序列化（serialize）</strong>数据就是将数据转换成一个基于文本的格式，以便存储。<br>对于数组和对象特别有用，因为数组和对象不能直接写入数据库的数据列中，在没有文本表述的情况下也不能在系统之间发送数据和对象。<br>可以序列化一个对象，也可以<strong>反序列化（unserialize）</strong></p>
+</blockquote>
+<p>示例如下（三个文件进行了合并）：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// classa.inc:</span></span><br><span class="line">  </span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">      <span class="keyword">public</span> $one = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">      <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show_one</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;one;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// page1.php:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//include("classa.inc");</span></span><br><span class="line">  </span><br><span class="line">  $a = <span class="keyword">new</span> A;</span><br><span class="line">  $s = serialize($a);</span><br><span class="line">  <span class="comment">// 把变量$s保存起来以便文件page2.php能够读到</span></span><br><span class="line">  file_put_contents(<span class="string">'store'</span>, $s);</span><br><span class="line"></span><br><span class="line"><span class="comment">// page2.php:</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 要正确了解序列化，必须包含下面一个文件</span></span><br><span class="line">  <span class="comment">//include("classa.inc");</span></span><br><span class="line"></span><br><span class="line">  $s = file_get_contents(<span class="string">'store'</span>);</span><br><span class="line">  $a = unserialize($s);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 现在可以使用对象$a里面的函数 show_one()</span></span><br><span class="line">  $a-&gt;show_one();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>file_put_contents()</code> 函数把一个字符串写入文件中。<br>与依次调用 <code>fopen()</code>，<code>fwrite()</code> 以及 <code>fclose()</code> 功能一样。</p>
+<p><code>file_put_contents(file,data,mode,context)</code><br>上述函数的参数mode：可选，FILE_USE_INCLUDE_PATH，FILE_APPEND，LOCK_EX（锁定文件）</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag">#PHP</a>
+          
+            <a href="/tags/面向对象/" rel="tag">#面向对象</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/19/python1/" rel="next" title="python网络编程(1)-start">
+                <i class="fa fa-chevron-left"></i> python网络编程(1)-start
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/23/php-master/"
+           data-title="php高效编程 — 面向对象" data-url="http://lvze1992.github.io/2016/07/23/php-master/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LVZE" />
+          <p class="site-author-name" itemprop="name">LVZE</p>
+          <p class="site-description motion-element" itemprop="description">愿有保护所爱之人的力量</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lvze1992" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP面向对象编程（OOP）"><span class="nav-number">1.</span> <span class="nav-text">PHP面向对象编程（OOP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP命名空间"><span class="nav-number">2.</span> <span class="nav-text">PHP命名空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空间名称术语"><span class="nav-number">2.1.</span> <span class="nav-text">空间名称术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间"><span class="nav-number">2.2.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#魔法常量NAMESPACE"><span class="nav-number">2.3.</span> <span class="nav-text">魔法常量NAMESPACE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间字符串形式调用"><span class="nav-number">2.4.</span> <span class="nav-text">空间字符串形式调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的继承"><span class="nav-number">3.</span> <span class="nav-text">对象的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象和函数"><span class="nav-number">4.</span> <span class="nav-text">对象和函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态性"><span class="nav-number">4.1.</span> <span class="nav-text">多态性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象和引用"><span class="nav-number">4.2.</span> <span class="nav-text">对象和引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为函数参数传递的对象"><span class="nav-number">4.3.</span> <span class="nav-text">作为函数参数传递的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流畅的接口"><span class="nav-number">4.4.</span> <span class="nav-text">流畅的接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#public-private和protected"><span class="nav-number">5.</span> <span class="nav-text">public,private和protected</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#protected"><span class="nav-number">5.1.</span> <span class="nav-text">protected</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getter和setter控制可见性"><span class="nav-number">5.2.</span> <span class="nav-text">getter和setter控制可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用神奇的-95-95-get和-95-95-set方法"><span class="nav-number">5.3.</span> <span class="nav-text">使用神奇的__get和__set方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">6.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPL-Countable-接口示例"><span class="nav-number">6.1.</span> <span class="nav-text">SPL Countable 接口示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明和使用接口"><span class="nav-number">6.2.</span> <span class="nav-text">声明和使用接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#识别对象和接口"><span class="nav-number">6.3.</span> <span class="nav-text">识别对象和接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">7.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理异常"><span class="nav-number">7.1.</span> <span class="nav-text">处理异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抛出异常"><span class="nav-number">7.2.</span> <span class="nav-text">抛出异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕捉特定类型的异常"><span class="nav-number">7.3.</span> <span class="nav-text">捕捉特定类型的异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新抛出异常"><span class="nav-number">7.4.</span> <span class="nav-text">重新抛出异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶级异常处理程序"><span class="nav-number">7.5.</span> <span class="nav-text">顶级异常处理程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多神奇方法"><span class="nav-number">8.</span> <span class="nav-text">更多神奇方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#95-95-call-方法"><span class="nav-number">8.1.</span> <span class="nav-text">__call()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-95-95-toString-方法输出对象"><span class="nav-number">8.2.</span> <span class="nav-text">使用__toString()方法输出对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化对象"><span class="nav-number">8.3.</span> <span class="nav-text">序列化对象</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LVZE</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lvze1992"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Xu0taQgVmvPbFGOMT5OQ0IXp-gzGzoHsz", "MI7oCJoDftF5FsURXlvbRcFl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
