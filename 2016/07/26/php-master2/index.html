@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://lvze1992.github.io/2016/07/26/php-master2/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="PHP高效编程有关数据库的知识。">
-<meta property="og:updated_time" content="2016-07-27T05:58:34.855Z">
+<meta property="og:updated_time" content="2016-07-27T11:25:27.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP高效编程 — 数据库">
 <meta name="twitter:description" content="PHP高效编程有关数据库的知识。">
@@ -369,6 +369,29 @@
         <div style="padding:150px 20px 0px 0px;background-image:url(http://115.28.217.112/github/php/master2.gif); background-position:20% 40%;background-repeat:no-repeat;min-height:100px; max-width:550px;text-align:center; margin:0 auto;"><div class="demo" style="background-color: rgba(0,0,0,0.5);min-width:150px;margin:30px 0 0 40%"><p style="color:#ffffff;">PHP高效编程<br>有关数据库的知识。</p></div></div>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="260" height="86" src="http://music.163.com/outchain/player?type=2&id=3930626&auto=0&height=66"></iframe></p>
+<h2 id="PHP数据库对象"><a href="#PHP数据库对象" class="headerlink" title="PHP数据库对象"></a>PHP数据库对象</h2><p><strong>当前数据库表结构</strong></p>
+<table>
+<thead>
+<tr>
+<th>categories</th>
+<th>recipes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id:int(11)<br>name:varchar(255)</td>
+<td>id:int(11)<br>name:varchar(400)<br> description:text <br>category_id:int(11)<br>chef:varchar(255)<br>created:datetime</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果之前你使用过PHP和MySQL，你可能用过mysql或mysqli类库连接到数据库，如使用mysql_connect()函数。多年来，这是连接到MySQL数据库的标准方式，这种方法的缺点是：每个的扩展都与其它稍有不同，因此使得代码在数据库平台之间的转移变得复杂。<strong>本章将专注讲解更加先进的PDO扩展。</strong></p>
+</blockquote>
+<ol>
+<li>使用PDO连接到数据库</li>
+</ol>
+
       
     </div>
 
@@ -560,7 +583,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP数据库对象"><span class="nav-number">1.</span> <span class="nav-text">PHP数据库对象</span></a></li></ol></div>
             
           </div>
         </section>
