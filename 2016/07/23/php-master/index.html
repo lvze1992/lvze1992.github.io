@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP,面向对象," />
+  <meta name="keywords" content="PHP,面向对象,PHP高效编程," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://lvze1992.github.io/2016/07/23/php-master/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。">
-<meta property="og:updated_time" content="2016-07-26T05:37:23.413Z">
+<meta property="og:updated_time" content="2016-07-27T05:31:11.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP高效编程 — 面向对象">
 <meta name="twitter:description" content="本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。">
@@ -383,7 +383,7 @@
 <li><p><strong>完全限定名称</strong>，或包含了全局前缀操作符的名称，例如 $comment = new \Article\Comment();。在这种情况下，Comment总是被解析为代码中的文字名(literal name)Article\Comment。</p>
 </li>
 </ol>
-<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>代码集成了几个命名空间的常见用法，阅读若有困难，请读者根据<a href="sds">参考链接</a>中的教程学习。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Article&#123; //要么使用&#123;&#125;要么使用;不能混合使用。</span><br><span class="line">const PATH = '/article';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 100;</span><br><span class="line">&#125;</span><br><span class="line">class Comment &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace MessageBoard\share&#123;</span><br><span class="line">const PATH = 'MessageBoard\share';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 200;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace MessageBoard&#123;</span><br><span class="line">const PATH = '/message_board';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 300;</span><br><span class="line">&#125;</span><br><span class="line">class Comment &#123; &#125;</span><br><span class="line">//调用当前空间的常量、函数和类</span><br><span class="line">echo PATH.'&lt;br/&gt;'; ///message_board</span><br><span class="line">echo getCommentTotal().'&lt;br/&gt;'; //300</span><br><span class="line">$comment = new Comment();//调用\MessageBoard空间的类</span><br><span class="line"></span><br><span class="line">//调用Article空间的常量、函数和类</span><br><span class="line">echo \Article\PATH.'&lt;br/&gt;'; ///article</span><br><span class="line">echo \Article\getCommentTotal().'&lt;br/&gt;'; //100</span><br><span class="line">$article_comment = new \Article\Comment();//调用\Article空间的类</span><br><span class="line">var_dump($article_comment);</span><br><span class="line"></span><br><span class="line">echo share\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">&#125;</span><br><span class="line">//导入一个命名空间</span><br><span class="line">namespace BBS&#123;</span><br><span class="line">use MessageBoard\share;//导入命名空间后可使用限定名称调用元素</span><br><span class="line">echo share\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">use MessageBoard\share as Sha;//使用别名代替空间名</span><br><span class="line">echo Sha\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">use MessageBoard\Comment;//导入类后可使用非限定名称调用元素,类也可以使用别名</span><br><span class="line">$article_comment = new Comment();</span><br><span class="line">var_dump($article_comment);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>代码集成了几个命名空间的常见用法，阅读若有困难，请读者根据<a href="#PHP命名空间">参考链接</a>中的教程学习。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Article&#123; //要么使用&#123;&#125;要么使用;不能混合使用。</span><br><span class="line">const PATH = '/article';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 100;</span><br><span class="line">&#125;</span><br><span class="line">class Comment &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace MessageBoard\share&#123;</span><br><span class="line">const PATH = 'MessageBoard\share';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 200;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace MessageBoard&#123;</span><br><span class="line">const PATH = '/message_board';</span><br><span class="line">function getCommentTotal() &#123;</span><br><span class="line">    return 300;</span><br><span class="line">&#125;</span><br><span class="line">class Comment &#123; &#125;</span><br><span class="line">//调用当前空间的常量、函数和类</span><br><span class="line">echo PATH.'&lt;br/&gt;'; ///message_board</span><br><span class="line">echo getCommentTotal().'&lt;br/&gt;'; //300</span><br><span class="line">$comment = new Comment();//调用\MessageBoard空间的类</span><br><span class="line"></span><br><span class="line">//调用Article空间的常量、函数和类</span><br><span class="line">echo \Article\PATH.'&lt;br/&gt;'; ///article</span><br><span class="line">echo \Article\getCommentTotal().'&lt;br/&gt;'; //100</span><br><span class="line">$article_comment = new \Article\Comment();//调用\Article空间的类</span><br><span class="line">var_dump($article_comment);</span><br><span class="line"></span><br><span class="line">echo share\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">&#125;</span><br><span class="line">//导入一个命名空间</span><br><span class="line">namespace BBS&#123;</span><br><span class="line">use MessageBoard\share;//导入命名空间后可使用限定名称调用元素</span><br><span class="line">echo share\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">use MessageBoard\share as Sha;//使用别名代替空间名</span><br><span class="line">echo Sha\PATH.'&lt;br/&gt;';//MessageBoard\share</span><br><span class="line">use MessageBoard\Comment;//导入类后可使用非限定名称调用元素,类也可以使用别名</span><br><span class="line">$article_comment = new Comment();</span><br><span class="line">var_dump($article_comment);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="魔法常量NAMESPACE"><a href="#魔法常量NAMESPACE" class="headerlink" title="魔法常量NAMESPACE"></a>魔法常量<strong>NAMESPACE</strong></h3><blockquote>
 <p>PHP提供了namespace关键字和<strong>NAMESPACE</strong>魔法常量动态的访问元素</p>
 </blockquote>
@@ -460,6 +460,8 @@
           
             <a href="/tags/面向对象/" rel="tag">#面向对象</a>
           
+            <a href="/tags/PHP高效编程/" rel="tag">#PHP高效编程</a>
+          
         </div>
       
 
@@ -474,6 +476,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/26/php-master2/" rel="prev" title="PHP高效编程 — 数据库">
+                PHP高效编程 — 数据库 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -568,7 +574,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -576,7 +582,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -585,7 +591,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
