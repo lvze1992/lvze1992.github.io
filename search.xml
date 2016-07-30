@@ -10,11 +10,8 @@
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <p><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/like/css/style.css"></p>
-<div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2">45</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div> </div></div>
-
-<script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+<p><div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2" name="likeCount">45</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div> </div></div><div style="clear:both;content:''"></div></p>
+<script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script><script type="text/javascript">
 $(document).ready(function(){
 var t;
 var timeOnce;
@@ -78,7 +75,7 @@ var n=5;
 });
 </script>
 
-]]></content>
+<h2 id="jkj"><a href="#jkj" class="headerlink" title="jkj"></a>jkj</h2>]]></content>
     </entry>
     
     <entry>
