@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP,PHP高效编程,API," />
+  <meta name="keywords" content="PHP,PHP高效编程,API,点赞," />
 
 
 
@@ -90,10 +90,13 @@
 <meta property="og:url" content="http://lvze1992.github.io/2016/07/30/php-master-api/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="在本章中我们要研究以API为基础设计系统架构的可能性。">
-<meta property="og:updated_time" content="2016-07-31T01:28:24.702Z">
+<meta property="og:image" content="http://115.28.217.112/github/php/API/1.PNG">
+<meta property="og:image" content="http://115.28.217.112/github/php/API/2.PNG">
+<meta property="og:updated_time" content="2016-07-31T08:57:06.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP高效编程 — API">
 <meta name="twitter:description" content="在本章中我们要研究以API为基础设计系统架构的可能性。">
+<meta name="twitter:image" content="http://115.28.217.112/github/php/API/1.PNG">
 
 
 
@@ -371,99 +374,104 @@
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <p><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/like/css/style.css"></p>
 <p><div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2" name="likeCount">45</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div><form name="countForm"><input name="countNumber" type="hidden" id="countNumber" value="---"></form></div></div><div style="clear:both;content:''"></div></p>
-<script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script><script type="text/javascript">
-$(document).ready(function(){
-var t;
-var timeOnce;
-var n=5;
-countCallback();
-function countCallback() {
-        var j = $("form").serializeArray();//序列化name/value
-        $.ajax({
-            type: 'GET',  //这里用GET
-            url: 'http://115.28.217.112/github/extend/like/likecount.php',
-            dataType: 'jsonp',  //类型
-            data: j,
-            jsonp: 'callback', //jsonp回调参数，必需
-            async: false,
-            success: function(result) {//返回的json数据
-                //alert(result.message); //回调输出
-                result = result || {};
-                if (result.msg=='newcount'&&n>0){
-                    $("#likeCount2").html(result.number);
-                    $("#countNumber").val(result.number);
-                }
-
-            },
-            timeout: 3000
-        })
-}
-
-    $('body').on("click",'.heart',function(){
-        var A=$(this).attr("id");
-        var B=A.split("like");
-        var messageID=B[1];
-        //var C=parseInt($("#likeCount"+messageID).html());
-        $(this).css("background-position","")
-        var D=$(this).attr("rel");
-        if(n==1){
-            n=0;
-            countCallback();
-            $("#likeIt"+messageID).html("I love YOU !");
-            $("#likeCount"+messageID).html("1314");
-            surprise();
-                function surprise() 
-                { 
-                    $("#like"+messageID).addClass("heartAnimation").attr("rel","like");
-                    $("#like"+messageID).css("background-position","right");
-                    setTimeout(test1,600);
-                function test1() 
-                { 
-                    $("#like"+messageID).removeClass("heartAnimation").attr("rel","like");
-                    $("#like"+messageID).css("background-position","right");
-                }
-                    setTimeout(surprise,800);
-                } 
-        }else if(n>1){
-            if(timeOnce==1){
-            }else{
-                if(D === 'like') { 
-                    n=n-1;
-                    //$("#likeCount"+messageID).html(C+1);
-                //...
-                    countCallback();
-                //...
-                    //$("#countNumber").val(C+1);
-                    if(n==4)$("#likeIt"+messageID).html("I");
-                    if(n==3)$("#likeIt"+messageID).html("I love");
-                    if(n==2)$("#likeIt"+messageID).html("I love Y");
-                    if(n==1)$("#likeIt"+messageID).html("I love YO");
-                    $(this).addClass("heartAnimation").attr("rel","like");
-                    timeOnce=1;
-                    t=setTimeout(test,600);
-                    function test() 
-                    { 
-                        timeOnce=0;
-                        clearTimeout(t);
-                        $("#like"+messageID).removeClass("heartAnimation").attr("rel","like");
-                        $("#like"+messageID).css("background-position","right");
-                    } 
-                }
-                else{
-                    $("#likeCount"+messageID).html(C-1);
-                    $(this).removeClass("heartAnimation").attr("rel","like");
-                    $(this).css("background-position","left");
-                }
-
+<p><script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script><script type="text/javascript"><br>$(document).ready(function(){<br>var t;<br>var timeOnce;<br>var n=5;<br>countCallback();<br>function countCallback() {<br>        var j = $(“form”).serializeArray();//序列化name/value<br>        $.ajax({<br>            type: ‘GET’,  //这里用GET<br>            url: ‘<a href="http://115.28.217.112/github/extend/like/likecount.php">http://115.28.217.112/github/extend/like/likecount.php</a>‘,<br>            dataType: ‘jsonp’,  //类型<br>            data: j,<br>            jsonp: ‘callback’, //jsonp回调参数，必需<br>            async: false,<br>            success: function(result) {//返回的json数据<br>                //alert(result.message); //回调输出<br>                result = result || {};<br>                if (result.msg==’newcount’&amp;&amp;n&gt;0){<br>                    $(“#likeCount2”).html(result.number);<br>                    $(“#countNumber”).val(result.number);<br>                }</p>
+<pre><code>    },
+    timeout: 3000
+})
+</code></pre><p>}</p>
+<pre><code>$(&apos;body&apos;).on(&quot;click&quot;,&apos;.heart&apos;,function(){
+    var A=$(this).attr(&quot;id&quot;);
+    var B=A.split(&quot;like&quot;);
+    var messageID=B[1];
+    //var C=parseInt($(&quot;#likeCount&quot;+messageID).html());
+    $(this).css(&quot;background-position&quot;,&quot;&quot;)
+    var D=$(this).attr(&quot;rel&quot;);
+    if(n==1){
+        n=0;
+        countCallback();
+        $(&quot;#likeIt&quot;+messageID).html(&quot;I love YOU !&quot;);
+        $(&quot;#likeCount&quot;+messageID).html(&quot;1314&quot;);
+        surprise();
+            function surprise() 
+            { 
+                $(&quot;#like&quot;+messageID).addClass(&quot;heartAnimation&quot;).attr(&quot;rel&quot;,&quot;like&quot;);
+                $(&quot;#like&quot;+messageID).css(&quot;background-position&quot;,&quot;right&quot;);
+                setTimeout(test1,600);
+            function test1() 
+            { 
+                $(&quot;#like&quot;+messageID).removeClass(&quot;heartAnimation&quot;).attr(&quot;rel&quot;,&quot;like&quot;);
+                $(&quot;#like&quot;+messageID).css(&quot;background-position&quot;,&quot;right&quot;);
             }
+                setTimeout(surprise,800);
+            } 
+    }else if(n&gt;1){
+        if(timeOnce==1){
+        }else{
+            if(D === &apos;like&apos;) { 
+                n=n-1;
+                //$(&quot;#likeCount&quot;+messageID).html(C+1);
+            //...
+                countCallback();
+            //...
+                //$(&quot;#countNumber&quot;).val(C+1);
+                if(n==4)$(&quot;#likeIt&quot;+messageID).html(&quot;I&quot;);
+                if(n==3)$(&quot;#likeIt&quot;+messageID).html(&quot;I love&quot;);
+                if(n==2)$(&quot;#likeIt&quot;+messageID).html(&quot;I love Y&quot;);
+                if(n==1)$(&quot;#likeIt&quot;+messageID).html(&quot;I love YO&quot;);
+                $(this).addClass(&quot;heartAnimation&quot;).attr(&quot;rel&quot;,&quot;like&quot;);
+                timeOnce=1;
+                t=setTimeout(test,600);
+                function test() 
+                { 
+                    timeOnce=0;
+                    clearTimeout(t);
+                    $(&quot;#like&quot;+messageID).removeClass(&quot;heartAnimation&quot;).attr(&quot;rel&quot;,&quot;like&quot;);
+                    $(&quot;#like&quot;+messageID).css(&quot;background-position&quot;,&quot;right&quot;);
+                } 
+            }
+            else{
+                $(&quot;#likeCount&quot;+messageID).html(C-1);
+                $(this).removeClass(&quot;heartAnimation&quot;).attr(&quot;rel&quot;,&quot;like&quot;);
+                $(this).css(&quot;background-position&quot;,&quot;left&quot;);
+            }
+
         }
-    });
-
-
+    }
 });
-</script>
+</code></pre><p>});<br></script></p>
+<h2 id="面向服务的架构"><a href="#面向服务的架构" class="headerlink" title="面向服务的架构"></a>面向服务的架构</h2><blockquote>
+<p>简述： <strong>SOA (Service-Oriented Architecture, 面向服务的架构)</strong>是在各种PHP应用程序中日益得到普及的方法。它是一个服务层的系统，提供系统需要的所有功能，但这个服务提供的是应用层，并未链接到表现层。</p>
+</blockquote>
+<h2 id="数据格式-JSON和XML"><a href="#数据格式-JSON和XML" class="headerlink" title="数据格式:JSON和XML"></a>数据格式:JSON和XML</h2><p>主要讲解JSON和XML。其概念已经在先前的微信开发知识中提及，内容非常简短。<strong>请配合阅读。</strong></p>
+<blockquote>
+<p><a href="http://zak7.com/2016/07/05/wechat-msg-encapsulation/" target="_blank" rel="external">微信消息的封装：XML或JSON</a></p>
+</blockquote>
+<h3 id="使用JSON"><a href="#使用JSON" class="headerlink" title="使用JSON"></a>使用JSON</h3><p>在PHP中，我们用<code>json_encode()</code>函数编写JSON，用<code>json_decode()</code>将它读取回来。<br><strong><span style="color:#ffffff; background-color:#3366ff">注意: </span></strong>&nbsp;因为我们想通过<code>json_decode()</code>获得一个关联数组而不是一个对象，因此我们需要传入<code>true</code>作为<code>json_decode()</code>的第二个参数。</p>
+<h3 id="使用XML"><a href="#使用XML" class="headerlink" title="使用XML"></a>使用XML</h3><p>在PHP中，我们有很多方式使用XML，其中最重要的是DOM扩展和SimpleXML扩展。你可以调用单一的函数在两种格式之间切换使用，因此，当开始使用一种方式，而后为了一个特殊的操作而使用另一种方式是没有意义的。<br>以SimpleXML为例。</p>
+<h4 id="构建XML"><a href="#构建XML" class="headerlink" title="构建XML"></a>构建XML</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$simplexml = <span class="keyword">new</span> SimpleXMLElement</span><br><span class="line">	(<span class="string">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;concerts /&gt;'</span>);</span><br><span class="line">$concert1 = $simplexml-&gt;addChild(<span class="string">'concert'</span>);</span><br><span class="line">$concert1-&gt;addChild(<span class="string">"title"</span>,<span class="string">"The Magic Flute"</span>);</span><br><span class="line">$concert1-&gt;addChild(<span class="string">"time"</span>,<span class="number">1329636600</span>);</span><br><span class="line"></span><br><span class="line">$concert2 = $simplexml-&gt;addChild(<span class="string">'concert'</span>);</span><br><span class="line">$concert2-&gt;addChild(<span class="string">"title"</span>,<span class="string">"Mozart's Requiem"</span>);</span><br><span class="line">$concert2-&gt;addChild(<span class="string">"time"</span>,<span class="number">1330636400</span>);</span><br><span class="line">header(<span class="string">'content-type:text/xml'</span>) ;</span><br><span class="line"><span class="keyword">echo</span> $simplexml-&gt;asXML();</span><br></pre></td></tr></table></figure>
+<p><strong>上例输出结果：</strong><br><img src="http://115.28.217.112/github/php/API/1.PNG"><br><strong>上例中利用</strong><code>simplexml_load_string($xml);</code><strong>输出后的结果为：</strong></p>
+<pre><code>SimpleXMLElement Object ( 
+    [concert] =&gt; Array ( 
+    [0] =&gt; SimpleXMLElement Object ( 
+        [title] =&gt; The Magic Flute 
+        [time] =&gt; 1329636600 ) 
+    [1] =&gt; SimpleXMLElement Object ( 
+        [title] =&gt; Mozart&apos;s Requiem 
+        [time] =&gt; 1330636400 ) 
+    ) 
+) 
+</code></pre><h4 id="读取XML"><a href="#读取XML" class="headerlink" title="读取XML"></a>读取XML</h4><p>SimpleXML最大的特色是可以遍历XML数据，并且访问单个元素。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$xml=<span class="string">'&lt;concerts&gt;</span><br><span class="line"> &lt;concert&gt;</span><br><span class="line">  &lt;title&gt;The Magic Flute&lt;/title&gt; </span><br><span class="line">  &lt;time&gt;1329636600&lt;/time&gt; </span><br><span class="line"> &lt;/concert&gt;</span><br><span class="line"> &lt;concert&gt;</span><br><span class="line">  &lt;title&gt;Mozart\'s Requiem&lt;/title&gt; </span><br><span class="line">  &lt;time&gt;1330636400&lt;/time&gt; </span><br><span class="line"> &lt;/concert&gt;</span><br><span class="line">&lt;/concerts&gt;'</span>;</span><br><span class="line">$concert_list=simplexml_load_string($xml);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;table&gt;"</span>;</span><br><span class="line"><span class="keyword">foreach</span>($concert_list <span class="keyword">as</span> $concert)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>.$concert-&gt;title.<span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>.date(<span class="string">'g:i jS M'</span>,(string)$concert-&gt;time).<span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;/table&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Featured concert: "</span>.$concert_list-&gt;concert[<span class="number">1</span>]-&gt;title;</span><br></pre></td></tr></table></figure></p>
+<p><strong>上例输出结果：</strong></p>
+<pre><code>The Magic Flute 7:30 19th Feb 
+Mozart&apos;s Requiem 9:13 1st Mar 
+Featured concertMozart&apos;s Requiem
+</code></pre><blockquote>
+<p>如果我们再循环里通过<code>var_dump()</code>检查每一个<code>$concert</code>值，你会发现它们实际上是<code>SimpleXMLElement</code>对象，而不是简单的数组。当我们输出<code>$concert-&gt;title</code>时，<code>SimpleXML</code>知道如何将<code>$concert-&gt;title</code>表示为一个字符串，因此，如预期的输出对象的值。这也是为什么在<code>date()</code>函数中，要将第二个参数类型转换为字符串。</p>
+</blockquote>
+<h4 id="递归创建XML"><a href="#递归创建XML" class="headerlink" title="递归创建XML"></a>递归创建XML</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SimpleXmlElement - 递归创建xml</span></span><br><span class="line">$arr = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'张三'</span> ,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="string">'23'</span> , </span><br><span class="line">    <span class="string">'job'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">'title'</span> =&gt; <span class="string">'项目经理'</span> ,</span><br><span class="line">        <span class="string">'salary'</span> =&gt; <span class="string">'88888'</span> ,</span><br><span class="line">        <span class="string">'team'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'one'</span> =&gt; <span class="string">'team1'</span> ,</span><br><span class="line">            <span class="string">'two'</span> =&gt; <span class="string">'team2'</span> ,</span><br><span class="line">            <span class="string">'subteam'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">'AAA'</span>,<span class="string">'BBBB'</span>,<span class="string">'CCC'</span>,<span class="string">'DDDD'</span></span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arr2xml</span><span class="params">($arr, $node = null)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($node === <span class="keyword">null</span>)&#123;</span><br><span class="line">        $simxml = <span class="keyword">new</span> simpleXmlElement(<span class="string">'&lt;?xml </span><br><span class="line">		version="1.0" encoding="UTF-8"?&gt;&lt;root&gt;&lt;/root&gt;'</span>) ;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $simxml = $node ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $k =&gt; $v) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_array($v))&#123;</span><br><span class="line">            arr2xml($v,$simxml-&gt;addChild($k));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (is_numeric($k))&#123;</span><br><span class="line">            $simxml-&gt;addChild(<span class="string">'item'</span>,$v) ;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $simxml-&gt;addChild($k,$v) ;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $simxml-&gt;savexml() ;</span><br><span class="line">&#125;</span><br><span class="line">header(<span class="string">'content-type:text/xml'</span>) ;</span><br><span class="line"><span class="keyword">echo</span> arr2xml($arr) ;</span><br></pre></td></tr></table></figure>
+<p><strong>上例输出结果：</strong><br><img src="http://115.28.217.112/github/php/API/2.PNG" alt=""></p>
+<h2 id="HTTP-超文本传输协议"><a href="#HTTP-超文本传输协议" class="headerlink" title="HTTP:超文本传输协议"></a>HTTP:超文本传输协议</h2><p>如果你想了解缓存，不同文件类型的传递，特别是我们使用Web服务时如何使用其它数据格式，那么以HTTP为基础的Web服务会让你受益匪浅。关注本教程示例中突出的HTTp特性，忽略则风险自负。</p>
 
-<h2 id="–"><a href="#–" class="headerlink" title="–"></a>–</h2>
       
     </div>
 
@@ -489,6 +497,8 @@ function countCallback() {
             <a href="/tags/PHP高效编程/" rel="tag">#PHP高效编程</a>
           
             <a href="/tags/API/" rel="tag">#API</a>
+          
+            <a href="/tags/点赞/" rel="tag">#点赞</a>
           
         </div>
       
@@ -615,7 +625,7 @@ function countCallback() {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -655,7 +665,7 @@ function countCallback() {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#–"><span class="nav-number">1.</span> <span class="nav-text">–</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向服务的架构"><span class="nav-number">1.</span> <span class="nav-text">面向服务的架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式-JSON和XML"><span class="nav-number">2.</span> <span class="nav-text">数据格式:JSON和XML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用JSON"><span class="nav-number">2.1.</span> <span class="nav-text">使用JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用XML"><span class="nav-number">2.2.</span> <span class="nav-text">使用XML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构建XML"><span class="nav-number">2.2.1.</span> <span class="nav-text">构建XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取XML"><span class="nav-number">2.2.2.</span> <span class="nav-text">读取XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归创建XML"><span class="nav-number">2.2.3.</span> <span class="nav-text">递归创建XML</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-超文本传输协议"><span class="nav-number">3.</span> <span class="nav-text">HTTP:超文本传输协议</span></a></li></ol></div>
             
           </div>
         </section>
