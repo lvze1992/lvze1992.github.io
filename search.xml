@@ -5,12 +5,12 @@
     
     <entry>
       <title><![CDATA[PHP高效编程 — API]]></title>
-      <url>http://lvze1992.github.io/2016/07/30/php-master-api/</url>
+      <url>http://zak.com/2016/07/30/php-master-api/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">在本章中我们要研究以API为基础设计系统架构的可能性。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <p><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/like/css/style.css"></p>
-<p><div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2" name="likeCount">45</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div><form name="countForm"><input name="countNumber" type="hidden" id="countNumber" value="---"></form></div></div><div style="clear:both;content:''"></div></p>
+<p><div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2" name="likeCount">—</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div><form name="countForm"><input name="countNumber" type="hidden" id="countNumber" value="---"></form></div></div><div style="clear:both;content:''"></div></p>
 <script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script><script type="text/javascript">
 $(document).ready(function(){
 var t;
@@ -135,12 +135,12 @@ Featured concertMozart&apos;s Requiem
 <h4 id="递归创建XML"><a href="#递归创建XML" class="headerlink" title="递归创建XML"></a>递归创建XML</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SimpleXmlElement - 递归创建xml</span></span><br><span class="line">$arr = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'张三'</span> ,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="string">'23'</span> , </span><br><span class="line">    <span class="string">'job'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">'title'</span> =&gt; <span class="string">'项目经理'</span> ,</span><br><span class="line">        <span class="string">'salary'</span> =&gt; <span class="string">'88888'</span> ,</span><br><span class="line">        <span class="string">'team'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'one'</span> =&gt; <span class="string">'team1'</span> ,</span><br><span class="line">            <span class="string">'two'</span> =&gt; <span class="string">'team2'</span> ,</span><br><span class="line">            <span class="string">'subteam'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">'AAA'</span>,<span class="string">'BBBB'</span>,<span class="string">'CCC'</span>,<span class="string">'DDDD'</span></span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arr2xml</span><span class="params">($arr, $node = null)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($node === <span class="keyword">null</span>)&#123;</span><br><span class="line">        $simxml = <span class="keyword">new</span> simpleXmlElement(<span class="string">'&lt;?xml </span><br><span class="line">		version="1.0" encoding="UTF-8"?&gt;&lt;root&gt;&lt;/root&gt;'</span>) ;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $simxml = $node ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $k =&gt; $v) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_array($v))&#123;</span><br><span class="line">            arr2xml($v,$simxml-&gt;addChild($k));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (is_numeric($k))&#123;</span><br><span class="line">            $simxml-&gt;addChild(<span class="string">'item'</span>,$v) ;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $simxml-&gt;addChild($k,$v) ;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $simxml-&gt;savexml() ;</span><br><span class="line">&#125;</span><br><span class="line">header(<span class="string">'content-type:text/xml'</span>) ;</span><br><span class="line"><span class="keyword">echo</span> arr2xml($arr) ;</span><br></pre></td></tr></table></figure>
 <p><strong>上例输出结果：</strong><br><img src="http://115.28.217.112/github/php/API/2.PNG" alt=""></p>
 <h2 id="HTTP-超文本传输协议"><a href="#HTTP-超文本传输协议" class="headerlink" title="HTTP:超文本传输协议"></a>HTTP:超文本传输协议</h2><p>如果你想了解缓存，不同文件类型的传递，特别是我们使用Web服务时如何使用其它数据格式，那么以HTTP为基础的Web服务会让你受益匪浅。关注本教程示例中突出的HTTp特性，忽略则风险自负。</p>
-]]></content>
+<h2 id="发送HTTP请求"><a href="#发送HTTP请求" class="headerlink" title="发送HTTP请求"></a>发送HTTP请求</h2><h3 id="PHP-cURL扩展"><a href="#PHP-cURL扩展" class="headerlink" title="PHP cURL扩展"></a>PHP cURL扩展</h3>]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[PHP高效编程 — 数据库]]></title>
-      <url>http://lvze1992.github.io/2016/07/26/php-master2/</url>
+      <url>http://zak.com/2016/07/26/php-master2/</url>
       <content type="html"><![CDATA[<div style="padding:150px 20px 0px 0px;background-image:url(http://115.28.217.112/github/php/master2.gif); background-position:20% 40%;background-repeat:no-repeat;min-height:100px; max-width:550px;text-align:center; margin:0 auto;"><div class="demo" style="background-color: rgba(0,0,0,0.5);min-width:150px;margin:30px 0 0 40%"><p style="color:#ffffff;">PHP高效编程<br>有关数据库的知识。</p></div></div>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -225,7 +225,7 @@ Featured concertMozart&apos;s Requiem
     
     <entry>
       <title><![CDATA[PHP高效编程 — 面向对象]]></title>
-      <url>http://lvze1992.github.io/2016/07/23/php-master/</url>
+      <url>http://zak.com/2016/07/23/php-master/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">本教程将以《PHP Master：Write Cutting-Edge Code》一书为基础，整理有关PHP高效编程的知识。本文整理了PHP面向对象编程的相关知识。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -300,7 +300,7 @@ Featured concertMozart&apos;s Requiem
     
     <entry>
       <title><![CDATA[python网络编程(1)-start]]></title>
-      <url>http://lvze1992.github.io/2016/07/19/python1/</url>
+      <url>http://zak.com/2016/07/19/python1/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">开始学习Python。我选取了《Python网络编程攻略》一书，没有理由，完全是随机选择。推荐同学自行寻找入门书籍，以一个小项目为目标，实践中见招拆招。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -343,7 +343,7 @@ Featured concertMozart&apos;s Requiem
     
     <entry>
       <title><![CDATA[PHP回顾]]></title>
-      <url>http://lvze1992.github.io/2016/07/18/php-review/</url>
+      <url>http://zak.com/2016/07/18/php-review/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">写本文的目的主要是为了自己可以“有章可循”，避免陷入不断遗忘而复习的怪圈。<br>在本文中，我将网站开发中经常用到的<strong> PHP基本语法知识 </strong>做记录，算是回顾性质的。我也建议读者在学习开发语言时做阶段性记录，共勉。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -604,12 +604,12 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
     
     <entry>
       <title><![CDATA[微信消息的封装：XML或JSON]]></title>
-      <url>http://lvze1992.github.io/2016/07/05/wechat-msg-encapsulation/</url>
+      <url>http://zak.com/2016/07/05/wechat-msg-encapsulation/</url>
       <content type="html"><![CDATA[<p style="background-color:#f4dab0;padding:15px">此教程将会为大家讲解微信公众号开发的基础知识 —— 微信消息的封装：XML或JSON。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <blockquote>
-<p>此系列教程独立于“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发</span></a>”系列的教程。主要给大家讲解微信公众号开发过程中可能会接触到的一些<span style="color:#ffffff; background-color:#3366ff">基础理论知识</span>。本次讲解微信消息的封装：XML或JSON。</p>
+<p>此系列教程独立于“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/" target="_blank" rel="external"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发</span></a>”系列的教程。主要给大家讲解微信公众号开发过程中可能会接触到的一些<span style="color:#ffffff; background-color:#3366ff">基础理论知识</span>。本次讲解微信消息的封装：XML或JSON。</p>
 </blockquote>
 <h2 id="微信用XML封装消息"><a href="#微信用XML封装消息" class="headerlink" title="微信用XML封装消息"></a>微信用XML封装消息</h2><h3 id="XML语法简介"><a href="#XML语法简介" class="headerlink" title="XML语法简介"></a>XML语法简介</h3><ol>
 <li><p><strong>XML元素命名规则</strong></p>
@@ -654,13 +654,13 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
 <h2 id="微信封装的另一种格式：JSON"><a href="#微信封装的另一种格式：JSON" class="headerlink" title="微信封装的另一种格式：JSON"></a>微信封装的另一种格式：JSON</h2><p>与XML相比，JSON比XML更小、更快，更易解析。</p>
 <h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>对象在JS中表示用“{}”括起来的内容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">	<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">	<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="JSON数组"><a href="#JSON数组" class="headerlink" title="JSON数组"></a>JSON数组</h3><p>数组在JS中是用中括号“[]”括起来的内容。<br>例如：<br><code>[&quot;php&quot;,&quot;javascript&quot;,&quot;vb&quot;]</code><br>对象和数组可以相互嵌套。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小明"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"男"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"12312344"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"name"</span>:<span class="string">"王小小"</span>,</span><br><span class="line">		<span class="string">"sex"</span>:<span class="string">"女"</span>,</span><br><span class="line">		<span class="string">"mobile"</span>:<span class="string">"167575675"</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>你将会在<span style="color:#ffffff; background-color:#3366ff">自定义菜单</span>中运用到JSON数据格式的知识。可以前往实践一下，点击以下链接跳转：<br><a href="http://lvze1992.github.io/2016/07/03/wechat-menu/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发 — 自定义菜单</span></a>。</p>
+<p>你将会在<span style="color:#ffffff; background-color:#3366ff">自定义菜单</span>中运用到JSON数据格式的知识。可以前往实践一下，点击以下链接跳转：<br><a href="http://lvze1992.github.io/2016/07/03/wechat-menu/" target="_blank" rel="external"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发 — 自定义菜单</span></a>。</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;自定义菜单]]></title>
-      <url>http://lvze1992.github.io/2016/07/03/wechat-menu/</url>
+      <url>http://zak.com/2016/07/03/wechat-menu/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">有了自定义菜单，公众号看起来才像公众号嘛。而且可以给订阅者提供更好的交互体验。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -670,7 +670,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
 <h2 id="实现结果截图"><a href="#实现结果截图" class="headerlink" title="实现结果截图"></a>实现结果截图</h2><p><img src="http://115.28.217.112/github/wechat/wechat_menu/1.jpg" alt=""></p>
 <h2 id="自定义菜单实现"><a href="#自定义菜单实现" class="headerlink" title="自定义菜单实现"></a>自定义菜单实现</h2><p>首先，微信公众号的菜单有多种方式可以设定。本教程提供的只是其中一种，有兴趣的读者可以在网上查找其余方法。</p>
 <h3 id="新浪云部署"><a href="#新浪云部署" class="headerlink" title="新浪云部署"></a>新浪云部署</h3><ol>
-<li>打开新浪云，进入<span style="color:#ffffff; background-color:#3366ff">控制台-云应用SAE</span>，点击<span style="color:#ffffff; background-color:#3366ff">进入控制台</span>。页面跳转后，选择先前你创建的应用(如果没有，新建一个应用即可，或阅读先前的教程-“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">微信公众平台开发</a>”)。再依次点击<span style="color:#ffffff; background-color:#3366ff">应用（左侧）-代码管理</span>，进入代码管理页面。如下：<br><img src="http://115.28.217.112/github/wechat/wechat_menu/2.jpg" alt=""></li>
+<li>打开新浪云，进入<span style="color:#ffffff; background-color:#3366ff">控制台-云应用SAE</span>，点击<span style="color:#ffffff; background-color:#3366ff">进入控制台</span>。页面跳转后，选择先前你创建的应用(如果没有，新建一个应用即可，或阅读先前的教程-“<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/" target="_blank" rel="external">微信公众平台开发</a>”)。再依次点击<span style="color:#ffffff; background-color:#3366ff">应用（左侧）-代码管理</span>，进入代码管理页面。如下：<br><img src="http://115.28.217.112/github/wechat/wechat_menu/2.jpg" alt=""></li>
 <li><p>点击“下载代码包”，下载本次教程的代码包。</p>
 <blockquote>
 <p><strong><a href="http://115.28.217.112/github/wechat/wechat_menu/index4.zip" target="_blank" rel="external"><span style="color:red;">&gt;&gt;&gt;下载代码包</span></a></strong><br>此代码包内已整合了先前教程的所有内容。</p>
@@ -699,12 +699,12 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
     
     <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;人脸识别]]></title>
-      <url>http://lvze1992.github.io/2016/07/01/wechat-face/</url>
+      <url>http://zak.com/2016/07/01/wechat-face/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">本文为“微信公众平台二次开发”的高级教程，之所以放在前面，是因为它感觉上比较高端，可以培养学生的兴趣。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <blockquote>
-<p>准备工作：<br>本文以先前的教程为基础，且假定读者已经实现教程中的例子。<br>若你未完成，请至上一篇教程“<a href="http://lvze1992.github.io/2016/06/30/wechat-msg/#more"><span style="color:#ffffff; background-color:#3366ff">消息类型</span></a>”进行学习，或到<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台</span></a>分类下阅读并学习先前文章。</p>
+<p>准备工作：<br>本文以先前的教程为基础，且假定读者已经实现教程中的例子。<br>若你未完成，请至上一篇教程“<a href="http://lvze1992.github.io/2016/06/30/wechat-msg/#more" target="_blank" rel="external"><span style="color:#ffffff; background-color:#3366ff">消息类型</span></a>”进行学习，或到<a href="http://lvze1992.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/" target="_blank" rel="external"><span style="color:#ffffff; background-color:#3366ff">微信公众平台</span></a>分类下阅读并学习先前文章。</p>
 </blockquote>
 <h2 id="你可能需要的链接"><a href="#你可能需要的链接" class="headerlink" title="你可能需要的链接"></a>你可能需要的链接</h2><blockquote>
 <p><a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">微信公众平台测试号登录页面</a><br><a href="http://t.cn/R5R2Owg" target="_blank" rel="external">新浪云应用http://www.sinacloud.com/</a><br><a href="http://115.28.217.112/github/wechat/wechat_face/0.jpg" target="_blank" rel="external">↓↓ 本教程测试公众号二维码 ↓↓</a><br><img src="http://115.28.217.112/github/wechat/wechat_face/0.jpg" width="150" height="150"></p>
@@ -736,12 +736,12 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
     
     <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;消息类型]]></title>
-      <url>http://lvze1992.github.io/2016/07/01/wechat-msg/</url>
+      <url>http://zak.com/2016/07/01/wechat-msg/</url>
       <content type="html"><![CDATA[<p style="background-color:#f4dab0;padding:15px">在本文中，读者可以了解微信消息的多种格式，并实现接收和回复各种消息。可收藏供以后学习或开发。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
 <blockquote>
-<p>准备工作：<br>本文以先前的入门教程为基础，且假定读者已经实现该教程。<br>若你未完成，请移步<a href="http://lvze1992.github.io/2016/06/30/wechat/#more"><span style="color:#ffffff; background-color:#3366ff">入门教程</span></a>进行学习。</p>
+<p>准备工作：<br>本文以先前的入门教程为基础，且假定读者已经实现该教程。<br>若你未完成，请移步<a href="http://lvze1992.github.io/2016/06/30/wechat/#more" target="_blank" rel="external"><span style="color:#ffffff; background-color:#3366ff">入门教程</span></a>进行学习。</p>
 </blockquote>
 <h2 id="实验结果截图"><a href="#实验结果截图" class="headerlink" title="实验结果截图"></a>实验结果截图</h2><p><img src="http://115.28.217.112/github/wechat/wechat_msg/1.jpg" alt=""><img src="http://115.28.217.112/github/wechat/wechat_msg/2.jpg" alt=""><img src="http://115.28.217.112/github/wechat/wechat_msg/3.jpg" alt=""></p>
 <h2 id="多类型消息收发实现"><a href="#多类型消息收发实现" class="headerlink" title="多类型消息收发实现"></a>多类型消息收发实现</h2><ol>
@@ -819,7 +819,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
     
     <entry>
       <title><![CDATA[微信公众平台的二次开发&ensp;—&ensp;快速上手]]></title>
-      <url>http://lvze1992.github.io/2016/06/30/wechat/</url>
+      <url>http://zak.com/2016/06/30/wechat/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">本文为“微信公众平台二次开发”的入门教程，完成教程你就可以实现微信公众号最基本的功能“自动回复”。<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -844,13 +844,13 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
 <li>在手机微信号扫描网页中的二维码，就可以将你的公众测试帐号添加到微信的订阅号里了！<br><img src="http://115.28.217.112/github/wechat/18.jpg" alt=""><br>在公众号内输入任意字符，将自动回复当前时间。<br>到这里，你就已经实现了一个最基本的微信公众号。</li>
 </ol>
 <h2 id="代码包详解"><a href="#代码包详解" class="headerlink" title="代码包详解"></a>代码包详解</h2><p>先前在新浪云应用中上传的代码包，我们将在此节中为大家做一些讲解。<br>你可以在本地解压后阅读代码，也可以通过新浪云应用的“（左侧）应用-代码管理-编辑代码”进行阅读。<br><strong>↓↓ index.php ↓↓</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(<span class="string">'Content-type:text'</span>);</span><br><span class="line"></span><br><span class="line">define(<span class="string">"TOKEN"</span>, <span class="string">"weixin"</span>);//Token,可为任意字符串，与测试号页面所填一致即可</span><br><span class="line"><span class="variable">$wechatObj</span> = new wechatCallbackapiTest();</span><br><span class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'echostr'</span>])) &#123;</span><br><span class="line">    <span class="variable">$wechatObj</span>-&gt;valid();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="variable">$wechatObj</span>-&gt;responseMsg();//调用回复信息方法</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class wechatCallbackapiTest</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">valid</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$echoStr</span> = <span class="variable">$_GET</span>[<span class="string">"echostr"</span>];</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$this</span>-&gt;checkSignature())&#123;</span><br><span class="line">            header(<span class="string">'content-type:text'</span>);</span><br><span class="line">            <span class="built_in">echo</span> <span class="variable">$echoStr</span>;</span><br><span class="line">            <span class="built_in">exit</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private <span class="keyword">function</span> <span class="function"><span class="title">checkSignature</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$signature</span> = <span class="variable">$_GET</span>[<span class="string">"signature"</span>];</span><br><span class="line">        <span class="variable">$timestamp</span> = <span class="variable">$_GET</span>[<span class="string">"timestamp"</span>];</span><br><span class="line">        <span class="variable">$nonce</span> = <span class="variable">$_GET</span>[<span class="string">"nonce"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="variable">$token</span> = TOKEN;</span><br><span class="line">        <span class="variable">$tmpArr</span> = array(<span class="variable">$token</span>, <span class="variable">$timestamp</span>, <span class="variable">$nonce</span>);</span><br><span class="line">        sort(<span class="variable">$tmpArr</span>, SORT_STRING);</span><br><span class="line">        <span class="variable">$tmpStr</span> = implode( <span class="variable">$tmpArr</span> );</span><br><span class="line">        <span class="variable">$tmpStr</span> = sha1( <span class="variable">$tmpStr</span> );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( <span class="variable">$tmpStr</span> == <span class="variable">$signature</span> )&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">function</span> <span class="function"><span class="title">responseMsg</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$postStr</span> = <span class="variable">$GLOBALS</span>[<span class="string">"HTTP_RAW_POST_DATA"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!empty(<span class="variable">$postStr</span>))&#123;</span><br><span class="line">            <span class="variable">$postObj</span> = simplexml_load_string(<span class="variable">$postStr</span>, <span class="string">'SimpleXMLElement'</span>, LIBXML_NOCDATA);</span><br><span class="line">            <span class="variable">$fromUsername</span> = <span class="variable">$postObj</span>-&gt;FromUserName;</span><br><span class="line">            <span class="variable">$toUsername</span> = <span class="variable">$postObj</span>-&gt;ToUserName;</span><br><span class="line">            <span class="variable">$keyword</span> = trim(<span class="variable">$postObj</span>-&gt;Content);</span><br><span class="line">            <span class="variable">$time</span> = time();</span><br><span class="line">/**</span><br><span class="line">*XML格式采用的是UTF-8编码，因此中文为UTF-8编码时，</span><br><span class="line">*客户端才不会出现乱码的问题</span><br><span class="line">*/</span><br><span class="line">            <span class="variable">$textTpl</span> = <span class="string">"&lt;xml&gt;</span><br><span class="line">                        &lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;</span><br><span class="line">                        &lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;</span><br><span class="line">                        &lt;CreateTime&gt;%s&lt;/CreateTime&gt;</span><br><span class="line">                        &lt;MsgType&gt;&lt;![CDATA[%s]]&gt;&lt;/MsgType&gt;</span><br><span class="line">                        &lt;Content&gt;&lt;![CDATA[%s]]&gt;&lt;/Content&gt;</span><br><span class="line">                        &lt;FuncFlag&gt;0&lt;/FuncFlag&gt;</span><br><span class="line">                        &lt;/xml&gt;"</span>;</span><br><span class="line">            <span class="variable">$msgType</span> = <span class="string">"text"</span>;</span><br><span class="line">			<span class="variable">$contentStr</span> = date(<span class="string">"Y-m-d H:i:s"</span>,time()).<span class="string">"\n\n"</span>.<span class="string">'&lt;a href="http://lvze1992.github.io/"&gt;教程 博客&lt;/a&gt;'</span>;</span><br><span class="line">			<span class="variable">$resultStr</span> = sprintf(<span class="variable">$textTpl</span>, <span class="variable">$fromUsername</span>, <span class="variable">$toUsername</span>, <span class="variable">$time</span>, <span class="variable">$msgType</span>, <span class="variable">$contentStr</span>);</span><br><span class="line">			<span class="built_in">echo</span> <span class="variable">$resultStr</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">""</span>;</span><br><span class="line">            <span class="built_in">exit</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<p>PHP语言的细节，我们将在后续PHP分类文章中归纳，此处均是较为简单的PHP语句，读者理解即可。<br>需要值得注意的是文本消息的格式。这会在“<a href="http://lvze1992.github.io/2016/07/01/wechat-msg/"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发&ensp;—&ensp;消息类型</span></a>”中做详细讲解。</p>
+<p>PHP语言的细节，我们将在后续PHP分类文章中归纳，此处均是较为简单的PHP语句，读者理解即可。<br>需要值得注意的是文本消息的格式。这会在“<a href="http://lvze1992.github.io/2016/07/01/wechat-msg/" target="_blank" rel="external"><span style="color:#ffffff; background-color:#3366ff">微信公众平台的二次开发&ensp;—&ensp;消息类型</span></a>”中做详细讲解。</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[ns2.35中协议实现的研究]]></title>
-      <url>http://lvze1992.github.io/2016/06/26/ns2-35-protocol/</url>
+      <url>http://zak.com/2016/06/26/ns2-35-protocol/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络中协议的实现。<br>ns2.35 is used for network simulation. In this paper. In this paper, the realization of wireless sensor network protocol will be discussed.<br></p>
 
 <a id="more"></a>
@@ -862,7 +862,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
 <h3 id="AODV协议修改"><a href="#AODV协议修改" class="headerlink" title="AODV协议修改"></a>AODV协议修改</h3><blockquote>
 <p>修改已有的基础协议，是快速上手ns2的一种方法。故在此教程中，我们将修改AODV协议，即添加节点类型和节点层数，来实现一个新的协议（<strong>暂不讨论协议的效率</strong>）。</p>
 </blockquote>
-<h4 id="为节点添加自定义属性"><a href="#为节点添加自定义属性" class="headerlink" title="为节点添加自定义属性"></a>为节点添加自定义属性</h4><p>如何为节点添加属性，在我的文章，<a href="http://lvze1992.github.io/2016/06/26/ns2-35/">ns2.35无线节点配置及相关</a>，中有详细的介绍。你不必跳回去阅读，因为我将重新讲解以避免混乱。<br><strong>请注意：我们讨论的是无线网络下的节点情况，故如果你正在寻找有线网络的相关ns2知识，本文可能不是很适合您。</strong></p>
+<h4 id="为节点添加自定义属性"><a href="#为节点添加自定义属性" class="headerlink" title="为节点添加自定义属性"></a>为节点添加自定义属性</h4><p>如何为节点添加属性，在我的文章，<a href="http://lvze1992.github.io/2016/06/26/ns2-35/" target="_blank" rel="external">ns2.35无线节点配置及相关</a>，中有详细的介绍。你不必跳回去阅读，因为我将重新讲解以避免混乱。<br><strong>请注意：我们讨论的是无线网络下的节点情况，故如果你正在寻找有线网络的相关ns2知识，本文可能不是很适合您。</strong></p>
 <ol>
 <li><p>修改mobilenode文件<br>打开mobilenode.h，添加节点属性并添加相应函数。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">protected:</span><br><span class="line">	int nodetype;</span><br><span class="line">	int nodelevel;</span><br><span class="line">	int setnodetype(int typenum);</span><br><span class="line">	int setnodetype2(int <span class="built_in">type</span>);</span><br><span class="line">	int setnodelevel(int level);</span><br></pre></td></tr></table></figure>
@@ -875,7 +875,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
     
     <entry>
       <title><![CDATA[ns2.35无线节点配置及相关]]></title>
-      <url>http://lvze1992.github.io/2016/06/26/ns2-35/</url>
+      <url>http://zak.com/2016/06/26/ns2-35/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络节点的配置。<br>ns2.35 is used for network simulation. In this paper, the configuration of wireless sensor network node would be discussed.<br></p>
 
 <a id="more"></a>
@@ -941,7 +941,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
     
     <entry>
       <title><![CDATA[Markdown语法]]></title>
-      <url>http://lvze1992.github.io/2016/06/25/hello-world/</url>
+      <url>http://zak.com/2016/06/25/hello-world/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">在本文中，将收录Markdown的一些基本语法，便于以后查阅。<br>In this paper,  some basic syntax of Markdown would be included, for easily accessible.<br></p>
 
 <a id="more"></a><!-- 空一行，上下间距更小 -->
@@ -973,7 +973,7 @@ intval() //4.3-&gt;4 9.9-&gt;9 取整
 <hr>
 <h4 id="图片or超链接"><a href="#图片or超链接" class="headerlink" title="图片or超链接"></a>图片or超链接</h4><blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[链接](http://lvze1992.github.io)</span><br><span class="line">![图片](http://lvze1992.github.io/images/avatar.jpg)</span><br></pre></td></tr></table></figure>
-<p><a href="http://lvze1992.github.io">链接</a><br><img src="http://lvze1992.github.io/images/avatar.jpg" alt="图片"></p>
+<p><a href="http://lvze1992.github.io" target="_blank" rel="external">链接</a><br><img src="http://lvze1992.github.io/images/avatar.jpg" alt="图片"></p>
 </blockquote>
 <hr>
 <h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><blockquote>

@@ -87,7 +87,7 @@
 <meta name="description" content="ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络中协议的实现。ns2.35 is used for network simulation. In this paper. In this paper, the realization of wireless sensor network protocol will be discussed.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ns2.35中协议实现的研究">
-<meta property="og:url" content="http://lvze1992.github.io/2016/06/26/ns2-35-protocol/index.html">
+<meta property="og:url" content="http://zak.com/2016/06/26/ns2-35-protocol/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="ns2.35是用于网络仿真的利器。本文将探讨无线传感器网络中协议的实现。ns2.35 is used for network simulation. In this paper. In this paper, the realization of wireless sensor network protocol will be discussed.">
 <meta property="og:image" content="http://115.28.217.112/github/ns/1.jpg">
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="http://lvze1992.github.io/2016/06/26/ns2-35-protocol/"/>
+  <link rel="canonical" href="http://zak.com/2016/06/26/ns2-35-protocol/"/>
 
   <title> ns2.35中协议实现的研究 | ZAK's Blog </title>
 </head>
@@ -367,7 +367,7 @@
 <h3 id="AODV协议修改"><a href="#AODV协议修改" class="headerlink" title="AODV协议修改"></a>AODV协议修改</h3><blockquote>
 <p>修改已有的基础协议，是快速上手ns2的一种方法。故在此教程中，我们将修改AODV协议，即添加节点类型和节点层数，来实现一个新的协议（<strong>暂不讨论协议的效率</strong>）。</p>
 </blockquote>
-<h4 id="为节点添加自定义属性"><a href="#为节点添加自定义属性" class="headerlink" title="为节点添加自定义属性"></a>为节点添加自定义属性</h4><p>如何为节点添加属性，在我的文章，<a href="http://lvze1992.github.io/2016/06/26/ns2-35/">ns2.35无线节点配置及相关</a>，中有详细的介绍。你不必跳回去阅读，因为我将重新讲解以避免混乱。<br><strong>请注意：我们讨论的是无线网络下的节点情况，故如果你正在寻找有线网络的相关ns2知识，本文可能不是很适合您。</strong></p>
+<h4 id="为节点添加自定义属性"><a href="#为节点添加自定义属性" class="headerlink" title="为节点添加自定义属性"></a>为节点添加自定义属性</h4><p>如何为节点添加属性，在我的文章，<a href="http://lvze1992.github.io/2016/06/26/ns2-35/" target="_blank" rel="external">ns2.35无线节点配置及相关</a>，中有详细的介绍。你不必跳回去阅读，因为我将重新讲解以避免混乱。<br><strong>请注意：我们讨论的是无线网络下的节点情况，故如果你正在寻找有线网络的相关ns2知识，本文可能不是很适合您。</strong></p>
 <ol>
 <li><p>修改mobilenode文件<br>打开mobilenode.h，添加节点属性并添加相应函数。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">protected:</span><br><span class="line">	int nodetype;</span><br><span class="line">	int nodelevel;</span><br><span class="line">	int setnodetype(int typenum);</span><br><span class="line">	int setnodetype2(int <span class="built_in">type</span>);</span><br><span class="line">	int setnodelevel(int level);</span><br></pre></td></tr></table></figure>
@@ -469,7 +469,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/06/26/ns2-35-protocol/"
-           data-title="ns2.35中协议实现的研究" data-url="http://lvze1992.github.io/2016/06/26/ns2-35-protocol/">
+           data-title="ns2.35中协议实现的研究" data-url="http://zak.com/2016/06/26/ns2-35-protocol/">
       </div>
     
   </div>
