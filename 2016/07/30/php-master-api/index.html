@@ -55,7 +55,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP,API,PHP高效编程,点赞," />
+  <meta name="keywords" content="PHP,PHP高效编程,API,点赞," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:description" content="在本章中我们要研究以API为基础设计系统架构的可能性。">
 <meta property="og:image" content="http://115.28.217.112/github/php/API/1.PNG">
 <meta property="og:image" content="http://115.28.217.112/github/php/API/2.PNG">
-<meta property="og:updated_time" content="2016-08-01T16:21:30.343Z">
+<meta property="og:updated_time" content="2016-08-04T16:20:05.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP高效编程 — API">
 <meta name="twitter:description" content="在本章中我们要研究以API为基础设计系统架构的可能性。">
@@ -473,7 +473,7 @@ function countCallback() {
 <blockquote>
 <p><a href="http://zak7.com/2016/07/05/wechat-msg-encapsulation/">微信消息的封装：XML或JSON</a></p>
 </blockquote>
-<h3 id="使用JSON"><a href="#使用JSON" class="headerlink" title="使用JSON"></a>使用JSON</h3><p>在PHP中，我们用<code>json_encode()</code>函数编写JSON，用<code>json_decode()</code>将它读取回来。<br><strong><span style="color:#ffffff; background-color:#3366ff">注意: </span></strong>&nbsp;因为我们想通过<code>json_decode()</code>获得一个关联数组而不是一个对象，因此我们需要传入<code>true</code>作为<code>json_decode()</code>的第二个参数。</p>
+<h3 id="使用JSON"><a href="#使用JSON" class="headerlink" title="使用JSON"></a>使用JSON</h3><p>在PHP中，我们用<code>json_encode()</code>函数编写JSON，用<code>json_decode()</code>将它读取回来。<br><strong><span style="color:#ffffff; background-color:#3366ff">&nbsp;注意:&nbsp;</span></strong>&nbsp;因为我们想通过<code>json_decode()</code>获得一个关联数组而不是一个对象，因此我们需要传入<code>true</code>作为<code>json_decode()</code>的第二个参数。</p>
 <h3 id="使用XML"><a href="#使用XML" class="headerlink" title="使用XML"></a>使用XML</h3><p>在PHP中，我们有很多方式使用XML，其中最重要的是DOM扩展和SimpleXML扩展。你可以调用单一的函数在两种格式之间切换使用，因此，当开始使用一种方式，而后为了一个特殊的操作而使用另一种方式是没有意义的。<br>以SimpleXML为例。</p>
 <h4 id="构建XML"><a href="#构建XML" class="headerlink" title="构建XML"></a>构建XML</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$simplexml = <span class="keyword">new</span> SimpleXMLElement</span><br><span class="line">	(<span class="string">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;concerts /&gt;'</span>);</span><br><span class="line">$concert1 = $simplexml-&gt;addChild(<span class="string">'concert'</span>);</span><br><span class="line">$concert1-&gt;addChild(<span class="string">"title"</span>,<span class="string">"The Magic Flute"</span>);</span><br><span class="line">$concert1-&gt;addChild(<span class="string">"time"</span>,<span class="number">1329636600</span>);</span><br><span class="line"></span><br><span class="line">$concert2 = $simplexml-&gt;addChild(<span class="string">'concert'</span>);</span><br><span class="line">$concert2-&gt;addChild(<span class="string">"title"</span>,<span class="string">"Mozart's Requiem"</span>);</span><br><span class="line">$concert2-&gt;addChild(<span class="string">"time"</span>,<span class="number">1330636400</span>);</span><br><span class="line">header(<span class="string">'content-type:text/xml'</span>) ;</span><br><span class="line"><span class="keyword">echo</span> $simplexml-&gt;asXML();</span><br></pre></td></tr></table></figure>
 <p><strong>上例输出结果：</strong><br><img src="http://115.28.217.112/github/php/API/1.PNG"><br><strong>上例中利用</strong><code>simplexml_load_string($xml);</code><strong>输出后的结果为：</strong></p>
@@ -497,12 +497,230 @@ Featured concertMozart&apos;s Requiem
 </blockquote>
 <h4 id="递归创建XML"><a href="#递归创建XML" class="headerlink" title="递归创建XML"></a>递归创建XML</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SimpleXmlElement - 递归创建xml</span></span><br><span class="line">$arr = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'张三'</span> ,</span><br><span class="line">    <span class="string">'age'</span> =&gt; <span class="string">'23'</span> , </span><br><span class="line">    <span class="string">'job'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">'title'</span> =&gt; <span class="string">'项目经理'</span> ,</span><br><span class="line">        <span class="string">'salary'</span> =&gt; <span class="string">'88888'</span> ,</span><br><span class="line">        <span class="string">'team'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'one'</span> =&gt; <span class="string">'team1'</span> ,</span><br><span class="line">            <span class="string">'two'</span> =&gt; <span class="string">'team2'</span> ,</span><br><span class="line">            <span class="string">'subteam'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">'AAA'</span>,<span class="string">'BBBB'</span>,<span class="string">'CCC'</span>,<span class="string">'DDDD'</span></span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arr2xml</span><span class="params">($arr, $node = null)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($node === <span class="keyword">null</span>)&#123;</span><br><span class="line">        $simxml = <span class="keyword">new</span> simpleXmlElement(<span class="string">'&lt;?xml </span><br><span class="line">		version="1.0" encoding="UTF-8"?&gt;&lt;root&gt;&lt;/root&gt;'</span>) ;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $simxml = $node ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $k =&gt; $v) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_array($v))&#123;</span><br><span class="line">            arr2xml($v,$simxml-&gt;addChild($k));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (is_numeric($k))&#123;</span><br><span class="line">            $simxml-&gt;addChild(<span class="string">'item'</span>,$v) ;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $simxml-&gt;addChild($k,$v) ;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $simxml-&gt;savexml() ;</span><br><span class="line">&#125;</span><br><span class="line">header(<span class="string">'content-type:text/xml'</span>) ;</span><br><span class="line"><span class="keyword">echo</span> arr2xml($arr) ;</span><br></pre></td></tr></table></figure>
 <p><strong>上例输出结果：</strong><br><img src="http://115.28.217.112/github/php/API/2.PNG" alt=""></p>
-<h2 id="HTTP-超文本传输协议"><a href="#HTTP-超文本传输协议" class="headerlink" title="HTTP:超文本传输协议"></a>HTTP:超文本传输协议</h2><p>如果你想了解缓存，不同文件类型的传递，特别是我们使用Web服务时如何使用其它数据格式，那么以HTTP为基础的Web服务会让你受益匪浅。关注本教程示例中突出的HTTp特性，忽略则风险自负。</p>
-<h2 id="发送HTTPs请求"><a href="#发送HTTPs请求" class="headerlink" title="发送HTTPs请求"></a>发送HTTPs请求</h2><blockquote>
-<p>以下示例为：请求 Bit.ly URL缩短器，返回短链接BitURL。<br>注意链接开头为https表明我们需要发送HTTPs请求。与HTTP请求做对比。</p>
+<h2 id="HTTP-超文本传输协议"><a href="#HTTP-超文本传输协议" class="headerlink" title="HTTP:超文本传输协议"></a>HTTP:超文本传输协议</h2><p>如果你想了解缓存，不同文件类型的传递，特别是我们使用Web服务时如何使用其它数据格式，那么以HTTP为基础的Web服务会让你受益匪浅。关注本教程示例中突出的HTTP特性，忽略则风险自负。</p>
+<h3 id="先说说HTTPs请求"><a href="#先说说HTTPs请求" class="headerlink" title="先说说HTTPs请求"></a>先说说HTTPs请求</h3><blockquote>
+<p>以下示例为：利用Bit.ly提供的API，请求URL缩短器，返回短链BitURL。<br>注意链接开头为https表明我们需要发送HTTPs请求。与HTTP请求做对比。</p>
 </blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用curl请求HTTPS !</span></span><br><span class="line">$url=<span class="string">'https://api-ssl.bitly.com/v3/shorten'</span>.</span><br><span class="line"><span class="string">'?access_token=08de1a3b41a8280b37f00e3af740ffde5672f789'</span></span><br><span class="line">.<span class="string">'&amp;longUrl=http%3A%2F%2Fbaidu.com%2F&amp;format=json'</span>;</span><br><span class="line">$ch = curl_init();<span class="comment">//初始化一个curl会话</span></span><br><span class="line">curl_setopt($ch,CURLOPT_URL, $url);</span><br><span class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER,<span class="number">1</span>);<span class="comment">//设置返回结果但不输出内容</span></span><br><span class="line"><span class="comment">//当请求https的数据时，会要求证书，这时候，加上下面这两个参数，规避ssl的证书检查</span></span><br><span class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);<span class="comment">//这个是重点。</span></span><br><span class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</span><br><span class="line">$output=curl_exec($ch); </span><br><span class="line">curl_close($ch);<span class="comment">//关闭一个curl会话并且释放所有资源。</span></span><br><span class="line"><span class="comment">//$output = str_replace('百度', 'PHPit', $output); //字符串替换</span></span><br><span class="line">preg_match(<span class="string">"/&#123;.*&#125;/"</span>, $output,$r);<span class="comment">//匹配获取结果中的json数据，并保存在$r中</span></span><br><span class="line">print_r(json_decode($r[<span class="number">0</span>])); </span><br><span class="line"><span class="comment">//curl_exec成功时返回 TRUE， 或者在失败时返回 FALSE。 然而，如果 CURLOPT_RETURNTRANSFER选项被设置，函数执行成功时会返回执行的结果，失败时返回 FALSE 。</span></span><br><span class="line"><span class="comment">//curl_setopt函数是php中一个重要的函数，它可以模仿用户的一些行为，如模仿用户登录，注册等等一些用户可操作的行为</span></span><br></pre></td></tr></table></figure>
-<h2 id="发送HTTP请求"><a href="#发送HTTP请求" class="headerlink" title="发送HTTP请求"></a>发送HTTP请求</h2><h3 id="PHP-cURL扩展"><a href="#PHP-cURL扩展" class="headerlink" title="PHP cURL扩展"></a>PHP cURL扩展</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用curl请求HTTPS !</span></span><br><span class="line">$url=<span class="string">'https://api-ssl.bitly.com/v3/shorten'</span>.</span><br><span class="line"><span class="string">'?access_token=08de1a3b41a8280b37f00e3af740ffde5672f789'</span></span><br><span class="line">.<span class="string">'&amp;longUrl=http%3A%2F%2Fbaidu.com%2F&amp;format=json'</span>;</span><br><span class="line">$ch = curl_init();<span class="comment">//初始化一个curl会话</span></span><br><span class="line">curl_setopt($ch,CURLOPT_URL, $url);</span><br><span class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER,<span class="number">1</span>);<span class="comment">//设置返回结果但不输出内容</span></span><br><span class="line"><span class="comment">//当请求https的数据时，会要求证书，这时候，加上下面这两个参数，规避ssl的证书检查</span></span><br><span class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);<span class="comment">//这个是重点。</span></span><br><span class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</span><br><span class="line">$output=curl_exec($ch); </span><br><span class="line">curl_close($ch);<span class="comment">//关闭一个curl会话并且释放所有资源。</span></span><br><span class="line"><span class="comment">//$output = str_replace('百度', 'PHPit', $output); //字符串替换</span></span><br><span class="line">preg_match(<span class="string">"/&#123;.*&#125;/"</span>, $output,$r);<span class="comment">//匹配获取结果中的json数据，并保存在$r中</span></span><br><span class="line">print_r(json_decode($r[<span class="number">0</span>]));</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>curl_exec</strong><br>curl_exec函数成功时返回 TRUE， 或者在失败时返回 FALSE。<br>然而，如果 CURLOPT_RETURNTRANSFER选项被设置<br>函数执行成功时会返回执行的结果，失败时返回 FALSE 。</li>
+<li><strong>curl_setopt</strong>&nbsp;<a href=""><span style="color:#ffffff; background-color:#3366ff">&nbsp;详情&nbsp;</span></a><br>curl_setopt函数是php中一个重要的函数<br>它可以模仿用户的一些行为<br>如模仿用户登录，注册等等一些用户可操作的行为</li>
+</ol>
+<h3 id="cURL扩展-发送HTTP请求"><a href="#cURL扩展-发送HTTP请求" class="headerlink" title="(cURL扩展)发送HTTP请求"></a>(cURL扩展)发送HTTP请求</h3><p>用PHP发送HTTP请求，需要用到PHP的cURL扩展。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ch=curl_init(<span class="string">'http://www.baidu.com'</span>);</span><br><span class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="keyword">true</span>);</span><br><span class="line">$result=curl_exec($ch);</span><br><span class="line">curl_close($ch);</span><br><span class="line"><span class="comment">//结果替换字符串输出</span></span><br><span class="line">$result=str_replace(<span class="string">'百度'</span>,<span class="string">'PHPit'</span>,$result);</span><br><span class="line"><span class="keyword">echo</span> $result;</span><br></pre></td></tr></table></figure></p>
+<h3 id="PHP-pecl-http扩展"><a href="#PHP-pecl-http扩展" class="headerlink" title="PHP pecl_http扩展"></a>PHP pecl_http扩展</h3><p>略</p>
+<h3 id="PHP流"><a href="#PHP流" class="headerlink" title="PHP流"></a>PHP流</h3><p>需要在php.ini文件中启用allow_url_fopen。则可以这么做：<br><code>$fp = fopen(&#39;http://example.com&#39;);</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$url=<span class="string">'请求的URL链接'</span>;</span><br><span class="line">$result=file_get_contents($url);</span><br><span class="line">print_r(json_decode($result));</span><br></pre></td></tr></table></figure></p>
+<h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>信息</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1xx</strong></td>
+<td><strong>Information</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>2xx</strong></td>
+<td><strong>Success</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>一切都好</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>已生成一个资源</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content</td>
+<td>这个请求已被处理，但没有需要返回的内容</td>
+</tr>
+<tr>
+<td><strong>3xx</strong></td>
+<td><strong>Redirect</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved</td>
+<td>永久重定向，客户端应该更新它们的链接</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>通常代表一个重写规则或类似的结果，这里表示你请求的内容在其他地方找到</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>？这关系到缓存而且通常用空的正文告诉客户端使用它们的缓存版本</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temporary Redirect</td>
+<td>这个内容已迁移，但不是永久的，因此不需要更新链接</td>
+</tr>
+<tr>
+<td><strong>4xx</strong></td>
+<td><strong>Failure</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>通用的来自服务器的不知道消息</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Not Authorized</td>
+<td>你需要提供一些凭证来访问</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>你提供了凭证，但没有权限访问</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>在这个URL中什么都没有</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>服务器无法提供符合这个请求文件头的内容</td>
+</tr>
+<tr>
+<td><strong>5xx</strong></td>
+<td><strong>Server Error</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>对于PHP应用程序而言，PHP出现了某些错误，并且没有提供给Apache关于这些错误的任何信息</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Server Unavailable</td>
+<td>通常用API显示的一个临时错误信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="HTTP文件头"><a href="#HTTP文件头" class="headerlink" title="HTTP文件头"></a>HTTP文件头</h3><ol>
+<li><p><strong>HTTP文件头</strong><br>我们可以通过超全局变量$_SERVER得到请求中的信息，包括accept文件头、host、path、GET参数等。仅仅使用header()函数就可以任意返回文件头到客户端。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Get the headers from $_SERVER</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'Accept:'</span>.$_SERVER[<span class="string">'HTTP_ACCEPT'</span>].<span class="string">'\n'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'Verb:'</span>.$_SERVER[<span class="string">'REQUEST_METHOD'</span>].<span class="string">'\n'</span>;</span><br><span class="line"><span class="comment">//send headers to the client</span></span><br><span class="line">header(<span class="string">'Content-type:text/html;charset=utf8'</span>);</span><br><span class="line">header(<span class="string">'HTTP/1.1 404 Not Found'</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>文件头必须首先发给客户端。比如，我们需要以某一方式通过脚本实现当一个用户没有登录时发送一个登录页面给他。我们可以使用如下语句重定向一个用户。<br><code>header(&#39;Location: login.php&#39;);</code><br>然而，如果你返回任何内容之后调用这个函数，你将会看到一个错误。我们可以使用<strong>输出缓存（output buffering）</strong>对内容排队并线发送文件头。</p>
+<ul>
+<li>在你的PHP脚本中可以使用<code>ob_start()</code>来启用输出缓存，或用php.ini设置output_buffering为默认打开，当脚本结束或当调用<code>ob_flush()</code>函数，PHP才会将内容发送到客户端。</li>
+</ul>
+</blockquote>
+</li>
+<li><strong>常用的HTTP文件头</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>文件头</th>
+<th>作用范围</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept</td>
+<td>Request</td>
+<td>说明客户端希望在响应中使用怎样的格式</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>Response</td>
+<td>描述响应的格式</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>Request</td>
+<td>指明客户端支持怎样的编码</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>Response</td>
+<td>描述响应的编码</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>Request</td>
+<td>按优先顺序排列语言清单</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>Response</td>
+<td>描述响应正文中使用的语言</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>Response</td>
+<td>响应正文的大小</td>
+</tr>
+<tr>
+<td>Set-Cookie</td>
+<td>Response</td>
+<td>发送Cookie到响应中，供以后的请求使用</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>Request</td>
+<td>Cookie数据来自于先前对请求的响应中</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>Response</td>
+<td>说明到何时之前该内容有效</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Request</td>
+<td>为保护资源而提供的访问凭证</td>
+</tr>
+</tbody>
+</table>
+<p><strong>例如，有文件头如下：</strong><br>    <code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</code><br>在这里我们看到一系列被逗号分隔的值，其中还包含分号和一个q值。一个没有q值的格式是首选格式，如果服务器不能提供这些格式，那么降低要求，选q=0.9的。<code>*/*</code>表示服务器不管有什么样的格式都应该发送，客户端收到结果后将尽可能处理它们。</p>
+<h3 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h3><p>当我们在编写Web表单时可以在GET方法和POST方法之间做一个选择。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"form.php"</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">	Name: &lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span>/&gt;</span><br><span class="line">	&lt;input type=<span class="string">"submit"</span> value=<span class="string">"Save"</span>/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p>GET与POST方法的区别在于：提交的表单数据和相应的Content-Type不在URL中，而在请求的正文中。</p>
+<h2 id="理解并选择服务类型"><a href="#理解并选择服务类型" class="headerlink" title="理解并选择服务类型"></a>理解并选择服务类型</h2><h3 id="PHP和SOAP"><a href="#PHP和SOAP" class="headerlink" title="PHP和SOAP"></a>PHP和SOAP</h3><blockquote>
+<p>SOAP 曾经表示简单对象访问协议（Simple Object Access Protocol），但由于SOAP并不简单，其使用率已下降。然而，SOAP是严格定义的XML-RPC的一个特定子集。它是一个冗长的XML格式，包括PHP很多程序都建有内置的类库可以轻松处理SOAP。我们通常使用<strong>WSDL（Web Service Description Language，Web服务描述语言）</strong>文档描述SOAP服务，这是用来描述Web服务的一组定义。</p>
+</blockquote>
+<p><strong>下面，我们将建立一个服务并使用SOAP扩展。</strong><br>首先，为这个公开的服务创建一些功能：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">server</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDisplayName</span><span class="params">($first_name,$last_name)</span></span>&#123;</span><br><span class="line">		$name=<span class="string">''</span>;</span><br><span class="line">		$name.=strtoupper(substr($first_name,<span class="number">0</span>,<span class="number">1</span>));</span><br><span class="line">		<span class="comment">//ucfirst把字符串的首字母变为大写</span></span><br><span class="line">		$name.=<span class="string">' '</span>.ucfirst($last_name);</span><br><span class="line">		<span class="keyword">return</span> $name;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">countWords</span><span class="params">($paragraph)</span></span>&#123;</span><br><span class="line">		$words=preg_split(<span class="string">'/[.,!?;]+/'</span>,$paragraph);</span><br><span class="line">		<span class="keyword">return</span> count($words);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后，为了让这个SOAP服务起作用，我们要使用下面的代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require_once</span>(<span class="string">'server_class.php'</span>);</span><br><span class="line">$options=<span class="keyword">array</span>(<span class="string">'uri'</span>=&gt;<span class="string">'http://localhost/'</span>);</span><br><span class="line">$server=<span class="keyword">new</span> SoapServer(<span class="keyword">NULL</span>,$options);</span><br><span class="line">$server-&gt;setClass(<span class="string">'server'</span>);</span><br><span class="line">$server-&gt;handle();</span><br></pre></td></tr></table></figure></p>
+<p>现在，我们可以在客户端用简单的代码使用这个服务了。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SoapClientNew</span> <span class="keyword">extends</span> <span class="title">SoapClient</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__doRequest</span><span class="params">($request, $location, $action, $version, $one_way = <span class="number">0</span>)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        $request = <span class="keyword">parent</span>::__doRequest($request, $location, $action, $version, $one_way);  </span><br><span class="line">        </span><br><span class="line">        $start = strpos($request, <span class="string">'&lt;?xml'</span>);<span class="comment">//根据实际情况做处理。。。，如果是<span class="meta">&lt;?</span>xml开头，改成<span class="meta">&lt;?</span>xml</span></span><br><span class="line">        $end = strrpos($request, <span class="string">'&gt;'</span>);  </span><br><span class="line">        <span class="keyword">return</span> substr($request, $start, $end-$start+<span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">$options=<span class="keyword">array</span>(<span class="string">'location'</span>=&gt;<span class="string">'http://localhost/server.php'</span>,<span class="string">'uri'</span>=&gt;<span class="string">'http://localhost/'</span>,<span class="string">'trace'</span>=&gt;<span class="number">1</span>);</span><br><span class="line">$client=<span class="keyword">new</span> SoapClientNew(<span class="keyword">NULL</span>,$options);</span><br><span class="line"><span class="comment">//两种调用方式，直接调用方法，和用__soapCall间接调用</span></span><br><span class="line"><span class="keyword">echo</span> $client-&gt;__soapCall(<span class="string">"getDisplayName"</span>, <span class="keyword">array</span>(<span class="string">'jack'</span>, <span class="string">'bob'</span>));</span><br><span class="line"><span class="keyword">echo</span> $client-&gt;getDisplayName(<span class="string">'jack'</span>,<span class="string">'bob'</span>);</span><br><span class="line">var_dump($client-&gt;__getLastRequest());</span><br><span class="line">var_dump($client-&gt;__getLastResponse());</span><br><span class="line">&#125;<span class="keyword">catch</span>(SoapFault $e)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $e-&gt;getMessage();</span><br><span class="line">&#125;<span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $e-&gt;getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里<code>SoapClientNew</code>继承<code>SoapClient</code>并覆盖了父类的定义。<br>否则一直会有<code>looks like we got no XML document</code>这个错误，具体原因还是不大理解，先留着。</p>
+<h3 id="使用WSDL描述SOAP服务"><a href="#使用WSDL描述SOAP服务" class="headerlink" title="使用WSDL描述SOAP服务"></a>使用WSDL描述SOAP服务</h3><p>前面的SOAP使用的是一个非WSDL模式，使用带有SOAP服务的WSDL是一个更常见和更简单的方式。<br>首先，新建文件<code>server10.php</code>，并写入功能代码。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">server10</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDisplayName</span><span class="params">($first_name,$last_name)</span></span>&#123;</span><br><span class="line">		$name=<span class="string">''</span>;</span><br><span class="line">		$name.=strtoupper(substr($first_name,<span class="number">0</span>,<span class="number">1</span>));</span><br><span class="line">		<span class="comment">//ucfirst把字符串的首字母变为大写</span></span><br><span class="line">		$name.=<span class="string">' '</span>.ucfirst($last_name);</span><br><span class="line">		<span class="keyword">return</span> $name;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">countWords</span><span class="params">($paragraph)</span></span>&#123;</span><br><span class="line">		$words=preg_split(<span class="string">'/[.,!?;]+/'</span>,$paragraph);</span><br><span class="line">		<span class="keyword">return</span> count($words);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后,下载<a href="">SoapDiscovery.class.php</a>文件，利用<code>SoapDiscovery.class.php</code>文件的公用方法<code>getWSDL</code>，生成WSDL文件。<br>新建<code>creat_wsdl.php</code>，用于创建WSDL文件。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span>(<span class="string">"server10.php"</span>); </span><br><span class="line"><span class="keyword">include</span>(<span class="string">"SoapDiscovery.class.php"</span>);</span><br><span class="line">$disco = <span class="keyword">new</span> SoapDiscovery(<span class="string">'server10'</span>, <span class="string">'soap'</span>); </span><br><span class="line"><span class="comment">//第一个参数是类名（生成的wsdl文件就是以它来命名的），即Service类</span></span><br><span class="line"><span class="comment">//第二个参数是服务的名字（这个可以随便写）。 </span></span><br><span class="line">$disco-&gt;getWSDL();</span><br></pre></td></tr></table></figure></p>
+<p>生成WSDL文件<code>server10.wsdl</code>后，修改<code>server10.php</code>。后续添加如下代码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$server = <span class="keyword">new</span> SoapServer(<span class="string">'server10.wsdl'</span>, <span class="keyword">array</span>(<span class="string">'soap_version'</span> =&gt; SOAP_1_2));</span><br><span class="line">$server-&gt;setClass(<span class="string">"server10"</span>); <span class="comment">//注册Service类的所有方法  </span></span><br><span class="line">$server-&gt;handle(); <span class="comment">//处理请求</span></span><br></pre></td></tr></table></figure></p>
+<p>最后，就是客户端代码。新建<code>client.php</code>，代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SoapClientNew</span> <span class="keyword">extends</span> <span class="title">SoapClient</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__doRequest</span><span class="params">($request, $location, $action, $version, $one_way = <span class="number">0</span>)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        $request = <span class="keyword">parent</span>::__doRequest($request, $location, $action, $version, $one_way);  </span><br><span class="line">        </span><br><span class="line">        $start = strpos($request, <span class="string">'&lt;?xml'</span>);</span><br><span class="line"><span class="comment">//根据实际情况做处理。。。，如果是<span class="meta">&lt;?</span>xml开头，改成<span class="meta">&lt;?</span>xml</span></span><br><span class="line">        $end = strrpos($request, <span class="string">'&gt;'</span>);  </span><br><span class="line">        <span class="keyword">return</span> substr($request, $start, $end-$start+<span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line">ini_set(<span class="string">'soap.wsdl_cache_enabled'</span>, <span class="string">"0"</span>); <span class="comment">//关闭wsdl缓存    </span></span><br><span class="line">$soap = <span class="keyword">new</span> SoapClientNew(<span class="string">'http://localhost/server10.php?wsdl'</span>);</span><br><span class="line"><span class="keyword">echo</span> $soap-&gt;getDisplayName(<span class="string">'sd'</span>,<span class="string">'hghg'</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="调试HTTP"><a href="#调试HTTP" class="headerlink" title="调试HTTP"></a>调试HTTP</h2><h3 id="使用日志收集信息"><a href="#使用日志收集信息" class="headerlink" title="使用日志收集信息"></a>使用日志收集信息</h3><p>开启<code>error_log()</code>功能，避免利用<code>echo</code>或<code>print_r</code>查错带来重复乏味操作。</p>
+<ul>
+<li>编辑php.ini，将log_error设置为on。<code>log_errors = On</code></li>
+<li>windows环境下，还需设置error_log的路径及文件名。<code>error_log=&quot;c:/wamp64/logs/php_error.log&quot;</code></li>
+</ul>
+<ol>
+<li><p><code>error_log</code>范例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果无法连接到数据库，发送通知到服务器日志</span></span><br><span class="line"><span class="keyword">if</span> (!Ora_Logon($username, $password)) &#123;</span><br><span class="line">    error_log(<span class="string">"Oracle database not available!"</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果用尽了 FOO，通过邮件通知管理员</span></span><br><span class="line"><span class="keyword">if</span> (!($foo = allocate_new_foo())) &#123;</span><br><span class="line">    error_log(<span class="string">"Big trouble, we're all out of FOOs!"</span>, <span class="number">1</span>,</span><br><span class="line">               <span class="string">"operator@example.com"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用 error_log() 的另一种方式:</span></span><br><span class="line">error_log(<span class="string">"You messed up!"</span>, <span class="number">3</span>, <span class="string">"/var/tmp/my-errors.log"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日志类示例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">Class</span> <span class="title">log</span> </span>&#123; </span><br><span class="line">  <span class="keyword">const</span> USER_ERROR_DIR = <span class="string">'error_log/Site_User_errors.log'</span>; </span><br><span class="line">  <span class="keyword">const</span> GENERAL_ERROR_DIR = <span class="string">'error_log/Site_General_errors.log'</span>; </span><br><span class="line">  <span class="comment">/* </span><br><span class="line">   User Errors... </span><br><span class="line">  */</span> </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span><span class="params">($msg,$username)</span> </span><br><span class="line">    </span>&#123; </span><br><span class="line">    $date = date(<span class="string">'d.m.Y h:i:s'</span>); </span><br><span class="line">    $log = $msg.<span class="string">"   |  Date:  "</span>.$date.<span class="string">"  |  User:  "</span>.$username.<span class="string">"\n"</span>; </span><br><span class="line">    error_log($log, <span class="number">3</span>, <span class="keyword">self</span>::USER_ERROR_DIR); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">/* </span><br><span class="line">   General Errors... </span><br><span class="line">  */</span> </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">general</span><span class="params">($msg)</span> </span><br><span class="line">    </span>&#123; </span><br><span class="line">    $date = date(<span class="string">'d.m.Y h:i:s'</span>); </span><br><span class="line">    $log = $msg.<span class="string">"   |  Date:  "</span>.$date.<span class="string">"\n"</span>; </span><br><span class="line">    error_log($msg.<span class="string">"   |  Tarih:  "</span>.$date, <span class="number">3</span>, <span class="keyword">self</span>::GENERAL_ERROR_DIR); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">$log = <span class="keyword">new</span> log(); </span><br><span class="line">$log-&gt;user($msg,$username); <span class="comment">//use for user errors </span></span><br><span class="line"><span class="comment">//$log-&gt;general($msg); //use for general errors</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
       
     </div>
 
@@ -525,9 +743,9 @@ Featured concertMozart&apos;s Requiem
           
             <a href="/tags/PHP/" rel="tag">#PHP</a>
           
-            <a href="/tags/API/" rel="tag">#API</a>
-          
             <a href="/tags/PHP高效编程/" rel="tag">#PHP高效编程</a>
+          
+            <a href="/tags/API/" rel="tag">#API</a>
           
             <a href="/tags/点赞/" rel="tag">#点赞</a>
           
@@ -696,7 +914,7 @@ Featured concertMozart&apos;s Requiem
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向服务的架构"><span class="nav-number">1.</span> <span class="nav-text">面向服务的架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式-JSON和XML"><span class="nav-number">2.</span> <span class="nav-text">数据格式:JSON和XML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用JSON"><span class="nav-number">2.1.</span> <span class="nav-text">使用JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用XML"><span class="nav-number">2.2.</span> <span class="nav-text">使用XML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构建XML"><span class="nav-number">2.2.1.</span> <span class="nav-text">构建XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取XML"><span class="nav-number">2.2.2.</span> <span class="nav-text">读取XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归创建XML"><span class="nav-number">2.2.3.</span> <span class="nav-text">递归创建XML</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-超文本传输协议"><span class="nav-number">3.</span> <span class="nav-text">HTTP:超文本传输协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送HTTPs请求"><span class="nav-number">4.</span> <span class="nav-text">发送HTTPs请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送HTTP请求"><span class="nav-number">5.</span> <span class="nav-text">发送HTTP请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-cURL扩展"><span class="nav-number">5.1.</span> <span class="nav-text">PHP cURL扩展</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向服务的架构"><span class="nav-number">1.</span> <span class="nav-text">面向服务的架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式-JSON和XML"><span class="nav-number">2.</span> <span class="nav-text">数据格式:JSON和XML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用JSON"><span class="nav-number">2.1.</span> <span class="nav-text">使用JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用XML"><span class="nav-number">2.2.</span> <span class="nav-text">使用XML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构建XML"><span class="nav-number">2.2.1.</span> <span class="nav-text">构建XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取XML"><span class="nav-number">2.2.2.</span> <span class="nav-text">读取XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归创建XML"><span class="nav-number">2.2.3.</span> <span class="nav-text">递归创建XML</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-超文本传输协议"><span class="nav-number">3.</span> <span class="nav-text">HTTP:超文本传输协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先说说HTTPs请求"><span class="nav-number">3.1.</span> <span class="nav-text">先说说HTTPs请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cURL扩展-发送HTTP请求"><span class="nav-number">3.2.</span> <span class="nav-text">(cURL扩展)发送HTTP请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-pecl-http扩展"><span class="nav-number">3.3.</span> <span class="nav-text">PHP pecl_http扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP流"><span class="nav-number">3.4.</span> <span class="nav-text">PHP流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">3.5.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP文件头"><span class="nav-number">3.6.</span> <span class="nav-text">HTTP文件头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP动词"><span class="nav-number">3.7.</span> <span class="nav-text">HTTP动词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解并选择服务类型"><span class="nav-number">4.</span> <span class="nav-text">理解并选择服务类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP和SOAP"><span class="nav-number">4.1.</span> <span class="nav-text">PHP和SOAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用WSDL描述SOAP服务"><span class="nav-number">4.2.</span> <span class="nav-text">使用WSDL描述SOAP服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试HTTP"><span class="nav-number">5.</span> <span class="nav-text">调试HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用日志收集信息"><span class="nav-number">5.1.</span> <span class="nav-text">使用日志收集信息</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
