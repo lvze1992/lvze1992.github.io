@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="PHP高效编程有关数据库的知识。">
 <meta property="og:image" content="http://115.28.217.112/github/php/phpmaster2.JPG">
-<meta property="og:updated_time" content="2016-08-08T09:23:46.571Z">
+<meta property="og:updated_time" content="2016-08-16T09:14:20.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP高效编程 — 数据库">
 <meta name="twitter:description" content="PHP高效编程有关数据库的知识。">
@@ -398,7 +398,9 @@
 <li><strong>PDO::FETCH_ASSOC</strong> 使用列名为键返回数组</li>
 <li><strong>PDO::FETCH_NUM</strong> 返回数组，这次为数字键</li>
 <li><strong>PDO::FETCH_BOTH（默认）</strong> 每个值出现两次，一个使用其列名，一个使用数字索引</li>
-<li><strong>PDO::FETCH_CLASS</strong> 返回一个已命名的类的对象。？？用的不多，测试不成功，读者如有使用测试可告知</li>
+<li><p><strong>PDO::FETCH_CLASS</strong> 返回一个已命名的类的对象。？？用的不多，测试不成功，读者如有使用测试可告知</p>
+<p>  另外，有<code>PDOStatement::fetchColumn</code>，从结果集中的下一行返回单独的一列，默认获取第一列。</p>
+</li>
 </ul>
 <h3 id="参数和预处理语句"><a href="#参数和预处理语句" class="headerlink" title="参数和预处理语句"></a>参数和预处理语句</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$db_conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;dbname=recipes'</span>,<span class="string">'root'</span>,<span class="string">''</span>);</span><br><span class="line">$sql = <span class="string">'SELECT name, description, chef FROM recipes WHERE id=:recipe_id'</span>;</span><br><span class="line">$stmt = $db_conn-&gt;prepare($sql);</span><br><span class="line"><span class="comment">//perform query</span></span><br><span class="line">$stmt-&gt;execute(<span class="keyword">array</span>(<span class="string">"recipe_id"</span>=&gt;<span class="number">1</span>));</span><br><span class="line">$recipe = $stmt-&gt;fetch();</span><br></pre></td></tr></table></figure>
 <p>在<code>:recipe_id</code>前面的冒号表示这是一个占位符，在实际的运行中会用真正的值进行替换。注意，execute中的占位符可以写<code>：</code>也可以省略。<br>也可以用？符号为变量保留一个位置作为没有命名的占位符。如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$sql = <span class="string">'SELECT name,description,chef FROM recipes WHERE chef=?</span><br><span class="line"> AND category_id =?'</span>;</span><br><span class="line">$stmt = $db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;execute(<span class="keyword">array</span>(<span class="string">"Lorna"</span>,<span class="number">3</span>));</span><br><span class="line">$recipe=$stmt-&gt;fetch(PDO::FETCH_NUM);</span><br></pre></td></tr></table></figure></p>
