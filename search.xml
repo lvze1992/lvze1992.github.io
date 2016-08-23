@@ -4,6 +4,375 @@
   
     
     <entry>
+      <title><![CDATA[JAVA入门]]></title>
+      <url>http://zak7.com/2016/08/18/java-begin/</url>
+      <content type="html"><![CDATA[<div style="background-image:url(http://115.28.217.112/github/java/cover.jpg);background-position: 30% 40%;background-repeat:no-repeat;min-height: 250px;max-width:550px;text-align:center;margin: -20px auto;background-size: cover;"><div class="demo" style="background-color: rgba(105, 94, 94, 0.5);min-width:150px;margin: 0px 0px 0 40%;"><p style="color:#ffffff;">JAVA入门<br>慕课网教程笔记。</p></div></div>
+
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<p><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/like/css/style.css"><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/calendar/calendar.css"><div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2" name="likeCount">—</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div><form name="countForm"><input name="countNumber" type="hidden" id="countNumber" value="---"></form></div></div><div style="clear:both;content:''"></div></p>
+<script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script><script type="text/javascript">
+$(document).ready(function(){
+var t;
+var timeOnce;
+var n=5;
+countCallback();
+function countCallback() {
+        var j = $("form").serializeArray();//序列化name/value
+        $.ajax({
+            type: 'GET',  //这里用GET
+            url: 'http://115.28.217.112/github/extend/like/likecount.php',
+            dataType: 'jsonp',  //类型
+            data: j,
+            jsonp: 'callback', //jsonp回调参数，必需
+            async: false,
+            success: function(result) {//返回的json数据
+                //alert(result.message); //回调输出
+                result = result || {};
+                if (result.msg=='newcount'&&n>0){
+                    $("#likeCount2").html(result.number);
+                    $("#countNumber").val(result.number);
+                }
+
+            },
+            timeout: 3000
+        })
+}
+
+    $('body').on("click",'.heart',function(){
+        var A=$(this).attr("id");
+        var B=A.split("like");
+        var messageID=B[1];
+        //var C=parseInt($("#likeCount"+messageID).html());
+        $(this).css("background-position","")
+        var D=$(this).attr("rel");
+        if(n==1){
+            n=0;
+            countCallback();
+            $("#likeIt"+messageID).html("I love YOU !");
+            $("#likeCount"+messageID).html("1314");
+            surprise();
+                function surprise() 
+                { 
+                    $("#like"+messageID).addClass("heartAnimation").attr("rel","like");
+                    $("#like"+messageID).css("background-position","right");
+                    setTimeout(test1,600);
+                function test1() 
+                { 
+                    $("#like"+messageID).removeClass("heartAnimation").attr("rel","like");
+                    $("#like"+messageID).css("background-position","right");
+                }
+                    setTimeout(surprise,800);
+                } 
+        }else if(n>1){
+            if(timeOnce==1){
+            }else{
+                if(D === 'like') { 
+                    n=n-1;
+                    //$("#likeCount"+messageID).html(C+1);
+                //...
+                    countCallback();
+                //...
+                    //$("#countNumber").val(C+1);
+                    if(n==4)$("#likeIt"+messageID).html("I");
+                    if(n==3)$("#likeIt"+messageID).html("I love");
+                    if(n==2)$("#likeIt"+messageID).html("I love Y");
+                    if(n==1)$("#likeIt"+messageID).html("I love YO");
+                    $(this).addClass("heartAnimation").attr("rel","like");
+                    timeOnce=1;
+                    t=setTimeout(test,600);
+                    function test() 
+                    { 
+                        timeOnce=0;
+                        clearTimeout(t);
+                        $("#like"+messageID).removeClass("heartAnimation").attr("rel","like");
+                        $("#like"+messageID).css("background-position","right");
+                    } 
+                }
+                else{
+                    $("#likeCount"+messageID).html(C-1);
+                    $(this).removeClass("heartAnimation").attr("rel","like");
+                    $(this).css("background-position","left");
+                }
+
+            }
+        }
+    });
+
+
+});
+</script>
+
+<h2 id="JAVA的一些基本概念"><a href="#JAVA的一些基本概念" class="headerlink" title="JAVA的一些基本概念"></a>JAVA的一些基本概念</h2><ol>
+<li><strong>核心概念：JVM、JDK、JRE</strong><ul>
+<li>JVM，即JAVA虚拟机（java virtual mechine）</li>
+<li>JDK，即java开发工具包（java development kit）</li>
+<li>JRE，即JAVA运行环境（java runtime environment）</li>
+<li>JVM、JDK、JRE层层包含。即安装完JDK，你就已经拥有了JRE；安装完JRE，你也就已经有了JVM。<p style="background-color:#FFFACD;padding:15px"><code>.java</code>源文件通过编译器（compiler）转为<code>.class</code>字节码文件，最后通过解释器（interpreter）执行。字节码与平台无关，JVM包含解释器，故跨平台通过JVM实现。</p></li>
+</ul>
+</li>
+<li><strong>基础核心：JAVA SE</strong><br>JAVA SE包含<code>{面向对象，API，JVM等}</code>，以此基础有JAVA EE<code>{JSP，EJB，服务等}</code>，以及JAVA ME<code>{游戏，移动设备，通信}</code></li>
+<li><p><strong>安装JDK</strong></p>
+<blockquote>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external"><span style="color:red;">&nbsp;<strong>下载链接</strong>&nbsp;</span></a></p>
+</blockquote>
+<p> 根据自己的电脑，下载相应版本JDK，进行安装（安装路径自定义，其余一路下一步）。<br> 安装完jdk后需要配置<strong>环境变量</strong>：</p>
+<ul>
+<li>JAVA_HOME，JDK安装路径，例：<code>D:\Java\jdk1.8.0_101</code></li>
+<li>PATH，JDK命令文件位置，即bin目录，例：<code>D:\Java\jdk1.8.0_101\bin</code></li>
+<li>CLASSPATH，类库文件位置，即lib目录，例：<code>.;D:\Java\jdk1.8.0_101\lib</code><br>配置好后<code>运行</code>-<code>cmd</code> 输入<code>java -version</code>即可看到JAVA的版本，JAVA安装成功。</li>
+</ul>
+</li>
+<li><strong>记事本编写JAVA</strong><br>略（太简单了，就略了啊）<br><code>dir</code> 查看当前目录。<br><code>javac hello.java</code> 编译<br><code>java hello</code> 执行（不需要后缀名）</li>
+<li><p><strong>使用Eclipse开发java</strong><br>Eclipse是一个集成开发环境（IDE），还有MyEclipse也是，Myeclipse是对Eclipse的扩展。<br>Eclipse是绿色版的，故解压就可以使用。</p>
+<blockquote>
+<p><a href="http://www.eclipse.org/downloads/" target="_blank" rel="external"><span style="color:red;">&nbsp;<strong>下载链接</strong>&nbsp;</span></a></p>
+</blockquote>
+<ul>
+<li>创建JAVA项目，项目中的src目录用于放源代码文件：new java project</li>
+<li>创建程序包，可避免重名问题：new package</li>
+<li>编写JAVA源程序：new class</li>
+<li>运行JAVA程序：run as-&gt; java app</li>
+</ul>
+</li>
+<li><strong>程序的移植</strong><ul>
+<li><code>项目右击</code>-&gt;<code>properties</code>-&gt;<code>location</code>找到文件并复制</li>
+<li>新工作环境中，<code>项目右击</code>-&gt;<code>import</code>-&gt;<code>Existing</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="JAVA基础语法"><a href="#JAVA基础语法" class="headerlink" title="JAVA基础语法"></a>JAVA基础语法</h2><p>JAVA是一种强类型语言</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>类型名</th>
+<th>字节长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>整型</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点型</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点型（2.0f）</td>
+<td>4</td>
+</tr>
+<tr>
+<td>char</td>
+<td>字符(‘a’)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>boolen</td>
+<td>布尔型</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>JAVA常量</strong> <code>final 常量名（大写）=值</code></li>
+<li>可通过<code>javadoc</code>命令从文档注释中提取内容，生成程序的<strong>API帮助文档</strong>。<code>javadoc -d doc demo.java</code></li>
+</ul>
+<ol>
+<li><strong>JAVA中的逻辑运算符</strong><br><code>&amp;&amp;</code>,<code>||</code>,<code>!</code>,<code>^</code>（异或，a^b，则a与b有且仅有一个true，则返回true）</li>
+<li><strong>JAVA条件运算符？</strong><br>也称为“三元运算符”。<code>布尔表达式？表达式1：表达式2</code>。</li>
+<li><strong>JAVA运算符</strong><br><code>(11+3*8)/4%3=2</code></li>
+</ol>
+<h2 id="JAVA面向对象"><a href="#JAVA面向对象" class="headerlink" title="JAVA面向对象"></a>JAVA面向对象</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>类</strong>：是模子，确定对象会拥有的特征（属性）和行为（方法）<br><strong>属性</strong>：对象具有的各种特征<br><strong>方法</strong>：对象执行的操作<br>类是抽象的概念、模板，对象是具体实体。</p>
+<ol>
+<li><strong>类中的变量</strong><ul>
+<li>成员变量： 在类中定义，用来描述对象的属性，会被赋初值。</li>
+<li>局部变量：  在类的方法中定义，在方法中临时保存数据，不会被赋初值。</li>
+<li>上述两种变量重名时，局部变量具有更高的优先级</li>
+</ul>
+</li>
+<li><p><strong>构造方法</strong><br>有参的构造方法和无参的构造方法可以同时存在。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> 构造方法名()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>static的使用</strong><br>略。多个对象共享static声明的静态变量。</p>
+</li>
+<li><p><strong>初始化块</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> num2;</span><br><span class="line">&#123;</span><br><span class="line">	num1=<span class="number">91</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">	num2=<span class="number">45</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>静态初始化块只在类加载时执行且<strong>只会执行一次</strong>。</li>
+<li>程序运行时，先执行静态初始化块，然后执行普通初始化块，最后才执行构造函数</li>
+</ul>
+</li>
+</ol>
+<p></p><p style="background-color:#FFFACD;padding:15px">下面讲JAVA面向对象的三大特性：封装、继承、多态</p><p></p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>封装的实现：</p>
+<ul>
+<li>修改属性的可见性</li>
+<li>创建getter/setter方法</li>
+<li>在getter/setter方法中加入属性控制语句，防止错误赋值等</li>
+</ul>
+<h3 id="使用包管理JAVA类"><a href="#使用包管理JAVA类" class="headerlink" title="使用包管理JAVA类"></a>使用包管理JAVA类</h3><ol>
+<li>包的声明：<code>package 包名</code>必须放在程序的第一行。</li>
+<li>下面讲解包的使用<ul>
+<li>可以通过<code>import</code>关键字，在某个文件中使用其它文件中的类：<code>import com.zak.Tel</code></li>
+<li>Java中，包的命名规范是全小写字母拼写</li>
+<li>使用时，不但可以加载某个包下的所有文件<br><code>e.g: com.zak.*</code><br>而且可以加载某个具体子包下的所有文件<br><code>e.g: com.zak.music.*</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>本类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>private </strong></td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong> 默认</strong></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>protected</strong></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>public</strong></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<h3 id="JAVA的this关键字"><a href="#JAVA的this关键字" class="headerlink" title="JAVA的this关键字"></a>JAVA的this关键字</h3><p>略。自动生成getter/setter方法。<code>source</code>-&gt;<code>getter/setter</code></p>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>内部类提供了更好的封装：</p>
+<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类？？？</li>
+</ul>
+<ol>
+<li><strong>成员内部类</strong><br><code>内部类 对象名=外部类对象.new 内部类();</code><br>如果外部类和内部类具有相同的成员变量或方法。内部类默认访问自己的成员或方法。如果要访问外部类的成员变量，可使用<code>this</code>关键字。</li>
+<li><strong>静态内部类</strong><ul>
+<li>静态内部类不能直接访问外部类的非静态成员，但可以通过<code>new 外部类().成员</code>的方式访问。</li>
+<li>如果外部类的静态成员与内部类的成员名称相同，可通过<code>类名.静态成员</code>访问外部类符静态成员。如果外部类的静态成员与内部类的成员名称不同，可通过<code>成员名</code>直接调用外部类的静态成员。</li>
+<li>创建静态内部类的对象时，不需要外部类的对象，可直接创建：<code>内部类 对象名=new 内部类();</code></li>
+</ul>
+</li>
+<li><strong>方法内部类</strong><br>方法内部类就是内部类定义在外部类的方法内。<br>方法内部类只在该方法内可见，即只在该方法内可以使用。<blockquote>
+<p>由于方法内部类不能在外部类的方法之外的地方使用，因此<strong>方法内部类不能使用访问修饰符和<code>static</code>修饰符</strong>。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p><strong>继承是类与类的一种关系</strong><br>JAVA中是单继承，一个类只有一个父类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方法的重写</strong><br>重写从父类继承的方法，返回类型、方法名、参数类型及个数相同。</p>
+</li>
+<li><strong>继承的初始化顺序</strong><ul>
+<li>先初始化父类，再初始化子类</li>
+<li>在初始化的对象中，先初始化属性，再初始化构造方法</li>
+</ul>
+</li>
+<li><strong>final关键字</strong><ul>
+<li>修饰<strong>类</strong>，则该类不允许被继承</li>
+<li>修饰<strong>方法</strong>，则该方法不允许被覆盖（重写）</li>
+<li>修饰<strong>属性</strong>，则该属性的值只能被赋值一次（构造方法中初始化或初始化属性，有且只有一个）</li>
+</ul>
+</li>
+<li><strong>super关键字</strong><ul>
+<li>代表父类对象</li>
+<li>可以<strong>显式的</strong>调用父类对象，放在子类构造函数第一行。<strong>隐式的</strong>，系统会自动生成<code>super();</code>。</li>
+<li>当父类定义了一个有参构造方法，而没有无参构造方法，系统不会自动生成无参构造方法。而在子类构造方法中，<strong>隐式调用无参构造方法</strong>，故会报错。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p><code>Object类</code>是所有类的父类，如果一个类没有使用<code>extends</code>关键字标识继承另一个类，则该类默认继承<code>Object类</code>。<br><code>Object类</code>中的方法适用于所有子类：</p>
+<ol>
+<li><p><strong>toString()</strong><br>直接输出对象，会输出哈希码（对象地址字符串，用于唯一区分对象）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Telephone tel = <span class="keyword">new</span> Telephone();</span><br><span class="line">System.out.println(tel);</span><br></pre></td></tr></table></figure>
+<p> 可通过重写<code>toString()</code>方法，输出对象的属性。<br> 快捷方式<code>source</code>-&gt;<code>Generate toString()</code></p>
+</li>
+<li><p><strong>equals()</strong><br>该函数比较的是对象的引用是否指向同一块内存地址。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog dog = <span class="keyword">new</span> dog();</span><br><span class="line">...</span><br><span class="line">dog.equals(dog2);</span><br></pre></td></tr></table></figure>
+<p> 上述代码中 <code>dog</code> 引用的是内存中对象的地址，而非对象。<br> 效果和<code>==</code>相同。</p>
+</li>
+<li><p><strong>重写equals方法</strong><br><code>source</code>-&gt;<code>Generate hashCode() and equals()</code><br>生成代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> boolen <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	<span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	Dog other = (Dog)obj;</span><br><span class="line">	<span class="keyword">if</span>(age != other.age)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 其中<code>obj.getClass()</code>代表<code>类对象</code>，如：姓名，身高…<br> 相应的，<code>obj</code>代表<code>类的对象</code>，如：小明，180cm…</p>
+</li>
+</ol>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ol>
+<li><strong>引用多态</strong><ul>
+<li>父类的引用可以指向本类的对象</li>
+<li>父类的引用可以指向子类的对象</li>
+</ul>
+</li>
+<li><strong>方法多态</strong><ul>
+<li>接上面一点，同为父类的引用，指向不同对象是，调用方法是调用不同方法。</li>
+<li>不能通过父类引用调用子类独有的方法。</li>
+<li>如果子类没有重写父类的方法，则通过父类引用指向子类对象时，调用的是子类继承父类的方法。</li>
+</ul>
+</li>
+<li><strong>多态中的类型转换</strong><ul>
+<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换</li>
+<li>向下类型转换（强制类型转换），是大类型到小类型的转换</li>
+<li><code>instanceof</code>运算符，来避免类型转换时的安全问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line">Animal animal = dog;<span class="comment">//向上类型转换，自动</span></span><br><span class="line">Dog dog2 = (Dog)animal;<span class="comment">//向下类型转换，强制</span></span><br><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> cat)&#123;</span><br><span class="line">	Cat cat = (Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	...<span class="string">"无法进行类型转换"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h3><ol>
+<li><p><strong>JAVA中的抽象类</strong><br>抽象类是约束子类有哪些方法，约束子类的特征。<br><strong>使用规则：</strong></p>
+<ul>
+<li><code>abstract</code>关键字定义抽象类</li>
+<li><code>abstract</code>定义抽象方法，只有声明，不需要实现</li>
+<li>包含抽象方法的类是抽象类</li>
+<li>抽象类中可以包含普通的方法，也可以没有抽象方法</li>
+<li>抽象类不能直接创建，但是可以定义引用<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Telphone</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">message</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>JAVA中的接口</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] [abstract隐式存在] interface 接口名 [extends 父接口1，父接口2...]&#123;</span><br><span class="line">	零个或多个常量定义;</span><br><span class="line">	零个或多个抽象方法定义;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 接口中的属性是常量，即使在定义是不加上<code>public static final</code>修饰符，系统会自动加上。在接口定义中也有<code>abstract</code>隐式存在。</p>
+</li>
+<li><p><strong>使用接口</strong><br>一个类可以实现一个或多个接口，<code>implement</code>关键字。<br>JAVA中一个类只能继承一个父类，不够灵活，通过实现多个接口可做补充。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="title">implemnets</span> 接口1,接口2</span>&#123;</span><br><span class="line">	<span class="comment">//要实现继承的抽象方法，要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 一个接口的引用，可以指向实现了接口的不同对象。</p>
+</li>
+<li><p><strong>接口与匿名内部类的配合使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IPlayGame ip = <span class="keyword">new</span> IPlayGame()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="string">"使用匿名内部类的方式实现接口"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">ip.playGame();</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> IPlayGame()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="string">"使用匿名内部类的方式实现接口"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;.playGame();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>常用的UML图有：用例图、序列图、类图<br>常用的UML建模工具：Visio、Rational Rose、<strong>PowerDesign</strong><br><strong>如何用PowerDesign生成类图并生成java代码</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[PHP高效编程 — API]]></title>
       <url>http://zak7.com/2016/07/30/php-master-api/</url>
       <content type="html"><![CDATA[<p style="background-color:#b0f4f3;padding:15px">在本章中我们要研究以API为基础设计系统架构的可能性。<br></p>
@@ -336,7 +705,8 @@ Featured concertMozart&apos;s Requiem
 <p><strong>例如，有文件头如下：</strong><br>    <code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</code><br>在这里我们看到一系列被逗号分隔的值，其中还包含分号和一个q值。一个没有q值的格式是首选格式，如果服务器不能提供这些格式，那么降低要求，选q=0.9的。<code>*/*</code>表示服务器不管有什么样的格式都应该发送，客户端收到结果后将尽可能处理它们。</p>
 <h3 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h3><p>当我们在编写Web表单时可以在GET方法和POST方法之间做一个选择。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"form.php"</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">	Name: &lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span>/&gt;</span><br><span class="line">	&lt;input type=<span class="string">"submit"</span> value=<span class="string">"Save"</span>/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
 <p>GET与POST方法的区别在于：提交的表单数据和相应的Content-Type不在URL中，而在请求的正文中。</p>
-<h2 id="理解并选择服务类型"><a href="#理解并选择服务类型" class="headerlink" title="理解并选择服务类型"></a>理解并选择服务类型</h2><h3 id="PHP和SOAP"><a href="#PHP和SOAP" class="headerlink" title="PHP和SOAP"></a>PHP和SOAP</h3><blockquote>
+<h2 id="理解并选择服务类型"><a href="#理解并选择服务类型" class="headerlink" title="理解并选择服务类型"></a>理解并选择服务类型</h2><p>这里讲解三种服务类型：RPC(remote procedurecall,远程调用过程)、SOAP(simple object access protocol，简单对象访问协议 )、REST。</p>
+<h3 id="PHP和SOAP"><a href="#PHP和SOAP" class="headerlink" title="PHP和SOAP"></a>PHP和SOAP</h3><blockquote>
 <p>SOAP 曾经表示简单对象访问协议（Simple Object Access Protocol），但由于SOAP并不简单，其使用率已下降。然而，SOAP是严格定义的XML-RPC的一个特定子集。它是一个冗长的XML格式，包括PHP很多程序都建有内置的类库可以轻松处理SOAP。我们通常使用<strong>WSDL（Web Service Description Language，Web服务描述语言）</strong>文档描述SOAP服务，这是用来描述Web服务的一组定义。</p>
 </blockquote>
 <p><strong>下面，我们将建立一个服务并使用SOAP扩展。</strong><br>首先，为这个公开的服务创建一些功能：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">server</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDisplayName</span><span class="params">($first_name,$last_name)</span></span>&#123;</span><br><span class="line">		$name=<span class="string">''</span>;</span><br><span class="line">		$name.=strtoupper(substr($first_name,<span class="number">0</span>,<span class="number">1</span>));</span><br><span class="line">		<span class="comment">//ucfirst把字符串的首字母变为大写</span></span><br><span class="line">		$name.=<span class="string">' '</span>.ucfirst($last_name);</span><br><span class="line">		<span class="keyword">return</span> $name;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">countWords</span><span class="params">($paragraph)</span></span>&#123;</span><br><span class="line">		$words=preg_split(<span class="string">'/[.,!?;]+/'</span>,$paragraph);</span><br><span class="line">		<span class="keyword">return</span> count($words);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -396,7 +766,10 @@ foreach($simplexml-&gt;job-&gt;team-&gt;subteam-&gt;item as $item){
 </blockquote>
 <h4 id="日历源码摘录"><a href="#日历源码摘录" class="headerlink" title="日历源码摘录"></a>日历源码摘录</h4><p><strong>ajax代码如下</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">  $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// For all anchors inside our table cells, add an onclick event</span></span><br><span class="line">    $(<span class="string">'#calendar td a'</span>).click(</span><br><span class="line">      <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123; </span><br><span class="line">        <span class="comment">// Stop the link from triggering</span></span><br><span class="line">        event.preventDefault();</span><br><span class="line">        <span class="comment">// Stop the body click from triggering</span></span><br><span class="line">        event.stopPropagation();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Remove existing tooltips:</span></span><br><span class="line">        $(<span class="string">'#calendar td div'</span>).remove();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Create a simple container for our data</span></span><br><span class="line">        <span class="keyword">var</span> tooltip = </span><br><span class="line">		$(<span class="string">'&lt;div/&gt;'</span>).css(<span class="string">"position"</span>, <span class="string">"absolute"</span>).addClass(<span class="string">'tooltip'</span>);</span><br><span class="line">	<span class="keyword">var</span> msgbox=$(<span class="keyword">this</span>).parent();<span class="comment">//先获取父级元素，否则在ajax中无效</span></span><br><span class="line">        <span class="comment">// Perform the AJAX request to the anchors link</span></span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">          url: <span class="keyword">this</span>.href,</span><br><span class="line">		  type: <span class="string">'GET'</span>,  <span class="comment">//这里用GET</span></span><br><span class="line">          dataType: <span class="string">'jsonp'</span>,  <span class="comment">//类型</span></span><br><span class="line">          jsonp: <span class="string">'callback'</span>, <span class="comment">//jsonp回调参数，必需</span></span><br><span class="line">          <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">          success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">			   <span class="comment">//json_obj=eval('('+data+')');</span></span><br><span class="line">            <span class="comment">// On success, add the data inside our tooltip</span></span><br><span class="line">			<span class="keyword">var</span> dateNum=data.date;<span class="comment">//js转化时间戳</span></span><br><span class="line">			<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">parseInt</span>(dateNum)*<span class="number">1000</span>);</span><br><span class="line">			<span class="keyword">var</span> dateStr =formatDate(d); </span><br><span class="line">            tooltip.append(<span class="string">"&lt;p&gt;&lt;b&gt;Event:&lt;/b&gt; "</span> + data.title </span><br><span class="line">			+ <span class="string">"&lt;br /&gt; &lt;b&gt;Date:&lt;/b&gt; "</span> +dateStr+ <span class="string">"&lt;/p&gt;"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Add the tooltip to the table cell</span></span><br><span class="line">            msgbox.append(tooltip);</span><br><span class="line">			<span class="comment">//$('#likeCount2').append(tooltip);</span></span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Add an onclick to the body to remove existing tooltips </span></span><br><span class="line">	<span class="comment">//so the user can move on by clicking anywhere</span></span><br><span class="line">    $(<span class="string">'body'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $(<span class="string">'#calendar td div'</span>).remove();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatDate</span>(<span class="params">now</span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> year=now.getFullYear();</span><br><span class="line"><span class="keyword">var</span> month=now.getMonth()+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> date=now.getDate();</span><br><span class="line"><span class="keyword">var</span> hour=now.getHours();</span><br><span class="line"><span class="keyword">var</span> minute=now.getMinutes();</span><br><span class="line"><span class="keyword">var</span> second=now.getSeconds();</span><br><span class="line"><span class="keyword">return</span> year+<span class="string">"-"</span>+month+<span class="string">"-"</span>+date+<span class="string">" "</span>+hour+<span class="string">":"</span>+minute+<span class="string">":"</span>+second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>服务端代码如下：</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventsController</span></span><br><span class="line"></span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> $events_file = <span class="string">'events-list.txt'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">GETAction</span><span class="params">($request)</span> </span>&#123;</span><br><span class="line">    $events = <span class="keyword">$this</span>-&gt;readEvents();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($request-&gt;url_elements[<span class="number">2</span>]) </span><br><span class="line">	&amp;&amp; is_numeric($request-&gt;url_elements[<span class="number">2</span>])) &#123;</span><br><span class="line">      <span class="keyword">return</span> $events[$request-&gt;url_elements[<span class="number">2</span>]];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> $events;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">POSTAction</span><span class="params">($request)</span> </span>&#123;<span class="comment">//后续追加</span></span><br><span class="line">    <span class="comment">// error checking and filtering input MUST go here</span></span><br><span class="line">    $events = <span class="keyword">$this</span>-&gt;readEvents();</span><br><span class="line">    $event = <span class="keyword">array</span>();</span><br><span class="line">    $event[<span class="string">'title'</span>] = $request-&gt;parameters[<span class="string">'title'</span>];</span><br><span class="line">    $event[<span class="string">'date'</span>] = $request-&gt;parameters[<span class="string">'date'</span>];</span><br><span class="line">    $event[<span class="string">'capacity'</span>] = $request-&gt;parameters[<span class="string">'capacity'</span>];</span><br><span class="line"></span><br><span class="line">    $events[] = $event;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;writeEvents($events);</span><br><span class="line">    <span class="comment">//$id = max(array_keys($events));</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">PUTAction</span><span class="params">($request)</span> </span>&#123;<span class="comment">//指定修改</span></span><br><span class="line">    <span class="comment">// error checking and filtering input MUST go here</span></span><br><span class="line">    $events = <span class="keyword">$this</span>-&gt;readEvents();</span><br><span class="line">    $event = <span class="keyword">array</span>();</span><br><span class="line">    $event[<span class="string">'title'</span>] = $request-&gt;parameters[<span class="string">'title'</span>];</span><br><span class="line">    $event[<span class="string">'date'</span>] = $request-&gt;parameters[<span class="string">'date'</span>];</span><br><span class="line">    $event[<span class="string">'capacity'</span>] = $request-&gt;parameters[<span class="string">'capacity'</span>];</span><br><span class="line">    $id = $request-&gt;url_elements[<span class="number">2</span>];</span><br><span class="line">    $events[$id] = $event;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;writeEvents($events);;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">DELETEAction</span><span class="params">($request)</span> </span>&#123;<span class="comment">//删除</span></span><br><span class="line">    $events = <span class="keyword">$this</span>-&gt;readEvents();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($request-&gt;url_elements[<span class="number">2</span>]) </span><br><span class="line">	&amp;&amp; is_numeric($request-&gt;url_elements[<span class="number">2</span>])) &#123;</span><br><span class="line">      <span class="keyword">unset</span>($events[$request-&gt;url_elements[<span class="number">2</span>]]);</span><br><span class="line">      <span class="keyword">$this</span>-&gt;writeEvents($events);</span><br><span class="line">      <span class="comment">//header('HTTP/1.1 204 No Content');</span></span><br><span class="line">      <span class="comment">//header('Location: /events');</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">readEvents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    $events = unserialize(file_get_contents(<span class="keyword">$this</span>-&gt;events_file));</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">empty</span>($events)) &#123;</span><br><span class="line">      <span class="comment">// invent some event data</span></span><br><span class="line">      $events[] = <span class="keyword">array</span>(<span class="string">'title'</span> =&gt; <span class="string">'Summer Concert'</span>,</span><br><span class="line">        <span class="string">'date'</span> =&gt; date(<span class="string">'U'</span>, mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2012</span>)),</span><br><span class="line">        <span class="string">'capacity'</span> =&gt; <span class="string">'150'</span>);</span><br><span class="line">      $events[] = <span class="keyword">array</span>(<span class="string">'title'</span> =&gt; <span class="string">'Valentine Dinner'</span>,</span><br><span class="line">        <span class="string">'date'</span> =&gt; date(<span class="string">'U'</span>, mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">14</span>,<span class="number">2012</span>)),</span><br><span class="line">        <span class="string">'capacity'</span> =&gt; <span class="string">'48'</span>);</span><br><span class="line">      <span class="keyword">$this</span>-&gt;writeEvents($events);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $events;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">writeEvents</span><span class="params">($events)</span> </span>&#123;</span><br><span class="line">    file_put_contents(<span class="keyword">$this</span>-&gt;events_file, serialize($events)); </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">event</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> $parameters=<span class="keyword">array</span>();</span><br><span class="line">	<span class="keyword">public</span> $url_elements=<span class="keyword">array</span>();</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($title,$date,$capacity,$id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;parameters[<span class="string">'title'</span>]=$title;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;parameters[<span class="string">'date'</span>]=$date;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;parameters[<span class="string">'capacity'</span>]=$capacity;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;url_elements[<span class="number">2</span>]=$id;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">$callback = <span class="keyword">isset</span>($_GET[<span class="string">'callback'</span>]) ? trim($_GET[<span class="string">'callback'</span>]) : <span class="string">''</span>; </span><br><span class="line">$a=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'event_number'</span>]))&#123;</span><br><span class="line">	$id=$_GET[<span class="string">'event_number'</span>];</span><br><span class="line">	$request=<span class="keyword">new</span> event(<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,$id);</span><br><span class="line">	$Eventreturn=<span class="keyword">new</span> EventsController();</span><br><span class="line">	$tmp=$Eventreturn-&gt;GETAction($request);</span><br><span class="line">	<span class="comment">//print_r($tmp);</span></span><br><span class="line">	$Eventmsg= json_encode($tmp);</span><br><span class="line">	<span class="keyword">echo</span> $callback . <span class="string">'('</span> .$Eventmsg .<span class="string">')'</span>;</span><br><span class="line">	<span class="comment">//echo $callback . '(' . $Eventmsg .')';  //返回格式，必需</span></span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($a==<span class="number">1</span>)&#123;</span><br><span class="line">	$date=date(<span class="string">'U'</span>,time());</span><br><span class="line">	$request=<span class="keyword">new</span> event(<span class="string">'fruit'</span>,$date,<span class="string">'333'</span>,<span class="number">31</span>);</span><br><span class="line">	$Eventreturn=<span class="keyword">new</span> EventsController();</span><br><span class="line">	$Eventreturn-&gt;PUTAction($request);</span><br><span class="line">	print_r($Eventreturn-&gt;GETAction($request));</span><br><span class="line">&#125;</span><br><span class="line">	<span class="comment">//$Eventreturn-&gt;POSTAction($request);</span></span><br><span class="line">	<span class="comment">//$Eventreturn-&gt;PUTAction($request);</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
+<h2 id="开发和使用RESTful服务"><a href="#开发和使用RESTful服务" class="headerlink" title="开发和使用RESTful服务"></a>开发和使用RESTful服务</h2><p>REST表示表述性状态转移（REpresentational State Transfer），它用简洁易行的方式向HTTP中的条目暴露CRUD（Create、Replace、Update、Delete）的应用功能。【避免因为违反某些REST原则而招致批评，可将它作为一个HTTP Web服务来推广】<br>REST服务最常用于具有很强数据关联性的服务中。</p>
+<h3 id="超越Pretty-URL"><a href="#超越Pretty-URL" class="headerlink" title="超越Pretty URL"></a>超越Pretty URL</h3><p>URL的重点在于：在REST中任何东西都是<strong>资源（resource）</strong>。<br>在RESTful服务中，我们可以看到两种类型的URL。<strong>第一种是集合</strong>：因为包含一个资源列表，所以就像文件系统上的目录一样。例如，一个事件列表将有如下URL：<br><code>http://example.com/events/</code><br>单个事件会有一个与之相关的特定标识的URL，比如：<br><code>http://example.com/events/72</code><br>如果这个服务暴露了该事件中更多其它信息。URL可以采用如下格式<br><code>http://example.com/events/72/tickets</code></p>
+<h3 id="RESTful原则"><a href="#RESTful原则" class="headerlink" title="RESTful原则"></a>RESTful原则</h3><p>略。日后补上</p>
+<h3 id="建立一个RESTful服务"><a href="#建立一个RESTful服务" class="headerlink" title="建立一个RESTful服务"></a>建立一个RESTful服务</h3>]]></content>
     </entry>
     
     <entry>
@@ -437,14 +810,14 @@ foreach($simplexml-&gt;job-&gt;team-&gt;subteam-&gt;item as $item){
 </li>
 </ul>
 <h3 id="参数和预处理语句"><a href="#参数和预处理语句" class="headerlink" title="参数和预处理语句"></a>参数和预处理语句</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$db_conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;dbname=recipes'</span>,<span class="string">'root'</span>,<span class="string">''</span>);</span><br><span class="line">$sql = <span class="string">'SELECT name, description, chef FROM recipes WHERE id=:recipe_id'</span>;</span><br><span class="line">$stmt = $db_conn-&gt;prepare($sql);</span><br><span class="line"><span class="comment">//perform query</span></span><br><span class="line">$stmt-&gt;execute(<span class="keyword">array</span>(<span class="string">"recipe_id"</span>=&gt;<span class="number">1</span>));</span><br><span class="line">$recipe = $stmt-&gt;fetch();</span><br></pre></td></tr></table></figure>
-<p>在<code>:recipe_id</code>前面的冒号表示这是一个占位符，在实际的运行中会用真正的值进行替换。注意，execute中的占位符可以写<code>：</code>也可以省略。<br>也可以用？符号为变量保留一个位置作为没有命名的占位符。如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$sql = <span class="string">'SELECT name,description,chef FROM recipes WHERE chef=?</span><br><span class="line"> AND category_id =?'</span>;</span><br><span class="line">$stmt = $db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;execute(<span class="keyword">array</span>(<span class="string">"Lorna"</span>,<span class="number">3</span>));</span><br><span class="line">$recipe=$stmt-&gt;fetch(PDO::FETCH_NUM);</span><br></pre></td></tr></table></figure></p>
+<p>在<code>:recipe_id</code>前面的冒号表示这是一个占位符，在实际的运行中会用真正的值进行替换。注意，execute中的占位符可以写<code>：</code>也可以省略。<br>也可以用？符号为变量保留一个位置作为没有命名的占位符。如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$sql = 'SELECT name,description,chef FROM recipes WHERE chef=?</span><br><span class="line"> AND category_id =?';</span><br><span class="line">$stmt = $db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;execute(array("Lorna",3));</span><br><span class="line">$recipe=$stmt-&gt;fetch(PDO::FETCH_NUM);</span><br></pre></td></tr></table></figure></p>
 <p>当使用数据库时，必须溢出已经发送到数据库的值（删除不需要的字符）。例如<code>mysql_escape_string()</code>这样的MySQL功能。当使用预处理语句时，为占位符传入的值已经溢出，因为MySQL知道这些都是可能溢出的值。</p>
-<h3 id="绑定值和预处理语句的变量"><a href="#绑定值和预处理语句的变量" class="headerlink" title="绑定值和预处理语句的变量"></a>绑定值和预处理语句的变量</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$db_conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;dbname=recipes'</span>,<span class="string">'root'</span>,<span class="string">''</span>);</span><br><span class="line">$sql = <span class="string">'SELECT name,description </span><br><span class="line">		FROM recipes </span><br><span class="line">		WHERE chef=:chef AND category_id = :category_id'</span>;</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;bindValue(<span class="string">':chef'</span>,<span class="string">'lorna'</span>);</span><br><span class="line"><span class="comment">//starters</span></span><br><span class="line">$stmt-&gt;bindValue(<span class="string">':category_id'</span>,<span class="string">'1'</span>);</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$starter =$stmt-&gt;fetch();</span><br><span class="line"><span class="comment">//pudding</span></span><br><span class="line">$stmt-&gt;bindValue(<span class="string">':category_id'</span>,<span class="string">'3'</span>);</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$pudding=$stmt-&gt;fetch();</span><br></pre></td></tr></table></figure>
-<p>我们还可以将参数与变量绑定，利用<code>PDOStatement::bindParam()</code>，如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$db_conn =<span class="keyword">new</span> PDO(...);</span><br><span class="line">$sql=<span class="string">'SELECT ... WHERE recipes.chef=:chef AND </span><br><span class="line">categories.name = :category_name'</span>;</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;bindValue(<span class="string">':chef'</span>,<span class="string">'lorna'</span>);</span><br><span class="line">$stmt-&gt;bindParam(<span class="string">':category_name'</span>,$category);</span><br><span class="line"></span><br><span class="line">$category=<span class="string">'starter'</span>;</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$starters = $stmt-&gt;fetchALL();</span><br><span class="line"><span class="comment">//fetchALL()一次检索所有行</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="绑定值和预处理语句的变量"><a href="#绑定值和预处理语句的变量" class="headerlink" title="绑定值和预处理语句的变量"></a>绑定值和预处理语句的变量</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$db_conn = new PDO('mysql:host=localhost;dbname=recipes','root','');</span><br><span class="line">$sql = 'SELECT name,description </span><br><span class="line">		FROM recipes </span><br><span class="line">		WHERE chef=:chef AND category_id = :category_id';</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;bindValue(':chef','lorna');</span><br><span class="line">//starters</span><br><span class="line">$stmt-&gt;bindValue(':category_id','1');</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$starter =$stmt-&gt;fetch();</span><br><span class="line">//pudding</span><br><span class="line">$stmt-&gt;bindValue(':category_id','3');</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$pudding=$stmt-&gt;fetch();</span><br></pre></td></tr></table></figure>
+<p>我们还可以将参数与变量绑定，利用<code>PDOStatement::bindParam()</code>，如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$db_conn =new PDO(...);</span><br><span class="line">$sql='SELECT ... WHERE recipes.chef=:chef AND </span><br><span class="line">categories.name = :category_name';</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;bindValue(':chef','lorna');</span><br><span class="line">$stmt-&gt;bindParam(':category_name',$category);</span><br><span class="line"></span><br><span class="line">$category='starter';</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$starters = $stmt-&gt;fetchALL();</span><br><span class="line">//fetchALL()一次检索所有行</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p><strong>预处理语句是极为有用的。这种方式不仅能够提高代码的性能，而且可以毫无疑问地溢出占位符</strong></p>
 </blockquote>
-<h3 id="插入一行并获取ID"><a href="#插入一行并获取ID" class="headerlink" title="插入一行并获取ID"></a>插入一行并获取ID</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$db_conn =<span class="keyword">new</span> PDO(...);</span><br><span class="line">$sql = <span class="string">'INSERT INTO recipes (name,description,chef,created)</span><br><span class="line"> VALUES (:name,:description,:chef,NOW())'</span>;</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;execute(<span class="keyword">array</span>(</span><br><span class="line"><span class="string">':chef'</span>=&gt;<span class="string">'w ris'</span>,</span><br><span class="line"><span class="string">':description'</span>=&gt;<span class="string">'balalabala'</span>,</span><br><span class="line"><span class="string">':chef'</span>=&gt;<span class="string">'lorna'</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"New insert id: "</span>.$db_conn-&gt;lastInsertId();</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="插入一行并获取ID"><a href="#插入一行并获取ID" class="headerlink" title="插入一行并获取ID"></a>插入一行并获取ID</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$db_conn =new PDO(...);</span><br><span class="line">$sql = 'INSERT INTO recipes (name,description,chef,created)</span><br><span class="line"> VALUES (:name,:description,:chef,NOW())';</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;execute(array(</span><br><span class="line">':chef'=&gt;'w ris',</span><br><span class="line">':description'=&gt;'balalabala',</span><br><span class="line">':chef'=&gt;'lorna'</span><br><span class="line">)</span><br><span class="line">echo "New insert id: ".$db_conn-&gt;lastInsertId();</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p><strong>注意<code>lastInsertId()</code>是PDO对象而不是PDOStatement对象。</strong></p>
 <h3 id="有多少行被插入、更新或删除"><a href="#有多少行被插入、更新或删除" class="headerlink" title="有多少行被插入、更新或删除"></a>有多少行被插入、更新或删除</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$db_conn =<span class="keyword">new</span> PDO(...);</span><br><span class="line">$sql=<span class="string">'UPDATE recipes SET category_id=:id WHERE category_id is NULL'</span>;</span><br><span class="line">$stmt=$db_conn-&gt;prepare($sql);</span><br><span class="line">$stmt-&gt;execute(<span class="keyword">array</span>(<span class="string">':id'</span>=&gt;<span class="number">2</span>));</span><br><span class="line"><span class="keyword">echo</span> $stmt-&gt;rowCount().<span class="string">'rows updated'</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>注意<code>rowCount()</code>是PDOStatement对象的一个方法。可检查插入、更新或删除了多少行。</strong></p>
@@ -460,7 +833,7 @@ foreach($simplexml-&gt;job-&gt;team-&gt;subteam-&gt;item as $item){
 <blockquote>
 <p><code>exec()</code>的返回值若不是<strong>受影响的行数</strong>，就是查询失败时的false。</p>
 </blockquote>
-<h2 id="设计数据库"><a href="#设计数据库" class="headerlink" title="设计数据库"></a>设计数据库</h2><h3 id="MySQL解析"><a href="#MySQL解析" class="headerlink" title="MySQL解析"></a>MySQL解析</h3><p>请读者自行运行分析，这里就不贴代码结果了。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$db_conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;dbname=recipes'</span>,<span class="string">'root'</span>,<span class="string">''</span>);</span><br><span class="line">$sql = <span class="string">'EXPLAIN SELECT name,description,created </span><br><span class="line">		FROM recipes </span><br><span class="line">		WHERE name="Chicken Casserole";</span><br><span class="line">$r=$db_conn-&gt;query($sql);</span><br><span class="line">print_r($r-&gt;fetch(PDO::FETCH_ASSOC));</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="设计数据库"><a href="#设计数据库" class="headerlink" title="设计数据库"></a>设计数据库</h2><h3 id="MySQL解析"><a href="#MySQL解析" class="headerlink" title="MySQL解析"></a>MySQL解析</h3><p>请读者自行运行分析，这里就不贴代码结果了。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$db_conn = new PDO('mysql:host=localhost;dbname=recipes','root','');</span><br><span class="line">$sql = 'EXPLAIN SELECT name,description,created </span><br><span class="line">		FROM recipes </span><br><span class="line">		WHERE name="Chicken Casserole";</span><br><span class="line">$r=$db_conn-&gt;query($sql);</span><br><span class="line">print_r($r-&gt;fetch(PDO::FETCH_ASSOC));</span><br></pre></td></tr></table></figure></p>
 <p>分析上例结果，表明我们的查询不得不搜索所有的5行，以便找到正确的一行。可已添加一个索引来提高性能。<br>    ALERT TABLE recipes ADD INDEX idx_name(name);<br>新运行的EXPLAIN结果，表明我们正在使用<strong>新索引</strong>，而且只需要搜索一行便可以找到所要找的那一行。</p>
 <h3 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h3><pre><code>ALTER TABLE 表名 ADD FOREIGN KEY (字段名) REFERENCES 表名(字段名)
 </code></pre><blockquote>

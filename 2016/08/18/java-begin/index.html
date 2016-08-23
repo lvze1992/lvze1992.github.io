@@ -1,0 +1,1302 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//115.28.217.112/github/extend/font_css/font.css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA,JAVA入门必学," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="JAVA入门慕课网教程笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA入门">
+<meta property="og:url" content="http://zak7.com/2016/08/18/java-begin/index.html">
+<meta property="og:site_name" content="ZAK's Blog">
+<meta property="og:description" content="JAVA入门慕课网教程笔记。">
+<meta property="og:updated_time" content="2016-08-23T14:09:48.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA入门">
+<meta name="twitter:description" content="JAVA入门慕课网教程笔记。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zak7.com/2016/08/18/java-begin/"/>
+
+  <title> JAVA入门 | ZAK's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5a20009100823c304f758cd8bf164d50";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZAK's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JAVA入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T10:27:44+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/java-begin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/18/java-begin/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/18/java-begin/" class="leancloud_visitors" data-flag-title="JAVA入门">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div style="background-image:url(http://115.28.217.112/github/java/cover.jpg);background-position: 30% 40%;background-repeat:no-repeat;min-height: 250px;max-width:550px;text-align:center;margin: -20px auto;background-size: cover;"><div class="demo" style="background-color: rgba(105, 94, 94, 0.5);min-width:150px;margin: 0px 0px 0 40%;"><p style="color:#ffffff;">JAVA入门<br>慕课网教程笔记。</p></div></div>
+
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<p><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/like/css/style.css"><link rel="stylesheet" type="text/css" href="http://115.28.217.112/github/extend/calendar/calendar.css"><div id="container"><div class="feed" id="feed2"><div class="likeCount" id="likeCount2" name="likeCount">—</div><div class="likeIt" id="likeIt2">Click heart</div><div class="heart" id="like2" rel="like"></div><form name="countForm"><input name="countNumber" type="hidden" id="countNumber" value="---"></form></div></div><div style="clear:both;content:''"></div></p>
+<script src="http://115.28.217.112/github/extend/like/js/jquery.min.js" type="text/javascript"></script><script type="text/javascript">
+$(document).ready(function(){
+var t;
+var timeOnce;
+var n=5;
+countCallback();
+function countCallback() {
+        var j = $("form").serializeArray();//序列化name/value
+        $.ajax({
+            type: 'GET',  //这里用GET
+            url: 'http://115.28.217.112/github/extend/like/likecount.php',
+            dataType: 'jsonp',  //类型
+            data: j,
+            jsonp: 'callback', //jsonp回调参数，必需
+            async: false,
+            success: function(result) {//返回的json数据
+                //alert(result.message); //回调输出
+                result = result || {};
+                if (result.msg=='newcount'&&n>0){
+                    $("#likeCount2").html(result.number);
+                    $("#countNumber").val(result.number);
+                }
+
+            },
+            timeout: 3000
+        })
+}
+
+    $('body').on("click",'.heart',function(){
+        var A=$(this).attr("id");
+        var B=A.split("like");
+        var messageID=B[1];
+        //var C=parseInt($("#likeCount"+messageID).html());
+        $(this).css("background-position","")
+        var D=$(this).attr("rel");
+        if(n==1){
+            n=0;
+            countCallback();
+            $("#likeIt"+messageID).html("I love YOU !");
+            $("#likeCount"+messageID).html("1314");
+            surprise();
+                function surprise() 
+                { 
+                    $("#like"+messageID).addClass("heartAnimation").attr("rel","like");
+                    $("#like"+messageID).css("background-position","right");
+                    setTimeout(test1,600);
+                function test1() 
+                { 
+                    $("#like"+messageID).removeClass("heartAnimation").attr("rel","like");
+                    $("#like"+messageID).css("background-position","right");
+                }
+                    setTimeout(surprise,800);
+                } 
+        }else if(n>1){
+            if(timeOnce==1){
+            }else{
+                if(D === 'like') { 
+                    n=n-1;
+                    //$("#likeCount"+messageID).html(C+1);
+                //...
+                    countCallback();
+                //...
+                    //$("#countNumber").val(C+1);
+                    if(n==4)$("#likeIt"+messageID).html("I");
+                    if(n==3)$("#likeIt"+messageID).html("I love");
+                    if(n==2)$("#likeIt"+messageID).html("I love Y");
+                    if(n==1)$("#likeIt"+messageID).html("I love YO");
+                    $(this).addClass("heartAnimation").attr("rel","like");
+                    timeOnce=1;
+                    t=setTimeout(test,600);
+                    function test() 
+                    { 
+                        timeOnce=0;
+                        clearTimeout(t);
+                        $("#like"+messageID).removeClass("heartAnimation").attr("rel","like");
+                        $("#like"+messageID).css("background-position","right");
+                    } 
+                }
+                else{
+                    $("#likeCount"+messageID).html(C-1);
+                    $(this).removeClass("heartAnimation").attr("rel","like");
+                    $(this).css("background-position","left");
+                }
+
+            }
+        }
+    });
+
+
+});
+</script>
+
+<h2 id="JAVA的一些基本概念"><a href="#JAVA的一些基本概念" class="headerlink" title="JAVA的一些基本概念"></a>JAVA的一些基本概念</h2><ol>
+<li><strong>核心概念：JVM、JDK、JRE</strong><ul>
+<li>JVM，即JAVA虚拟机（java virtual mechine）</li>
+<li>JDK，即java开发工具包（java development kit）</li>
+<li>JRE，即JAVA运行环境（java runtime environment）</li>
+<li>JVM、JDK、JRE层层包含。即安装完JDK，你就已经拥有了JRE；安装完JRE，你也就已经有了JVM。<p style="background-color:#FFFACD;padding:15px"><code>.java</code>源文件通过编译器（compiler）转为<code>.class</code>字节码文件，最后通过解释器（interpreter）执行。字节码与平台无关，JVM包含解释器，故跨平台通过JVM实现。</p></li>
+</ul>
+</li>
+<li><strong>基础核心：JAVA SE</strong><br>JAVA SE包含<code>{面向对象，API，JVM等}</code>，以此基础有JAVA EE<code>{JSP，EJB，服务等}</code>，以及JAVA ME<code>{游戏，移动设备，通信}</code></li>
+<li><p><strong>安装JDK</strong></p>
+<blockquote>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external"><span style="color:red;">&nbsp;<strong>下载链接</strong>&nbsp;</span></a></p>
+</blockquote>
+<p> 根据自己的电脑，下载相应版本JDK，进行安装（安装路径自定义，其余一路下一步）。<br> 安装完jdk后需要配置<strong>环境变量</strong>：</p>
+<ul>
+<li>JAVA_HOME，JDK安装路径，例：<code>D:\Java\jdk1.8.0_101</code></li>
+<li>PATH，JDK命令文件位置，即bin目录，例：<code>D:\Java\jdk1.8.0_101\bin</code></li>
+<li>CLASSPATH，类库文件位置，即lib目录，例：<code>.;D:\Java\jdk1.8.0_101\lib</code><br>配置好后<code>运行</code>-<code>cmd</code> 输入<code>java -version</code>即可看到JAVA的版本，JAVA安装成功。</li>
+</ul>
+</li>
+<li><strong>记事本编写JAVA</strong><br>略（太简单了，就略了啊）<br><code>dir</code> 查看当前目录。<br><code>javac hello.java</code> 编译<br><code>java hello</code> 执行（不需要后缀名）</li>
+<li><p><strong>使用Eclipse开发java</strong><br>Eclipse是一个集成开发环境（IDE），还有MyEclipse也是，Myeclipse是对Eclipse的扩展。<br>Eclipse是绿色版的，故解压就可以使用。</p>
+<blockquote>
+<p><a href="http://www.eclipse.org/downloads/" target="_blank" rel="external"><span style="color:red;">&nbsp;<strong>下载链接</strong>&nbsp;</span></a></p>
+</blockquote>
+<ul>
+<li>创建JAVA项目，项目中的src目录用于放源代码文件：new java project</li>
+<li>创建程序包，可避免重名问题：new package</li>
+<li>编写JAVA源程序：new class</li>
+<li>运行JAVA程序：run as-&gt; java app</li>
+</ul>
+</li>
+<li><strong>程序的移植</strong><ul>
+<li><code>项目右击</code>-&gt;<code>properties</code>-&gt;<code>location</code>找到文件并复制</li>
+<li>新工作环境中，<code>项目右击</code>-&gt;<code>import</code>-&gt;<code>Existing</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="JAVA基础语法"><a href="#JAVA基础语法" class="headerlink" title="JAVA基础语法"></a>JAVA基础语法</h2><p>JAVA是一种强类型语言</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>类型名</th>
+<th>字节长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>整型</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点型</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点型（2.0f）</td>
+<td>4</td>
+</tr>
+<tr>
+<td>char</td>
+<td>字符(‘a’)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>boolen</td>
+<td>布尔型</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>JAVA常量</strong> <code>final 常量名（大写）=值</code></li>
+<li>可通过<code>javadoc</code>命令从文档注释中提取内容，生成程序的<strong>API帮助文档</strong>。<code>javadoc -d doc demo.java</code></li>
+</ul>
+<ol>
+<li><strong>JAVA中的逻辑运算符</strong><br><code>&amp;&amp;</code>,<code>||</code>,<code>!</code>,<code>^</code>（异或，a^b，则a与b有且仅有一个true，则返回true）</li>
+<li><strong>JAVA条件运算符？</strong><br>也称为“三元运算符”。<code>布尔表达式？表达式1：表达式2</code>。</li>
+<li><strong>JAVA运算符</strong><br><code>(11+3*8)/4%3=2</code></li>
+</ol>
+<h2 id="JAVA面向对象"><a href="#JAVA面向对象" class="headerlink" title="JAVA面向对象"></a>JAVA面向对象</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>类</strong>：是模子，确定对象会拥有的特征（属性）和行为（方法）<br><strong>属性</strong>：对象具有的各种特征<br><strong>方法</strong>：对象执行的操作<br>类是抽象的概念、模板，对象是具体实体。</p>
+<ol>
+<li><strong>类中的变量</strong><ul>
+<li>成员变量： 在类中定义，用来描述对象的属性，会被赋初值。</li>
+<li>局部变量：  在类的方法中定义，在方法中临时保存数据，不会被赋初值。</li>
+<li>上述两种变量重名时，局部变量具有更高的优先级</li>
+</ul>
+</li>
+<li><p><strong>构造方法</strong><br>有参的构造方法和无参的构造方法可以同时存在。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> 构造方法名()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>static的使用</strong><br>略。多个对象共享static声明的静态变量。</p>
+</li>
+<li><p><strong>初始化块</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> num2;</span><br><span class="line">&#123;</span><br><span class="line">	num1=<span class="number">91</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">	num2=<span class="number">45</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>静态初始化块只在类加载时执行且<strong>只会执行一次</strong>。</li>
+<li>程序运行时，先执行静态初始化块，然后执行普通初始化块，最后才执行构造函数</li>
+</ul>
+</li>
+</ol>
+<p></p><p style="background-color:#FFFACD;padding:15px">下面讲JAVA面向对象的三大特性：封装、继承、多态</p><p></p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>封装的实现：</p>
+<ul>
+<li>修改属性的可见性</li>
+<li>创建getter/setter方法</li>
+<li>在getter/setter方法中加入属性控制语句，防止错误赋值等</li>
+</ul>
+<h3 id="使用包管理JAVA类"><a href="#使用包管理JAVA类" class="headerlink" title="使用包管理JAVA类"></a>使用包管理JAVA类</h3><ol>
+<li>包的声明：<code>package 包名</code>必须放在程序的第一行。</li>
+<li>下面讲解包的使用<ul>
+<li>可以通过<code>import</code>关键字，在某个文件中使用其它文件中的类：<code>import com.zak.Tel</code></li>
+<li>Java中，包的命名规范是全小写字母拼写</li>
+<li>使用时，不但可以加载某个包下的所有文件<br><code>e.g: com.zak.*</code><br>而且可以加载某个具体子包下的所有文件<br><code>e.g: com.zak.music.*</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>本类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>private </strong></td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong> 默认</strong></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>protected</strong></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>public</strong></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<h3 id="JAVA的this关键字"><a href="#JAVA的this关键字" class="headerlink" title="JAVA的this关键字"></a>JAVA的this关键字</h3><p>略。自动生成getter/setter方法。<code>source</code>-&gt;<code>getter/setter</code></p>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>内部类提供了更好的封装：</p>
+<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类？？？</li>
+</ul>
+<ol>
+<li><strong>成员内部类</strong><br><code>内部类 对象名=外部类对象.new 内部类();</code><br>如果外部类和内部类具有相同的成员变量或方法。内部类默认访问自己的成员或方法。如果要访问外部类的成员变量，可使用<code>this</code>关键字。</li>
+<li><strong>静态内部类</strong><ul>
+<li>静态内部类不能直接访问外部类的非静态成员，但可以通过<code>new 外部类().成员</code>的方式访问。</li>
+<li>如果外部类的静态成员与内部类的成员名称相同，可通过<code>类名.静态成员</code>访问外部类符静态成员。如果外部类的静态成员与内部类的成员名称不同，可通过<code>成员名</code>直接调用外部类的静态成员。</li>
+<li>创建静态内部类的对象时，不需要外部类的对象，可直接创建：<code>内部类 对象名=new 内部类();</code></li>
+</ul>
+</li>
+<li><strong>方法内部类</strong><br>方法内部类就是内部类定义在外部类的方法内。<br>方法内部类只在该方法内可见，即只在该方法内可以使用。<blockquote>
+<p>由于方法内部类不能在外部类的方法之外的地方使用，因此<strong>方法内部类不能使用访问修饰符和<code>static</code>修饰符</strong>。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p><strong>继承是类与类的一种关系</strong><br>JAVA中是单继承，一个类只有一个父类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方法的重写</strong><br>重写从父类继承的方法，返回类型、方法名、参数类型及个数相同。</p>
+</li>
+<li><strong>继承的初始化顺序</strong><ul>
+<li>先初始化父类，再初始化子类</li>
+<li>在初始化的对象中，先初始化属性，再初始化构造方法</li>
+</ul>
+</li>
+<li><strong>final关键字</strong><ul>
+<li>修饰<strong>类</strong>，则该类不允许被继承</li>
+<li>修饰<strong>方法</strong>，则该方法不允许被覆盖（重写）</li>
+<li>修饰<strong>属性</strong>，则该属性的值只能被赋值一次（构造方法中初始化或初始化属性，有且只有一个）</li>
+</ul>
+</li>
+<li><strong>super关键字</strong><ul>
+<li>代表父类对象</li>
+<li>可以<strong>显式的</strong>调用父类对象，放在子类构造函数第一行。<strong>隐式的</strong>，系统会自动生成<code>super();</code>。</li>
+<li>当父类定义了一个有参构造方法，而没有无参构造方法，系统不会自动生成无参构造方法。而在子类构造方法中，<strong>隐式调用无参构造方法</strong>，故会报错。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p><code>Object类</code>是所有类的父类，如果一个类没有使用<code>extends</code>关键字标识继承另一个类，则该类默认继承<code>Object类</code>。<br><code>Object类</code>中的方法适用于所有子类：</p>
+<ol>
+<li><p><strong>toString()</strong><br>直接输出对象，会输出哈希码（对象地址字符串，用于唯一区分对象）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Telephone tel = <span class="keyword">new</span> Telephone();</span><br><span class="line">System.out.println(tel);</span><br></pre></td></tr></table></figure>
+<p> 可通过重写<code>toString()</code>方法，输出对象的属性。<br> 快捷方式<code>source</code>-&gt;<code>Generate toString()</code></p>
+</li>
+<li><p><strong>equals()</strong><br>该函数比较的是对象的引用是否指向同一块内存地址。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog dog = <span class="keyword">new</span> dog();</span><br><span class="line">...</span><br><span class="line">dog.equals(dog2);</span><br></pre></td></tr></table></figure>
+<p> 上述代码中 <code>dog</code> 引用的是内存中对象的地址，而非对象。<br> 效果和<code>==</code>相同。</p>
+</li>
+<li><p><strong>重写equals方法</strong><br><code>source</code>-&gt;<code>Generate hashCode() and equals()</code><br>生成代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> boolen <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	<span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	Dog other = (Dog)obj;</span><br><span class="line">	<span class="keyword">if</span>(age != other.age)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 其中<code>obj.getClass()</code>代表<code>类对象</code>，如：姓名，身高…<br> 相应的，<code>obj</code>代表<code>类的对象</code>，如：小明，180cm…</p>
+</li>
+</ol>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ol>
+<li><strong>引用多态</strong><ul>
+<li>父类的引用可以指向本类的对象</li>
+<li>父类的引用可以指向子类的对象</li>
+</ul>
+</li>
+<li><strong>方法多态</strong><ul>
+<li>接上面一点，同为父类的引用，指向不同对象是，调用方法是调用不同方法。</li>
+<li>不能通过父类引用调用子类独有的方法。</li>
+<li>如果子类没有重写父类的方法，则通过父类引用指向子类对象时，调用的是子类继承父类的方法。</li>
+</ul>
+</li>
+<li><strong>多态中的类型转换</strong><ul>
+<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换</li>
+<li>向下类型转换（强制类型转换），是大类型到小类型的转换</li>
+<li><code>instanceof</code>运算符，来避免类型转换时的安全问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line">Animal animal = dog;<span class="comment">//向上类型转换，自动</span></span><br><span class="line">Dog dog2 = (Dog)animal;<span class="comment">//向下类型转换，强制</span></span><br><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> cat)&#123;</span><br><span class="line">	Cat cat = (Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	...<span class="string">"无法进行类型转换"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h3><ol>
+<li><p><strong>JAVA中的抽象类</strong><br>抽象类是约束子类有哪些方法，约束子类的特征。<br><strong>使用规则：</strong></p>
+<ul>
+<li><code>abstract</code>关键字定义抽象类</li>
+<li><code>abstract</code>定义抽象方法，只有声明，不需要实现</li>
+<li>包含抽象方法的类是抽象类</li>
+<li>抽象类中可以包含普通的方法，也可以没有抽象方法</li>
+<li>抽象类不能直接创建，但是可以定义引用<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Telphone</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">message</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>JAVA中的接口</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] [abstract隐式存在] interface 接口名 [extends 父接口1，父接口2...]&#123;</span><br><span class="line">	零个或多个常量定义;</span><br><span class="line">	零个或多个抽象方法定义;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 接口中的属性是常量，即使在定义是不加上<code>public static final</code>修饰符，系统会自动加上。在接口定义中也有<code>abstract</code>隐式存在。</p>
+</li>
+<li><p><strong>使用接口</strong><br>一个类可以实现一个或多个接口，<code>implement</code>关键字。<br>JAVA中一个类只能继承一个父类，不够灵活，通过实现多个接口可做补充。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="title">implemnets</span> 接口1,接口2</span>&#123;</span><br><span class="line">	<span class="comment">//要实现继承的抽象方法，要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 一个接口的引用，可以指向实现了接口的不同对象。</p>
+</li>
+<li><p><strong>接口与匿名内部类的配合使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IPlayGame ip = <span class="keyword">new</span> IPlayGame()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="string">"使用匿名内部类的方式实现接口"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">ip.playGame();</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> IPlayGame()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="string">"使用匿名内部类的方式实现接口"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;.playGame();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>常用的UML图有：用例图、序列图、类图<br>常用的UML建模工具：Visio、Rational Rose、<strong>PowerDesign</strong><br><strong>如何用PowerDesign生成类图并生成java代码</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag">#JAVA</a>
+          
+            <a href="/tags/JAVA入门必学/" rel="tag">#JAVA入门必学</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/30/php-master-api/" rel="next" title="PHP高效编程 — API">
+                <i class="fa fa-chevron-left"></i> PHP高效编程 — API
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/18/java-begin/"
+           data-title="JAVA入门" data-url="http://zak7.com/2016/08/18/java-begin/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LVZE" />
+          <p class="site-author-name" itemprop="name">LVZE</p>
+          <p class="site-description motion-element" itemprop="description">愿有保护所爱之人的力量</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lvze1992" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA的一些基本概念"><span class="nav-number">1.</span> <span class="nav-text">JAVA的一些基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA基础语法"><span class="nav-number">2.</span> <span class="nav-text">JAVA基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA面向对象"><span class="nav-number">3.</span> <span class="nav-text">JAVA面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">3.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用包管理JAVA类"><span class="nav-number">3.3.</span> <span class="nav-text">使用包管理JAVA类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问修饰符"><span class="nav-number">3.4.</span> <span class="nav-text">访问修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA的this关键字"><span class="nav-number">3.5.</span> <span class="nav-text">JAVA的this关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部类"><span class="nav-number">3.6.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">3.7.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类"><span class="nav-number">3.8.</span> <span class="nav-text">Object类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">3.9.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类和接口"><span class="nav-number">3.10.</span> <span class="nav-text">抽象类和接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML"><span class="nav-number">4.</span> <span class="nav-text">UML</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LVZE</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lvze1992"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Xu0taQgVmvPbFGOMT5OQ0IXp-gzGzoHsz", "MI7oCJoDftF5FsURXlvbRcFl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
