@@ -92,7 +92,7 @@
 <meta property="og:description" content="在本章中我们要研究以API为基础设计系统架构的可能性。">
 <meta property="og:image" content="http://115.28.217.112/github/php/API/1.PNG">
 <meta property="og:image" content="http://115.28.217.112/github/php/API/2.PNG">
-<meta property="og:updated_time" content="2016-08-22T15:54:13.873Z">
+<meta property="og:updated_time" content="2016-08-24T15:19:37.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP高效编程 — API">
 <meta name="twitter:description" content="在本章中我们要研究以API为基础设计系统架构的可能性。">
@@ -763,7 +763,17 @@ foreach($simplexml-&gt;job-&gt;team-&gt;subteam-&gt;item as $item){
 <h2 id="开发和使用RESTful服务"><a href="#开发和使用RESTful服务" class="headerlink" title="开发和使用RESTful服务"></a>开发和使用RESTful服务</h2><p>REST表示表述性状态转移（REpresentational State Transfer），它用简洁易行的方式向HTTP中的条目暴露CRUD（Create、Replace、Update、Delete）的应用功能。【避免因为违反某些REST原则而招致批评，可将它作为一个HTTP Web服务来推广】<br>REST服务最常用于具有很强数据关联性的服务中。</p>
 <h3 id="超越Pretty-URL"><a href="#超越Pretty-URL" class="headerlink" title="超越Pretty URL"></a>超越Pretty URL</h3><p>URL的重点在于：在REST中任何东西都是<strong>资源（resource）</strong>。<br>在RESTful服务中，我们可以看到两种类型的URL。<strong>第一种是集合</strong>：因为包含一个资源列表，所以就像文件系统上的目录一样。例如，一个事件列表将有如下URL：<br><code>http://example.com/events/</code><br>单个事件会有一个与之相关的特定标识的URL，比如：<br><code>http://example.com/events/72</code><br>如果这个服务暴露了该事件中更多其它信息。URL可以采用如下格式<br><code>http://example.com/events/72/tickets</code></p>
 <h3 id="RESTful原则"><a href="#RESTful原则" class="headerlink" title="RESTful原则"></a>RESTful原则</h3><p>略。日后补上</p>
-<h3 id="建立一个RESTful服务"><a href="#建立一个RESTful服务" class="headerlink" title="建立一个RESTful服务"></a>建立一个RESTful服务</h3>
+<h3 id="建立一个RESTful服务"><a href="#建立一个RESTful服务" class="headerlink" title="建立一个RESTful服务"></a>建立一个RESTful服务</h3><ol>
+<li><strong>使用重写规则重定向到index.php</strong><br>下面是<code>.htaccess</code>文件的内容。开始可以在空的<code>.htaccess</code>文件内输入任意字符，若出现显示异常，则说明<code>.htaccess</code>文件是生效的。<br><code>.htaccess</code>文件作用于当前目录和子目录。<blockquote>
+<p><a href="http://www.360doc.com/content/14/0429/19/13259165_373277901.shtml" target="_blank" rel="external">参考链接</a></p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On </span><br><span class="line">## RewriteBase / </span><br><span class="line">## 不带上句则会匹配整个网址，如http://localhost/test/1/2</span><br><span class="line">## 带上后则结果为http://localhost/test/1/2</span><br><span class="line">## RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">## RewriteCond %&#123;REQUEST_FILENAME&#125; !-d </span><br><span class="line">## 上面2句的意思是当访问的文件和目录都不存在时</span><br><span class="line">## 则通过RewriteRule重定向</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f </span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d </span><br><span class="line">RewriteRule ^(.*)$ index.php/$1 [L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>收集传入的数据</strong></li>
+</ol>
+
       
     </div>
 

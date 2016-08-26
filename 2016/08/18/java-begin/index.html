@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://zak7.com/2016/08/18/java-begin/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="JAVA入门慕课网教程笔记。">
-<meta property="og:updated_time" content="2016-08-23T14:09:48.515Z">
+<meta property="og:updated_time" content="2016-08-26T14:11:02.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA入门">
 <meta name="twitter:description" content="JAVA入门慕课网教程笔记。">
@@ -717,6 +717,33 @@ function countCallback() {
 </li>
 </ol>
 <h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>常用的UML图有：用例图、序列图、类图<br>常用的UML建模工具：Visio、Rational Rose、<strong>PowerDesign</strong><br><strong>如何用PowerDesign生成类图并生成java代码</strong></p>
+<h2 id="JAVA异常"><a href="#JAVA异常" class="headerlink" title="JAVA异常"></a>JAVA异常</h2><h3 id="异常介绍"><a href="#异常介绍" class="headerlink" title="异常介绍"></a>异常介绍</h3><ul>
+<li>Thowable类<ul>
+<li>Error类<ul>
+<li>VirtualMachineError 虚拟机错误</li>
+<li>ThreadDeath 线程死锁 </li>
+</ul>
+</li>
+<li>Exception类<ul>
+<li>RuntimeException 非检查异常<ul>
+<li>NullPointException 空指针异常</li>
+<li>ArrayIndexOfBoundsException 数组下标越界异常</li>
+<li>ClassCastException 类型转换异常</li>
+<li>ArithmeticException 算术异常</li>
+</ul>
+</li>
+<li>检查异常<ul>
+<li>IOException 文件异常</li>
+<li>SQLException SQL异常</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h3><p>使用<code>try-catch</code>以及<code>try-catch-finally</code>语句块处理异常。<br>catch中的异常类，应先子类再父类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...<span class="keyword">catch</span>(...)&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">return</span> result=<span class="number">999</span>；</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"我是finally，result="</span>+result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上例中，<code>catch</code>中的<code>return</code>语句执行完之后，返回到调用者之前，将先执行<code>finally</code>语句块。</p>
 
       
     </div>
@@ -907,7 +934,7 @@ function countCallback() {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA的一些基本概念"><span class="nav-number">1.</span> <span class="nav-text">JAVA的一些基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA基础语法"><span class="nav-number">2.</span> <span class="nav-text">JAVA基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA面向对象"><span class="nav-number">3.</span> <span class="nav-text">JAVA面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">3.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用包管理JAVA类"><span class="nav-number">3.3.</span> <span class="nav-text">使用包管理JAVA类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问修饰符"><span class="nav-number">3.4.</span> <span class="nav-text">访问修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA的this关键字"><span class="nav-number">3.5.</span> <span class="nav-text">JAVA的this关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部类"><span class="nav-number">3.6.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">3.7.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类"><span class="nav-number">3.8.</span> <span class="nav-text">Object类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">3.9.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类和接口"><span class="nav-number">3.10.</span> <span class="nav-text">抽象类和接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML"><span class="nav-number">4.</span> <span class="nav-text">UML</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA的一些基本概念"><span class="nav-number">1.</span> <span class="nav-text">JAVA的一些基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA基础语法"><span class="nav-number">2.</span> <span class="nav-text">JAVA基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA面向对象"><span class="nav-number">3.</span> <span class="nav-text">JAVA面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">3.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用包管理JAVA类"><span class="nav-number">3.3.</span> <span class="nav-text">使用包管理JAVA类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问修饰符"><span class="nav-number">3.4.</span> <span class="nav-text">访问修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA的this关键字"><span class="nav-number">3.5.</span> <span class="nav-text">JAVA的this关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部类"><span class="nav-number">3.6.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">3.7.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类"><span class="nav-number">3.8.</span> <span class="nav-text">Object类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">3.9.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类和接口"><span class="nav-number">3.10.</span> <span class="nav-text">抽象类和接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML"><span class="nav-number">4.</span> <span class="nav-text">UML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA异常"><span class="nav-number">5.</span> <span class="nav-text">JAVA异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异常介绍"><span class="nav-number">5.1.</span> <span class="nav-text">异常介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理异常"><span class="nav-number">5.2.</span> <span class="nav-text">处理异常</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
