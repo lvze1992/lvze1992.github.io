@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="PHP,正则表达式," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="愿有保护所爱之人的力量">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZAK's Blog">
-<meta property="og:url" content="http://zak7.com/tags/微信自定义菜单/index.html">
+<meta name="description" content="有关PHP的安全性方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP安全性">
+<meta property="og:url" content="http://zak7.com/2016/11/17/php-safe/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
-<meta property="og:description" content="愿有保护所爱之人的力量">
+<meta property="og:description" content="有关PHP的安全性方法">
+<meta property="og:updated_time" content="2016-11-17T14:06:33.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZAK's Blog">
-<meta name="twitter:description" content="愿有保护所爱之人的力量">
+<meta name="twitter:title" content="PHP安全性">
+<meta name="twitter:description" content="有关PHP的安全性方法">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://zak7.com/tags/微信自定义菜单/"/>
+  <link rel="canonical" href="http://zak7.com/2016/11/17/php-safe/"/>
 
-  <title> 标签: 微信自定义菜单 | ZAK's Blog </title>
+  <title> PHP安全性 | ZAK's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,7 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,46 +258,218 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        微信自定义菜单
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP安全性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-17T19:51:42+08:00" content="2016-11-17">
+              2016-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/网站开发/" itemprop="url" rel="index">
+                    <span itemprop="name">网站开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/网站开发/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/17/php-safe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/php-safe/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/17/php-safe/" class="leancloud_visitors" data-flag-title="PHP安全性">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p style="background-color:#f2f4b0;padding:15px">有关PHP的安全性方法</p>
 
-      <h1 class="post-title">
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<h2 id="阻止垃圾邮件"><a href="#阻止垃圾邮件" class="headerlink" title="阻止垃圾邮件"></a>阻止垃圾邮件</h2><blockquote>
+<p>PHP与Mysql动态网站开发,笔记</p>
+</blockquote>
+<h3 id="isset-和empty"><a href="#isset-和empty" class="headerlink" title="isset()和empty()"></a>isset()和empty()</h3><ol>
+<li><p><strong><code>isset()</code></strong><br><strong>格式：</strong><code>bool isset ( mixed var [, mixed var [, ...]] )</code><br><strong>返回值：</strong><br>若变量不存在则返回 FALSE<br>若变量存在且其值为NULL，也返回 FALSE<br>若变量存在且值不为NULL，则返回 TURE<br>同时检查多个变量时，每个单项都符合上一条要求时才返回 TRUE，否则结果为 FALSE<br><strong>更多说明： </strong><br>使用 unset() 释放变量之后，它将不再是 isset()。 </p>
+</li>
+<li><p><strong><code>empty()</code></strong><br><strong>格式：</strong><code>bool empty ( mixed var )</code><br><strong>返回值：</strong><br>若变量不存在则返回 TRUE<br>若变量存在且其值为””、0、”0”、NULL、、FALSE、array()、var $var; 以及没有任何属性的对象，则返回 TURE<br>若变量存在且值不为””、0、”0”、NULL、、FALSE、array()、var $var; 以及没有任何属性的对象，则返回 FALSE </p>
+</li>
+</ol>
+<hr>
+<h3 id="stripos-value-v"><a href="#stripos-value-v" class="headerlink" title="stripos($value,$v)"></a>stripos($value,$v)</h3><p>在<code>$value</code>中第一次出现<code>$v</code>的位置。(不区分大小写)<br><code>strpos()</code>,第一次出现的位置,区分大小写<br><code>strripos()</code>,最后一次出现的位置,不区分大小写<br><code>strpos()</code>,最后一次出现的位置,区分大小写</p>
+<hr>
+<h3 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h3><p><code>trim()</code>移除字符串两侧空白符或预定义字符<br>省略,则移除以下所有字符:</p>
+<ol>
+<li>“\0” - NULL</li>
+<li>“\t” - 制表符</li>
+<li>“\n” - 换行</li>
+<li>“\x0B” - 垂直制表符</li>
+<li>“\r” - 回车</li>
+<li>“ “ - 空格</li>
+</ol>
+<hr>
+<h3 id="array-map"><a href="#array-map" class="headerlink" title="array_map()"></a>array_map()</h3><p><code>$scrubbed=array_map(&#39;spam_scrubber&#39;,$_POST);</code><br>array_map()有两个必需的参数，第一个是要调用的函数的名称,这里是spam_scrubber，第二个参数是一个数组。<br>这一行代码获取可能包含垃圾数据的完整数组（$_POST）,使用spam_scrubber()来清理它,并把结果赋予新变量。<br><strong>从此开始,脚本将使用干净的$scrubbed数组,而不是$_POST,它仍可能包含垃圾数据</strong></p>
+
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/07/03/wechat-menu/" itemprop="url">
-              
-                <span itemprop="name">微信公众平台的二次开发&ensp;—&ensp;自定义菜单</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-03T21:32:15+08:00"
-              content="2016-07-03" >
-          07-03
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag">#PHP</a>
+          
+            <a href="/tags/正则表达式/" rel="tag">#正则表达式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/18/java-begin/" rel="next" title="JAVA入门">
+                <i class="fa fa-chevron-left"></i> JAVA入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -304,6 +477,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/17/php-safe/"
+           data-title="PHP安全性" data-url="http://zak7.com/2016/11/17/php-safe/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -385,6 +575,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻止垃圾邮件"><span class="nav-number">1.</span> <span class="nav-text">阻止垃圾邮件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#isset-和empty"><span class="nav-number">1.1.</span> <span class="nav-text">isset()和empty()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stripos-value-v"><span class="nav-number">1.2.</span> <span class="nav-text">stripos($value,$v)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trim"><span class="nav-number">1.3.</span> <span class="nav-text">trim()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-map"><span class="nav-number">1.4.</span> <span class="nav-text">array_map()</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -488,6 +689,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
