@@ -8,7 +8,39 @@
       <url>http://zak7.com/2016/12/22/js-marquee/</url>
       <content type="html"><![CDATA[<div style="background-image:url(http://115.28.217.112/github/java/cover3.jpg);background-position: 30% 40%;background-repeat:no-repeat;min-height: 250px;max-width:550px;text-align:center;margin: -20px auto;background-size: cover;"><div class="demo" style="background-color: rgba(105, 94, 94, 0.5);min-width:150px;margin: 0px 0px 0 40%;"><p style="color:#ffffff;padding: 4px;">JavaScript 信息滚动效果制作</p></div></div>
 
-<a id="more"></a><!-- 空一行，上下间距更小 -->]]></content>
+<a id="more"></a><!-- 空一行，上下间距更小 -->
+<h2 id="marquee标签实现信息滚动"><a href="#marquee标签实现信息滚动" class="headerlink" title="marquee标签实现信息滚动"></a>marquee标签实现信息滚动</h2><p><code>&lt;marquee&gt;</code></p>
+<marquee direction="right" behavior="alternate" bgcolor="#f2f4b0" width="50%" onmouseover="this.stop();" onmouseout="this.start();"><b>滚动字幕</b></marquee>
+
+<ol>
+<li>behavior滚动的方式<ol>
+<li>alternate:表示在两端之间来回滚动</li>
+<li>scroll:表示由一端滚动到另一端,会重复</li>
+<li>slide:表示由一端滚动到另一端,不会重复</li>
+</ol>
+</li>
+<li>direction滚动的方向<ol>
+<li>down/up/left/right</li>
+</ol>
+</li>
+<li>loop滚动的次数<ol>
+<li>loop=-1表示一直滚动下去,默认</li>
+</ol>
+</li>
+<li>scrollamount <ol>
+<li>设定活动字幕的滚动速度</li>
+</ol>
+</li>
+<li>scrolldelay<ol>
+<li>设定活动字幕滚动两次之间的延迟时间</li>
+</ol>
+</li>
+<li>onmouseover/onmouseout<ol>
+<li>this.start();/this.stop();</li>
+</ol>
+</li>
+</ol>
+<h2 id="文字信息无缝滚动"><a href="#文字信息无缝滚动" class="headerlink" title="文字信息无缝滚动"></a>文字信息无缝滚动</h2>]]></content>
     </entry>
     
     <entry>
