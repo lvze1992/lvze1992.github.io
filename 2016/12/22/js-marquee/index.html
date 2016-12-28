@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,JavaScript,DOM," />
+  <meta name="keywords" content="前端,JavaScript," />
 
 
 
@@ -86,13 +86,13 @@
 
 <meta name="description" content="JavaScript 信息滚动效果制作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信息滚动效果制作">
+<meta property="og:title" content="JS信息滚动效果制作">
 <meta property="og:url" content="http://zak7.com/2016/12/22/js-marquee/index.html">
 <meta property="og:site_name" content="ZAK's Blog">
 <meta property="og:description" content="JavaScript 信息滚动效果制作">
-<meta property="og:updated_time" content="2016-12-22T14:18:12.777Z">
+<meta property="og:updated_time" content="2016-12-28T15:39:50.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="信息滚动效果制作">
+<meta name="twitter:title" content="JS信息滚动效果制作">
 <meta name="twitter:description" content="JavaScript 信息滚动效果制作">
 
 
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://zak7.com/2016/12/22/js-marquee/"/>
 
-  <title> 信息滚动效果制作 | ZAK's Blog </title>
+  <title> JS信息滚动效果制作 | ZAK's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
             
             
               
-                信息滚动效果制作
+                JS信息滚动效果制作
               
             
           </h1>
@@ -317,7 +317,19 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/前端/消息滚动效果/" itemprop="url" rel="index">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/JS/消息滚动效果/" itemprop="url" rel="index">
                     <span itemprop="name">消息滚动效果</span>
                   </a>
                 </span>
@@ -344,7 +356,7 @@
 
           
           
-             <span id="/2016/12/22/js-marquee/" class="leancloud_visitors" data-flag-title="信息滚动效果制作">
+             <span id="/2016/12/22/js-marquee/" class="leancloud_visitors" data-flag-title="JS信息滚动效果制作">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -400,7 +412,10 @@
 </ol>
 </li>
 </ol>
-<h2 id="文字信息无缝滚动"><a href="#文字信息无缝滚动" class="headerlink" title="文字信息无缝滚动"></a>文字信息无缝滚动</h2>
+<h2 id="文字信息无缝滚动"><a href="#文字信息无缝滚动" class="headerlink" title="文字信息无缝滚动"></a>文字信息无缝滚动</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> scrollBox=<span class="built_in">document</span>.getElementById(<span class="string">'area'</span>),</span><br><span class="line">	list1=<span class="built_in">document</span>.getElementById(<span class="string">'list1'</span>),</span><br><span class="line">	list2=<span class="built_in">document</span>.getElementById(<span class="string">'list2'</span>),</span><br><span class="line">	timer=<span class="number">50</span>;</span><br><span class="line">	list2.innerHTML=list1.innerHTML;</span><br><span class="line">	<span class="keyword">var</span> scrollTimer=setInterval(<span class="string">'scrollUp()'</span>,timer);</span><br><span class="line">	scrollBox.onmouseover=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		clearInterval(scrollTimer);</span><br><span class="line">	&#125;</span><br><span class="line">	scrollBox.onmouseout=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		scrollTimer=setInterval(<span class="string">'scrollUp()'</span>,timer);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollUp</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(scrollBox.scrollTop&gt;=list1.offsetHeight)&#123;</span><br><span class="line">		scrollBox.scrollTop=<span class="number">0</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		scrollBox.scrollTop++;</span><br><span class="line">	&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"scrollBox"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"area"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list1"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>123123<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>ffff<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>aaaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sdsd<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>jjjjj<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>kkkkk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>llll<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>7777777<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>888888<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list2"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="间歇性无缝滚动"><a href="#间歇性无缝滚动" class="headerlink" title="间歇性无缝滚动"></a>间歇性无缝滚动</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollTimer;</span><br><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> iscrBox=<span class="built_in">document</span>.getElementById(<span class="string">'scrBox'</span>),</span><br><span class="line">		iarea=<span class="built_in">document</span>.getElementById(<span class="string">'area'</span>);</span><br><span class="line">	iarea.innerHTML+=iarea.innerHTML;</span><br><span class="line">	setTimeout(<span class="string">"startMove()"</span>,<span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> iscrBox=<span class="built_in">document</span>.getElementById(<span class="string">'scrBox'</span>);</span><br><span class="line">	iscrBox.scrollTop++;</span><br><span class="line">	scrollTimer=setInterval(<span class="string">"scrollUp()"</span>,<span class="number">50</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollUp</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> iscrBox=<span class="built_in">document</span>.getElementById(<span class="string">'scrBox'</span>),</span><br><span class="line">		iarea=<span class="built_in">document</span>.getElementById(<span class="string">'area'</span>);</span><br><span class="line">	iscrBox.scrollTop++;</span><br><span class="line">	<span class="comment">//直接写scrBox.scrollTop也能正常运行?</span></span><br><span class="line">	<span class="keyword">if</span>(iscrBox.scrollTop%<span class="number">20</span>==<span class="number">0</span>)&#123;</span><br><span class="line">		clearInterval(scrollTimer);</span><br><span class="line">		setTimeout(<span class="string">"startMove()"</span>,<span class="number">2000</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(iscrBox.scrollTop&gt;=iarea.offsetHeight/<span class="number">2</span>)&#123;</span><br><span class="line">		iscrBox.scrollTop=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"scrBox"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"area"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>123123<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>ffff<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>aaaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>sdsd<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>jjjjj<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>kkkkk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>llll<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>7777777<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span>888888<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -425,8 +440,6 @@
           
             <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
-            <a href="/tags/DOM/" rel="tag">#DOM</a>
-          
         </div>
       
 
@@ -441,6 +454,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/23/angular-primary/" rel="prev" title="Angular基本概念">
+                Angular基本概念 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -490,7 +507,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/12/22/js-marquee/"
-           data-title="信息滚动效果制作" data-url="http://zak7.com/2016/12/22/js-marquee/">
+           data-title="JS信息滚动效果制作" data-url="http://zak7.com/2016/12/22/js-marquee/">
       </div>
     
   </div>
@@ -535,7 +552,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -543,7 +560,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -552,7 +569,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -592,7 +609,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#marquee标签实现信息滚动"><span class="nav-number">1.</span> <span class="nav-text">marquee标签实现信息滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字信息无缝滚动"><span class="nav-number">2.</span> <span class="nav-text">文字信息无缝滚动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#marquee标签实现信息滚动"><span class="nav-number">1.</span> <span class="nav-text">marquee标签实现信息滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字信息无缝滚动"><span class="nav-number">2.</span> <span class="nav-text">文字信息无缝滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间歇性无缝滚动"><span class="nav-number">3.</span> <span class="nav-text">间歇性无缝滚动</span></a></li></ol></div>
             
           </div>
         </section>
