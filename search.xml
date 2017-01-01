@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[JQuery-selector-attr/method]]></title>
+      <title><![CDATA[JQuery-选择器-属性/样式]]></title>
       <url>http://zak7.com/2016/12/28/JQuery-selector-attr/</url>
       <content type="html"><![CDATA[<p style="background-color:#f2f4b0;padding:15px">介绍jQuery的基础语法，选择器以及jQuery的一些属性和样式</p>
 
@@ -186,7 +186,7 @@
 <tbody>
 <tr>
 <td style="text-align:left">$(‘:first-child’)</td>
-<td style="text-align:left">==$(‘:nth-child(1)’) 选择所有其父元素下的第一个子元素</td>
+<td style="text-align:left">==$(‘:nth-child(1)’) 选择所有其父元素下的第一个子元素, 这里的子元素是相同选择器的子元素, 下同</td>
 </tr>
 <tr>
 <td style="text-align:left">$(‘:last-child’)</td>
@@ -256,8 +256,103 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JQuery.removeAttr(<span class="string">'checked'</span>)</span><br><span class="line">JQuery.css(<span class="string">'color'</span>,<span class="string">'#666'</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="特殊选择器this"><a href="#特殊选择器this" class="headerlink" title="特殊选择器this"></a>特殊选择器this</h3><p>this是JavaScript的关键字, 指的是当前上下文对象<br>这个上下文对象可以被动态的改变<strong>(call, apply)</strong>,改变对象this指向的内容</p>
 <p>在DOM中this指向了这个html元素对象, this是DOM元素本身的一个引用</p>
-<p><code>var $this =$(this)</code><br>this, 表示当前的上下文对象是一个html对象,可以调用html对象的属性和方法<br>$(this), 表示上下文对象是一个JQuery对象, 可以调用对象的方法和属性值</p>
-]]></content>
+<p><code>var $this =$(this)</code><br><code>this</code>, 表示当前的上下文对象是一个html对象,可以调用html对象的属性和方法<br><code>$(this)</code>, 表示上下文对象是一个JQuery对象, 可以调用对象的方法和属性值</p>
+<h2 id="jQuery的属性与样式"><a href="#jQuery的属性与样式" class="headerlink" title="jQuery的属性与样式"></a>jQuery的属性与样式</h2><h3 id="attr-与-removeAttr"><a href="#attr-与-removeAttr" class="headerlink" title=".attr()与.removeAttr()"></a>.attr()与.removeAttr()</h3><ol>
+<li><strong>attr(传入属性名)</strong>：获取属性的值</li>
+<li><strong>attr(属性名, 属性值)</strong>：设置属性的值</li>
+<li><strong>attr(属性名, 函数值)</strong>：设置属性的函数值<ol>
+<li>$(selector).attr(attribute,function(index,oldvalue)) </li>
+<li>该函数可接收并使用选择器的 index 值和当前属性值。</li>
+</ol>
+</li>
+<li><p><strong>attr(attributes)</strong>：给指定元素设置多个属性值，即：{属性名一: “属性值一” , 属性名二: “属性值二” , … … }</p>
+</li>
+<li><p><strong>removeAttr()删除方法</strong><br> .removeAttr( attributeName ) : 为匹配的元素集合中的每个元素中移除一个属性（attribute）</p>
+</li>
+</ol>
+<blockquote>
+<p>dom中有个概念的区分：Attribute和Property翻译出来都是“属性”，《js高级程序设计》书中翻译为“特性”和“属性”。</p>
+<p>简单理解，Attribute就是dom节点自带的属性<br>例如：html中常用的id、class、title、align等</p>
+<p>而Property是这个DOM元素作为对象，其附加的内容，例如,tagName, nodeName, nodeType, defaultChecked, 和 defaultSelected 使用.prop()方法进行取值或赋值等<br><strong>获取Attribute就需要用attr，获取Property就需要用prop</strong></p>
+</blockquote>
+<h3 id="html-及-text"><a href="#html-及-text" class="headerlink" title=".html()及.text()"></a>.html()及.text()</h3><ol>
+<li><strong>.html()</strong> 不传入值，就是获取集合中第一个匹配元素的HTML内容</li>
+<li><strong>.html( htmlString )</strong>  设置每一个匹配元素的html内容</li>
+<li><strong>.html( function(index, oldhtml) )</strong> 用来返回设置HTML内容的一个函数</li>
+</ol>
+<blockquote>
+<p>.html()方法内部使用的是DOM的innerHTML属性来处理的，所以在设置与获取上需要注意的一个最重要的问题，这个操作是针对整个HTML内容（不仅仅只是文本内容）</p>
+</blockquote>
+<ol>
+<li><strong>.text()</strong> 得到匹配元素集合中每个元素的合并文本，包括他们的后代</li>
+<li><strong>.text( textString )</strong> 用于设置匹配元素内容的文本</li>
+<li><strong>.text( function(index, text) )</strong> 用来返回设置文本内容的一个函数</li>
+</ol>
+<blockquote>
+<p>得到匹配元素集合中每个元素的文本内容结合，包括他们的后代，或设置匹配元素集合中每个元素的文本内容为指定的文本内容。</p>
+</blockquote>
+<h3 id="val"><a href="#val" class="headerlink" title=".val()"></a>.val()</h3><p>jQuery中有一个.val()方法主要是用于处理表单元素的值，比如 input, select 和 textarea。</p>
+<ol>
+<li><strong>.val()</strong>无参数，获取匹配的元素集合中第一个元素的当前值</li>
+<li><strong>.val( value )</strong>，设置匹配的元素集合中每个元素的值</li>
+<li><strong>.val( function )</strong> ，一个用来返回设置值的函数</li>
+</ol>
+<blockquote>
+<p>通过.val()处理select元素， 当没有选择项被选中，它返回null<br>.val()方法多用来设置表单的字段的值<br>如果select元素有multiple（多选）属性，并且至少一个选择项被选中， .val()方法返回一个数组，这个数组包含每个选中选择项的值</p>
+</blockquote>
+<h3 id="html-text-和-val-的差异总结"><a href="#html-text-和-val-的差异总结" class="headerlink" title=".html(), .text() 和 .val()的差异总结"></a>.html(), .text() 和 .val()的差异总结</h3><ol>
+<li>.html(),.text(),.val()三种方法都是用来读取选定元素的内容；只不过.html()是用来读取元素的html内容（包括html标签），.text()用来读取元素的纯文本内容，包括其后代元素，.val()是用来读取表单元素的”value”值。其中.html()和.text()方法不能使用在表单元素上,而.val()只能使用在表单元素上；另外.html()方法使用在多个元素上时，只读取第一个元素；.val()方法和.html()相同，如果其应用在多个元素上时，只能读取第一个表单元素的”value”值，但是.text()和他们不一样，如果.text()应用在多个元素上时，将会读取所有选中元素的文本内容。</li>
+<li>.html(htmlString),.text(textString)和.val(value)三种方法都是用来替换选中元素的内容，如果三个方法同时运用在多个元素上时，那么将会替换所有选中元素的内容。</li>
+<li>.html(),.text(),.val()都可以使用回调函数的返回值来动态的改变多个元素的内容。</li>
+</ol>
+<h3 id="addClass"><a href="#addClass" class="headerlink" title=".addClass()"></a>.addClass()</h3><ol>
+<li><strong>.addClass( className )</strong> : 为每个匹配元素所要增加的一个或多个样式名</li>
+<li><strong>.addClass( function(index, currentClass) )</strong> : 这个函数返回一个或更多用空格隔开的要增加的样式名</li>
+</ol>
+<h3 id="removeClass"><a href="#removeClass" class="headerlink" title=".removeClass()"></a>.removeClass()</h3><ol>
+<li><strong>.removeClass( [className ] )</strong>：每个匹配元素移除的一个或多个用空格隔开的样式名</li>
+<li><strong>.removeClass( function(index, class) )</strong> ： 一个函数，返回一个或多个将要被移除的样式名</li>
+</ol>
+<blockquote>
+<p>如果一个样式类名作为一个参数,只有这样式类会被从匹配的元素集合中删除 。 如果没有样式名作为参数，那么所有的样式类将被移除</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.removeClass() 方法允许我们指定一个函数作为参数，返回将要被删除的样式</span></span><br><span class="line">$(<span class="string">'.right &gt; div:first'</span>).removeClass(<span class="function"><span class="keyword">function</span>(<span class="params">index,className</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//className = aa bb imoocClass</span></span><br><span class="line">	<span class="comment">//把div的className赋给下一个兄弟元素div</span></span><br><span class="line">	$(<span class="keyword">this</span>).next().addClass(className)</span><br><span class="line">	 <span class="comment">//删除自己本身的imoocClass</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">'imoocClass'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="切换样式-toggleClass"><a href="#切换样式-toggleClass" class="headerlink" title="切换样式 .toggleClass()"></a>切换样式 .toggleClass()</h3><blockquote>
+<p>jQuery提供一个toggleClass方法用于简化这种互斥的逻辑，通过toggleClass方法动态添加删除Class，一次执行相当于addClass，再次执行相当于removeClass</p>
+</blockquote>
+<ol>
+<li><strong>.toggleClass( className )</strong>：在匹配的元素集合中的每个元素上用来切换的一个或多个（用空格隔开）样式类名</li>
+<li><strong>.toggleClass( className, switch )</strong>：一个布尔值，用于判断样式是否应该被添加或移除</li>
+<li><strong>.toggleClass( [switch ] )</strong>：一个用来判断样式类添加还是移除的 布尔值</li>
+<li><strong>.toggleClass( function(index, class, switch) [, switch ] )</strong>：用来返回在匹配的元素集合中的每个元素上用来切换的样式类名的一个函数。接收元素的索引位置和元素旧的样式类作为参数</li>
+</ol>
+<blockquote>
+<p>第二个参数<code>switch</code>判断样式类是否应该被添加或删除<br><code>true</code>，那么这个样式类将被添加;<br><code>false</code>，那么这个样式类将被移除</p>
+</blockquote>
+<h3 id="样式操作-css"><a href="#样式操作-css" class="headerlink" title="样式操作.css()"></a>样式操作.css()</h3><ol>
+<li><strong>.css( propertyName )</strong> ：获取匹配元素集合中的第一个元素的样式属性的计算值</li>
+<li><strong>.css( [propertyName1,propertyName2…] )</strong>：传递一组<strong>数组</strong>，返回一个<strong>对象结果</strong></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = $(<span class="string">'.first'</span>).css([<span class="string">'width'</span>,<span class="string">'height'</span>]);</span><br><span class="line"><span class="comment">//因为获取的是一个对象，取到对应的值</span></span><br><span class="line">$(<span class="string">'p:eq(2)'</span>).text( <span class="string">'widht:'</span> + value.width +  <span class="string">' height:'</span> +value.height )</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>.css(propertyName, value )</strong>：设置CSS</li>
+<li><strong>.css( propertyName, function )</strong>：可以传入一个回调函数，返回取到对应的值进行处理</li>
+<li><strong>.css( properties )</strong>：可以传一个对象，同时设置多个样式</li>
+</ol>
+<blockquote>
+<p>浏览器属性获取方式不同，在获取某些值的时候都jQuery采用统一的处理，比如<strong>颜色采用RBG，尺寸采用px</strong><br>.css()方法<strong>支持驼峰写法与大小写混搭</strong>的写法，内部做了容错的处理<br>当一个数只被作为值（value）的时候， jQuery会将其转换为一个字符串，并添在字符串的结尾处添加px，例如<strong> .css(“width”,50) 与 .css(“width”,”50px”)一样</strong></p>
+</blockquote>
+<h3 id="css-与-addClass-设置样式的区别"><a href="#css-与-addClass-设置样式的区别" class="headerlink" title=".css()与.addClass()设置样式的区别"></a>.css()与.addClass()设置样式的区别</h3><p><strong>1. 可维护性：</strong><br>.addClass()的本质是通过定义个class类的样式规则，给元素添加一个或多个类。css方法是通过JavaScript大量代码进行改变元素的样式<br>通过.addClass()我们可以批量的给相同的元素设置统一规则，变动起来比较方便，可以统一修改删除。如果通过.css()方法就需要指定每一个元素是一一的修改，日后维护也要一一的修改，比较麻烦</p>
+<p><strong>2. 灵活性：</strong><br>通过.css()方式可以很容易动态的去改变一个样式的属性，不需要在去繁琐的定义个class类的规则。一般来说在不确定开始布局规则，通过动态生成的HTML代码结构中，都是通过.css()方法处理的</p>
+<p><strong>3. 样式值：</strong><br>.addClass()本质只是针对class的类的增加删除，不能获取到指定样式的属性的值，.css()可以获取到指定的样式值。</p>
+<p><strong>4. 样式的优先级：</strong><br>css的样式是有优先级的，当外部样式、内部样式和内联样式同一样式规则同时应用于同一个元素的时候，优先级如下<br><code>外部样式 &lt; 内部样式 &lt; 内联样式</code><br>.addClass()方法是通过增加class名的方式，那么这个样式是在外部文件或者内部样式中先定义好的，等到需要的时候在附加到元素上</p>
+<blockquote>
+<p>通过.css()方法处理的是内联样式，直接通过元素的style属性附加到元素上的<br>通过.css方法设置的样式属性优先级要高于.addClass方法</p>
+</blockquote>
+<h3 id="元素的数据存储"><a href="#元素的数据存储" class="headerlink" title="元素的数据存储"></a>元素的数据存储</h3><p>html5 dataset是新的HTML5标准，允许你在普通的元素标签里嵌入类似data-*的属性，来实现一些简单数据的存取。它的数量不受限制，并且也能由JavaScript动态修改，也支持CSS选择器进行样式设置。这使得data属性特别灵活，也非常强大。有了这样的属性我们能够更加有序直观的进行数据预设或存储。那么在不支持HTML5标准的浏览器中，我们如何实现数据存取?  jQuery就提供了一个.data()的方法来处理这个问题</p>
+<p>使用jQuery初学者一般不是很关心data方式，这个方法是jquery内部预用的，可以用来做性能优化，比如sizzle选择中可以用来缓存部分结果集等等。当然这个也是非常重要的一个API了，<strong>常常用于我们存放临时的一些数据，因为它是直接跟DOM元素对象绑定在一起的</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.data( element, key, value )   <span class="comment">//静态接口,存数据</span></span><br><span class="line">jQuery.data( element, key )  <span class="comment">//静态接口,取数据   </span></span><br><span class="line">.data( key, value ) <span class="comment">//实例接口,存数据</span></span><br><span class="line">.data( key ) <span class="comment">//实例接口,存数据</span></span><br></pre></td></tr></table></figure></p>
+<p>在jQuery的官方文档中，建议用.data()方法来代替。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jQuery.removeData( element [, name ] )</span><br><span class="line">.removeData( [name ] )</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$('.left').click(function() &#123;</span><br><span class="line">    var ele = $(this);</span><br><span class="line">    //通过$.data方式设置数据</span><br><span class="line">    $.data(ele, "a", "data test")</span><br><span class="line">    $.data(ele, "b", &#123;</span><br><span class="line">        name : "慕课网"</span><br><span class="line">    &#125;)</span><br><span class="line">    //通过$.data方式取出数据</span><br><span class="line">    var reset = $.data(ele, "a") + "&lt;/br&gt;" + $.data(ele, "b").name</span><br><span class="line">    ele.find('span').append(reset)</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script type="text/javascript"&gt;</span><br><span class="line">$('.right').click(function() &#123;</span><br><span class="line">    var ele = $(this);</span><br><span class="line">    //通过.data方式设置数据</span><br><span class="line">    ele.data("a", "data test")</span><br><span class="line">    ele.data("b", &#123;</span><br><span class="line">        name: "慕课网"</span><br><span class="line">    &#125;)</span><br><span class="line">    //通过.data方式取出数据</span><br><span class="line">    var reset = ele.data("a") + "&lt;/br&gt;" + ele.data("b").name</span><br><span class="line">    ele.find('span').append(reset)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
