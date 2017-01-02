@@ -1,0 +1,1049 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//zak7.com/extend/font_css/font.css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,JQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="jQuery中节点的创建、插入、删除与替换，除此之外我们还可以了解到jQuery中丰富的遍历节点的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery-DOM操作">
+<meta property="og:url" content="http://zak7.com/2017/01/01/JQuery-dom/index.html">
+<meta property="og:site_name" content="ZAK's Blog">
+<meta property="og:description" content="jQuery中节点的创建、插入、删除与替换，除此之外我们还可以了解到jQuery中丰富的遍历节点的方法。">
+<meta property="og:updated_time" content="2017-01-02T11:07:03.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JQuery-DOM操作">
+<meta name="twitter:description" content="jQuery中节点的创建、插入、删除与替换，除此之外我们还可以了解到jQuery中丰富的遍历节点的方法。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zak7.com/2017/01/01/JQuery-dom/"/>
+
+  <title> JQuery-DOM操作 | ZAK's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5a20009100823c304f758cd8bf164d50";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZAK's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JQuery-DOM操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-01T18:20:15+08:00" content="2017-01-01">
+              2017-01-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/JQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">JQuery</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/JQuery/DOM操作/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM操作</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/01/JQuery-dom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/JQuery-dom/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/01/JQuery-dom/" class="leancloud_visitors" data-flag-title="JQuery-DOM操作">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p style="background-color:#f2f4b0;padding:15px">jQuery中节点的创建、插入、删除与替换，除此之外我们还可以了解到jQuery中丰富的遍历节点的方法。</p>
+
+<a id="more"></a>
+<h2 id="DOM节点的创建"><a href="#DOM节点的创建" class="headerlink" title="DOM节点的创建"></a>DOM节点的创建</h2><h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.querySelector(<span class="string">'body'</span>);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  	</span><br><span class="line">	<span class="comment">//创建2个div元素</span></span><br><span class="line">    <span class="keyword">var</span> rightdiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">    <span class="keyword">var</span> rightaaron = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给2个div设置不同的属性</span></span><br><span class="line">    rightdiv.setAttribute(<span class="string">'class'</span>, <span class="string">'right'</span>)</span><br><span class="line">    rightaaron.className = <span class="string">'aaron'</span></span><br><span class="line">    rightaaron.innerHTML = <span class="string">"动态创建DIV元素节点"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2个div合并成包含关系</span></span><br><span class="line">    rightdiv.appendChild(rightaaron)</span><br><span class="line">   	</span><br><span class="line">   	<span class="comment">//绘制到页面body</span></span><br><span class="line">   	body.appendChild(rightdiv)</span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h3><p>一条一句就搞定了，跟写HTML结构方式是一样的<br><code>$(&quot;&lt;div class=&#39;right&#39;&gt;&lt;div class=&#39;aaron&#39;&gt;动态创建元素节点&lt;/div&gt;&lt;/div&gt;&quot;)</code><br>这就是jQuery创建节点的方式，让我们保留HTML的结构书写方式，非常的简单、方便和灵活<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</span><br><span class="line">$body.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//通过jQuery生成div元素节点</span></span><br><span class="line">    <span class="keyword">var</span> div = $(<span class="string">"&lt;div class='right'&gt;&lt;div class='aaron'&gt;动态创建DIV元素节点&lt;/div&gt;&lt;/div&gt;"</span>)</span><br><span class="line">    $body.append(div)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="DOM节点的插入"><a href="#DOM节点的插入" class="headerlink" title="DOM节点的插入"></a>DOM节点的插入</h2><h3 id="append-与appendTo"><a href="#append-与appendTo" class="headerlink" title="append()与appendTo()"></a>append()与appendTo()</h3><blockquote>
+<p><code>append(content)</code> 向每个匹配的元素内部追加内容<br><code>appendTo(content)</code> 把所有匹配的元素追加到另一个,指定的元素集合中</p>
+</blockquote>
+<h3 id="after-与before"><a href="#after-与before" class="headerlink" title="after()与before()"></a>after()与before()</h3><blockquote>
+<p><code>after(content)</code> 在匹配元素集合中的每个元素后面插入参数所指定的内容,作为其兄弟节点<br><code>before(content)</code> 据参数设定,在匹配元素的前面插入内容</p>
+</blockquote>
+<p><strong>2个方法都支持多个参数传递after(div1,div2,….) </strong></p>
+<h3 id="prepend-与prependTo"><a href="#prepend-与prependTo" class="headerlink" title="prepend()与prependTo()"></a>prepend()与prependTo()</h3><blockquote>
+<p><code>prepend</code> 向每个匹配的元素内部前置内容<br><code>prependTo</code> 把所有匹配的元素前置到另一个指定的元素集合中</p>
+</blockquote>
+<h3 id="insertAfter-与insertBefore"><a href="#insertAfter-与insertBefore" class="headerlink" title="insertAfter()与insertBefore()"></a>insertAfter()与insertBefore()</h3><blockquote>
+<p><code>insertBefore</code> 在目标元素前面插入集合中每个匹配的元素<br><code>prependTo</code> 在目标元素后面插入集合中每个匹配的元素</p>
+</blockquote>
+<h2 id="DOM节点的删除"><a href="#DOM节点的删除" class="headerlink" title="DOM节点的删除"></a>DOM节点的删除</h2><h3 id="empty"><a href="#empty" class="headerlink" title="empty()"></a>empty()</h3><p><code>empty()</code>方法不仅移除子元素（和其他后代元素），同样移除元素里的文本。</p>
+<h3 id="remove-的有参用法和无参用法"><a href="#remove-的有参用法和无参用法" class="headerlink" title="remove()的有参用法和无参用法"></a>remove()的有参用法和无参用法</h3><p><code>remove</code>与<code>empty</code>一样，都是移除元素的方法，但是remove会将元素自身移除，同时也会移除元素内部的一切，包括绑定的事件及与该元素相关的jQuery数据。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过remove处理</span></span><br><span class="line">$(<span class="string">'.hello'</span>).remove()</span><br><span class="line"><span class="comment">//结果：&lt;div class="hello"&gt;&lt;p&gt;慕课网&lt;/p&gt;&lt;/div&gt; 全部被移除</span></span><br><span class="line"><span class="comment">//节点不存在了,同事事件也会被销毁</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//删除整个 class=test1的div节点</span></span><br><span class="line">    $(<span class="string">".test1"</span>).remove()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有p元素中，包含了3的元素</span></span><br><span class="line">    <span class="comment">//这个也是一个过滤器的处理</span></span><br><span class="line">    $(<span class="string">"p"</span>).remove(<span class="string">":contains('3')"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="保留数据的删除操作detach"><a href="#保留数据的删除操作detach" class="headerlink" title="保留数据的删除操作detach()"></a>保留数据的删除操作detach()</h3><blockquote>
+<p>这个方法不会把匹配的元素从jQuery对象中删除，因而可以在将来再使用这些匹配的元素。与remove()不同的是，所有绑定的事件、附加的数据等都会保留下来。<br>$(“div”).detach()这一句会移除对象，仅仅是显示效果没有了。但是内存中还是存在的。当你append之后，又重新回到了文档流中。就又显示出来了。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'p'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    alert(e.target.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> p;</span><br><span class="line">$(<span class="string">"#bt1"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!$(<span class="string">"p"</span>).length) <span class="keyword">return</span>; <span class="comment">//去重</span></span><br><span class="line">    <span class="comment">//通过detach方法删除元素</span></span><br><span class="line">    <span class="comment">//只是页面不可见，但是这个节点还是保存在内存中</span></span><br><span class="line">    <span class="comment">//数据与事件都不会丢失</span></span><br><span class="line">    p = $(<span class="string">"p"</span>).detach()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#bt2"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//把p元素在添加到页面中</span></span><br><span class="line">    <span class="comment">//事件还是存在</span></span><br><span class="line">    $(<span class="string">"body"</span>).append(p);</span><br><span class="line">    <span class="comment">//多次点击不会重复追加</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="detach-与remove-区别"><a href="#detach-与remove-区别" class="headerlink" title="detach()与remove()区别"></a>detach()与remove()区别</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'p'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    alert(e.target.innerHTML)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = $(<span class="string">"p:first"</span>).remove();<span class="comment">//返回删除的元素</span></span><br><span class="line">    p.css(<span class="string">'color'</span>,<span class="string">'red'</span>)</span><br><span class="line">    $(<span class="string">"body"</span>).append(p);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = $(<span class="string">"p:first"</span>).detach();<span class="comment">//同上</span></span><br><span class="line">    p.css(<span class="string">'color'</span>,<span class="string">'blue'</span>)</span><br><span class="line">    $(<span class="string">"body"</span>).append(p);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="DOM节点的复制与替换"><a href="#DOM节点的复制与替换" class="headerlink" title="DOM节点的复制与替换"></a>DOM节点的复制与替换</h2><h3 id="DOM拷贝clone"><a href="#DOM拷贝clone" class="headerlink" title="DOM拷贝clone()"></a>DOM拷贝clone()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只克隆节点</span></span><br><span class="line"><span class="comment">//不克隆事件</span></span><br><span class="line">$(<span class="string">".aaron1"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">".left"</span>).append( $(<span class="keyword">this</span>).clone().css(<span class="string">'color'</span>,<span class="string">'red'</span>) )</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//克隆节点</span></span><br><span class="line"><span class="comment">//克隆事件</span></span><br><span class="line">$(<span class="string">".aaron2"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">    $(<span class="string">".left"</span>).append( $(<span class="keyword">this</span>).clone(<span class="literal">true</span>).css(<span class="string">'color'</span>,<span class="string">'blue'</span>) )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="DOM替换replaceWith-与replaceAll"><a href="#DOM替换replaceWith-与replaceAll" class="headerlink" title="DOM替换replaceWith()与replaceAll()"></a>DOM替换replaceWith()与replaceAll()</h3><ol>
+<li><code>.replaceWith( newContent )</code>：用提供的内容替换集合中所有匹配的元素并且<strong>返回被删除元素的集合</strong></li>
+<li><code>.replaceAll( target )</code>：用集合的匹配元素替换每个目标元素。</li>
+</ol>
+<blockquote>
+<p><code>.replaceAll()</code>和<code>.replaceWith()</code>功能类似，但是目标和源相反</p>
+</blockquote>
+<ul>
+<li>.replaceAll()和.replaceWith()功能类似，主要是目标和源的位置区别</li>
+<li>.replaceWith()与.replaceAll() 方法会删除与节点相关联的所有数据和事件处理程序</li>
+<li>.replaceWith()方法，和大部分其他jQuery方法一样，返回jQuery对象，所以可以和其他方法链接使用</li>
+<li>.replaceWith()方法返回的jQuery对象，引用的是替换前的节点，而不是通过replaceWith/replaceAll方法替换后的节点</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".bt1"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到内容为第二段的p元素</span></span><br><span class="line">    <span class="comment">//通过replaceWith删除并替换这个节点</span></span><br><span class="line">    $(<span class="string">".right &gt; div:first p:eq(1)"</span>).replaceWith(<span class="string">'&lt;a style="color:red"&gt;replaceWith替换第二段的内容&lt;/a&gt;'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="DOM包裹wrap-方法"><a href="#DOM包裹wrap-方法" class="headerlink" title="DOM包裹wrap()方法"></a>DOM包裹wrap()方法</h3><p><code>.wrap( wrappingElement )</code>：在集合中匹配的每个元素周围包裹一个HTML结构<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".aaron1"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//给所有p元素，增加父容器div</span></span><br><span class="line">    $(<span class="string">'p'</span>).wrap(<span class="string">'&lt;div&gt;&lt;/div&gt;'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">".aaron2"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a=$(<span class="string">'a'</span>).wrap(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&lt;div class="'</span> + $(<span class="keyword">this</span>).text() + <span class="string">'" /&gt;'</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//返回原始的元素集</span></span><br><span class="line">    alert(a.parent().html())</span><br><span class="line">    <span class="comment">//输出&lt;a&gt;a元素&lt;/a&gt;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="DOM包裹unwrap-方法"><a href="#DOM包裹unwrap-方法" class="headerlink" title="DOM包裹unwrap()方法"></a>DOM包裹unwrap()方法</h3><p>jQuery提供了一个<code>unwarp()</code>方法 ，作用与wrap方法是相反的。将匹配元素集合的父级元素删除，保留自身（和兄弟元素，如果存在）在原来的位置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".aaron1"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有p元素，删除父容器div</span></span><br><span class="line">    $(<span class="string">'p'</span>).unwrap(<span class="string">'&lt;div&gt;&lt;/div&gt;'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">".aaron2"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有p元素，删除父容器div</span></span><br><span class="line">    $(<span class="string">'a'</span>).unwrap(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&lt;div&gt;&lt;/div&gt;'</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="DOM包裹wrapAll-方法"><a href="#DOM包裹wrapAll-方法" class="headerlink" title="DOM包裹wrapAll()方法"></a>DOM包裹wrapAll()方法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>p元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$('p').wrapAll('&lt;div&gt;&lt;/div&gt;')</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;p元素&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;p元素&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$('p').wrapAll(function() &#123;</span><br><span class="line">    return '&lt;div&gt;&lt;div/&gt;'; </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;p元素&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;p元素&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="DOM包裹wrapInner-方法"><a href="#DOM包裹wrapInner-方法" class="headerlink" title="DOM包裹wrapInner()方法"></a>DOM包裹wrapInner()方法</h3><p><code>.wrapInner( wrappingElement )</code>：给集合中匹配的元素的内部，增加包裹的HTML结构<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>p元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>p元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$('div').wrapInner('&lt;p&gt;&lt;/p&gt;')</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;p元素&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;p元素&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">//效果相同</span><br><span class="line">$('div').wrapInner(function() &#123;</span><br><span class="line">    return '&lt;p&gt;&lt;/p&gt;'; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="jQuery遍历"><a href="#jQuery遍历" class="headerlink" title="jQuery遍历"></a>jQuery遍历</h2><h3 id="children-方法"><a href="#children-方法" class="headerlink" title="children()方法"></a>children()方法</h3><p>jQuery是一个合集对象，如果想快速查找合集里面的第一级子元素，此时可以用<code>children()</code>方法。这里需要注意：<code>.children(selector)</code> 方法是返回匹配元素集合中每个元素的所有子元素（仅儿子辈，这里可以理解为就是父亲-儿子的关系）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#bt1"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'div.div'</span>).childrean().css(<span class="string">'border'</span>,<span class="string">'1px solid red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#bt2"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有class=div的元素</span></span><br><span class="line">    <span class="comment">//找到其对应的子元素ul，然后筛选出最后一个，给边宽加上颜色</span></span><br><span class="line">    $(<span class="string">'.div'</span>).children(<span class="string">':last'</span>).css(<span class="string">'border'</span>, <span class="string">'3px solid blue'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="find-方法"><a href="#find-方法" class="headerlink" title="find()方法"></a>find()方法</h3><p>jQuery是一个合集对象，如果想快速查找DOM树中的这些元素的后代元素，此时可以用<code>find()</code>方法，这也是开发使用频率很高的方法。这里要注意 children与find方法的区别，children是父子关系查找，find是后代关系（包含父子关系）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'.left'</span>).find(<span class="string">'li:last'</span>).css(<span class="string">'border'</span>,<span class="string">'1px solid red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有p元素，然后筛选出后代元素中的span标签节点</span></span><br><span class="line">    <span class="comment">//改变其字体颜色</span></span><br><span class="line">    <span class="keyword">var</span> $spans = $(<span class="string">'span'</span>);</span><br><span class="line">    $(<span class="string">"p"</span>).find($spans).css(<span class="string">'color'</span>, <span class="string">'red'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="parent-方法"><a href="#parent-方法" class="headerlink" title="parent()方法"></a>parent()方法</h3><p>Query是一个合集对象，如果想快速查找合集里面的每一个元素的父元素（这里可以理解为就是父亲-儿子的关系），此时可以用<code>parent()</code>方法<br><strong>因为是父元素，这个方法只会向上查找一级</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'ul.level-3'</span>).parent().css(<span class="string">'border'</span>,<span class="string">'1px solid red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有class=item-a的父元素</span></span><br><span class="line">    <span class="comment">//然后给每个ul,然后筛选出最后一个，加上蓝色的边</span></span><br><span class="line">   $(<span class="string">'.item-a'</span>).parent(<span class="string">':last'</span>).css(<span class="string">'border'</span>, <span class="string">'1px solid blue'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="parents-方法"><a href="#parents-方法" class="headerlink" title="parents()方法"></a>parents()方法</h3><p>jQuery是一个合集对象，如果想快速查找合集里面的每一个元素的所有祖辈元素，此时可以用<code>parents()</code>方法</p>
+<p>其实也类似find与children的区别，parent只会查找一级，parents则会往上一直查到查找到祖先节点<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'.item-b'</span>).parents().css(<span class="string">'border'</span>,<span class="string">'1px solid red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到当前元素的所有祖辈元素,筛选出class="first-div"的元素</span></span><br><span class="line">    <span class="comment">//并且附上一个边</span></span><br><span class="line">    $(<span class="string">'.item-b'</span>).parents(<span class="string">'.first-div'</span>).css(<span class="string">'border'</span>, <span class="string">'2px solid blue'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="closest-方法"><a href="#closest-方法" class="headerlink" title="closest()方法"></a>closest()方法</h3><p>以选定的元素为中心，往内查找可以通过find、children方法。如果往上查找，也就是查找当前元素的父辈祖辈元素，jQuery提供了closest()方法，这个方法类似parents但是又有一些细微的区别，属于使用频率很高的方法</p>
+<p><code>closest()</code>方法接受一个匹配元素的选择器字符串</p>
+<p>从元素本身开始，<strong>在DOM 树上逐级向上级元素匹配，并返回最先匹配的祖先元素</strong><br>粗看.parents()和.closest()是有点相似的，都是往上遍历祖辈元素，但是两者还是有区别的，否则就没有存在的意义了</p>
+<ol>
+<li>起始位置不同：.closest开始于当前元素 .parents开始于父元素</li>
+<li>遍历的目标不同：.closest要找到指定的目标，.parents遍历到文档根元素，closest向上查找，直到找到一个匹配的就停止查找，parents一直查找到根元素，并将匹配的元素加入集合</li>
+<li>结果不同：.closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">'li.item-1'</span>).closest(<span class="string">'ul.level-2'</span>).css(<span class="string">'border'</span>,<span class="string">'1px solid red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> itemB = $(<span class="string">'.item-b'</span>)</span><br><span class="line">    $(<span class="string">'li.item-1'</span>)</span><br><span class="line">        .closest(itemB)</span><br><span class="line">        .css(<span class="string">'border'</span>, <span class="string">'1px solid blue'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="next-方法"><a href="#next-方法" class="headerlink" title="next()方法"></a>next()方法</h3><p>jQuery是一个合集对象，如果想快速查找指定元素集合中每一个元素<strong>紧邻的后面同辈元素的元素集合</strong>，此时可以用<code>next()</code>方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'.item-1'</span>).next(<span class="string">':last'</span>).css(<span class="string">'border'</span>,<span class="string">'1px solid red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到所有class=item-3的li</span></span><br><span class="line">    <span class="comment">//然后筛选出第一个li，加上蓝色的边</span></span><br><span class="line">   $(<span class="string">'.item-2'</span>).next(<span class="string">':first'</span>).css(<span class="string">'border'</span>, <span class="string">'1px solid blue'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>同样的也是因为jQuery是合集对象，可能需要对这个合集对象进行一定的筛选，找出目标元素，所以允许传一个选择器的表达式</p>
+</blockquote>
+<h3 id="prev-方法"><a href="#prev-方法" class="headerlink" title="prev()方法"></a>prev()方法</h3><p>jQuery是一个合集对象，如果想快速查找指定元素集合中每一个元素<strong>紧邻的前面同辈元素的元素集合</strong>，此时可以用<code>prev()</code>方法</p>
+<h3 id="siblings-方法"><a href="#siblings-方法" class="headerlink" title="siblings()方法"></a>siblings()方法</h3><p>jQuery是一个合集对象，如果想快速查找指定元素集合中<strong>每一个元素的同辈元素</strong>，此时可以用<code>siblings()</code>方法</p>
+<blockquote>
+<p>不包括自身, <code>:last</code>删选后得到的是所有匹配节点的最后<strong>一个</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//找到class=item-2的所有兄弟节点</span></span><br><span class="line">    <span class="comment">//然后筛选出最后一个，加上蓝色的边</span></span><br><span class="line">   $(<span class="string">'.item-2'</span>).siblings(<span class="string">':last'</span>).css(<span class="string">'border'</span>, <span class="string">'2px solid blue'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="add-方法"><a href="#add-方法" class="headerlink" title="add()方法"></a>add()方法</h3><p>jQuery是一个合集对象，通过$()方法找到指定的元素合集后可以进行一系列的操作。$()之后就意味着这个合集对象已经是确定的，<strong>如果后期需要再往这个合集中添加一新的元素</strong>要如何处理？jQuery为此提供<code>add方法</code>，用来创建一个新的jQuery对象 ，元素添加到匹配的元素集合中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="comment">//把p元素添加到li的合集中</span></span><br><span class="line">     $(<span class="string">'li'</span>).add(<span class="string">'p'</span>).css(<span class="string">'background'</span>, <span class="string">'red'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="comment">//把html结构'&lt;p&gt;新的p元素&lt;/p&gt;'</span></span><br><span class="line">     <span class="comment">//加入到li的合集中</span></span><br><span class="line">     <span class="comment">//再重新appendTo到指定的节点处</span></span><br><span class="line">     <span class="comment">//值得注意：整个结构位置都改变了,进行了挪动</span></span><br><span class="line">     $(<span class="string">'li'</span>).add(<span class="string">'&lt;p&gt;新的p元素&lt;/p&gt;'</span>).appendTo($(<span class="string">'.right'</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="each-方法"><a href="#each-方法" class="headerlink" title="each()方法"></a>each()方法</h3><p>jQuery是一个合集对象，通过$()方法找到指定的元素合集后可以进行一系列的操作。比如我们操作$(“li”).css(‘’) 给所有的li设置style值，因为jQuery是一个合集对象，所以css方法内部就必须封装一个遍历的方法，被称为隐式迭代的过程。要一个一个给合集中每一个li设置颜色，这里方法就是<code>each</code></p>
+<ol>
+<li>each是一个for循环的包装迭代器</li>
+<li>each通过回调的方式处理，并且会有2个固定的实参，索引与元素</li>
+<li>each回调方法中的this指向当前迭代的dom元素</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button:first"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//遍历所有的li</span></span><br><span class="line">    <span class="comment">//修改每个li内的字体颜色</span></span><br><span class="line">    $(<span class="string">"li"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index, element</span>) </span>&#123;</span><br><span class="line">        $(<span class="keyword">this</span>).css(<span class="string">'color'</span>,<span class="string">'red'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"button:last"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//遍历所有的li</span></span><br><span class="line">    <span class="comment">//修改偶数li内的字体颜色</span></span><br><span class="line">    $(<span class="string">"li"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index, element</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index % <span class="number">2</span>) &#123;</span><br><span class="line">            $(<span class="keyword">this</span>).css(<span class="string">'color'</span>,<span class="string">'blue'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果需要<strong>提前退出，可以通过返回 false</strong>以便在回调函数内中止循环</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/JQuery/" rel="tag">#JQuery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/28/JQuery-selector-attr/" rel="next" title="JQuery-选择器-属性/样式">
+                <i class="fa fa-chevron-left"></i> JQuery-选择器-属性/样式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/data-structure/" rel="prev" title="数据结构">
+                数据结构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/01/JQuery-dom/"
+           data-title="JQuery-DOM操作" data-url="http://zak7.com/2017/01/01/JQuery-dom/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LVZE" />
+          <p class="site-author-name" itemprop="name">LVZE</p>
+          <p class="site-description motion-element" itemprop="description">愿有保护所爱之人的力量</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lvze1992" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点的创建"><span class="nav-number">1.</span> <span class="nav-text">DOM节点的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript"><span class="nav-number">1.1.</span> <span class="nav-text">javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery"><span class="nav-number">1.2.</span> <span class="nav-text">jQuery</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点的插入"><span class="nav-number">2.</span> <span class="nav-text">DOM节点的插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#append-与appendTo"><span class="nav-number">2.1.</span> <span class="nav-text">append()与appendTo()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#after-与before"><span class="nav-number">2.2.</span> <span class="nav-text">after()与before()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prepend-与prependTo"><span class="nav-number">2.3.</span> <span class="nav-text">prepend()与prependTo()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insertAfter-与insertBefore"><span class="nav-number">2.4.</span> <span class="nav-text">insertAfter()与insertBefore()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点的删除"><span class="nav-number">3.</span> <span class="nav-text">DOM节点的删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#empty"><span class="nav-number">3.1.</span> <span class="nav-text">empty()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-的有参用法和无参用法"><span class="nav-number">3.2.</span> <span class="nav-text">remove()的有参用法和无参用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留数据的删除操作detach"><span class="nav-number">3.3.</span> <span class="nav-text">保留数据的删除操作detach()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#detach-与remove-区别"><span class="nav-number">3.4.</span> <span class="nav-text">detach()与remove()区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点的复制与替换"><span class="nav-number">4.</span> <span class="nav-text">DOM节点的复制与替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM拷贝clone"><span class="nav-number">4.1.</span> <span class="nav-text">DOM拷贝clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM替换replaceWith-与replaceAll"><span class="nav-number">4.2.</span> <span class="nav-text">DOM替换replaceWith()与replaceAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM包裹wrap-方法"><span class="nav-number">4.3.</span> <span class="nav-text">DOM包裹wrap()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM包裹unwrap-方法"><span class="nav-number">4.4.</span> <span class="nav-text">DOM包裹unwrap()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM包裹wrapAll-方法"><span class="nav-number">4.5.</span> <span class="nav-text">DOM包裹wrapAll()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM包裹wrapInner-方法"><span class="nav-number">4.6.</span> <span class="nav-text">DOM包裹wrapInner()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery遍历"><span class="nav-number">5.</span> <span class="nav-text">jQuery遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#children-方法"><span class="nav-number">5.1.</span> <span class="nav-text">children()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-方法"><span class="nav-number">5.2.</span> <span class="nav-text">find()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parent-方法"><span class="nav-number">5.3.</span> <span class="nav-text">parent()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parents-方法"><span class="nav-number">5.4.</span> <span class="nav-text">parents()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#closest-方法"><span class="nav-number">5.5.</span> <span class="nav-text">closest()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next-方法"><span class="nav-number">5.6.</span> <span class="nav-text">next()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prev-方法"><span class="nav-number">5.7.</span> <span class="nav-text">prev()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#siblings-方法"><span class="nav-number">5.8.</span> <span class="nav-text">siblings()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-方法"><span class="nav-number">5.9.</span> <span class="nav-text">add()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#each-方法"><span class="nav-number">5.10.</span> <span class="nav-text">each()方法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LVZE</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lvze1992"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Xu0taQgVmvPbFGOMT5OQ0IXp-gzGzoHsz", "MI7oCJoDftF5FsURXlvbRcFl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
